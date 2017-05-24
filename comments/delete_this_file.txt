@@ -1,0 +1,2 @@
+Delete this file bcos this folder will only contain comments' media.
+IF THIS FILE IS NOT DELETED THEN WHOLE APP MIGHT NOT WORK PROPERLY!!
