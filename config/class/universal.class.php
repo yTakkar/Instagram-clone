@@ -6,7 +6,7 @@
 
     public function __construct(){
       try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=instagram;charset=utf8mb4', 'root', 'iamaprogrammer');
+        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
         $this->db = $db;
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $ee = $this->e;
