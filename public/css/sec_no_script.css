@@ -1,0 +1,36 @@
+.no_script{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 1;
+  background: white;
+  text-align: center;
+  z-index: 100;
+}
+.no_script > img{
+  position: relative;
+  margin-top: 62px;
+}
+.no_script > div{
+  width: 500px;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 3px;
+  text-align: left;
+  position: relative;
+  left: 420px;
+}
+.no_script > div > span{
+  display: block;
+  font-size: 14px;
+}
+.no_script > div > span:first-of-type{
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
