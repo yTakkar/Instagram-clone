@@ -61,7 +61,7 @@
       if (isset($_COOKIE['ids'])) {
         $array = @json_decode($_COOKIE['ids']);
 
-        echo "<a class='sec_btn clear_all_ql' href='#'>Remove all recent logins</a>";
+        echo "<a class='sec_btn clear_all_ql' href='#'>Remove all quick logins</a>";
 
         $cookie = @array_slice(array_reverse($array), 0, 15);
         foreach ($cookie as $elem) {
