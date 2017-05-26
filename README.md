@@ -1,5 +1,6 @@
 # Instagram-clone
 Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. Believe it's much better than their Instagram!!!
+Have a look on the screenshots folder to see how the app actually looks!!
 
 # Own this project
 Few works to do:
