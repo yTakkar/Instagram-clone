@@ -17,6 +17,7 @@
         <?php } else { ?>
           <li><a href="/faiyaz/Instagram/login?next=/faiyaz/Instagram/groups/<?php echo $grp; ?>" class="">Login</a></li>
         <?php } ?>
+        <li><a href="#" class="p_copy_link" data-link='localhost/faiyaz/Instagram/groups/<?php echo $grp; ?>' >Copy group link</a></li>
       </ul>
     </div>
     <div class="pro_ff" data-grp='<?php echo $grp; ?>'>
