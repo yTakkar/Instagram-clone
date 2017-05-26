@@ -3,9 +3,26 @@ Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. 
 Have a look on the screenshots folder to see how the app actually looks!!
 
 Below are some screenshots of the App:
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.53.17.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.19.06.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.57.36.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.53.38.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.57.55.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.58.06.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.58.20.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.58.55.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.59.18.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.15.57.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2019.59.51.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.00.00.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.02.05.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.02.22.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.05.24.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.06.32.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.09.39.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.11.16.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.16.56.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.17.16.png)
+![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-03-23%20at%2020.17.42.png)
 
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
 
