@@ -4,9 +4,9 @@ Have a look on the screenshots folder to see how the app actually looks!!
 
 # Own this project
 Few works to do:
-  Import SQL file
-  Change user, password and host (can be done easily by CTRL+SHIFT+F)
-  Change root path /faiyaz/Instagram to yourrootpath/ (don't forget slash in your root path)
+  1. Import SQL file.          
+  2. Change user, password and host (can be done easily by CTRL+SHIFT+F).
+  3. Change root path /faiyaz/Instagram to yourrootpath/ (don't forget slash in your root path).
  
  Didn't get it. Below is the extended detail:
  
