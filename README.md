@@ -1,6 +1,7 @@
 # Instagram-clone
 Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. Believe it's much better than their Instagram!!!
 
+![alt text](Instagram-clone/screenshots/Snap 2017-05-26 at 23.30.07.png)
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
 
 # Own this project
