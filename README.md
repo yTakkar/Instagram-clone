@@ -1,6 +1,11 @@
 # Instagram-clone
 Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. Believe it's much better than their Instagram!!!
 
+# Quick links
+1. [Screenshots](#screenshots)
+2. [Own the project](#own-the-project)
+
+# screenshots
 Below are some screenshots of the app:
 
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.29.09.png)
@@ -48,7 +53,7 @@ Below are some screenshots of the app:
 
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
 
-# Own this project
+# Own the project
 Few works to do:
   1. Import SQL file.          
   2. Change user, password and host (can be done easily by CTRL+SHIFT+F).
