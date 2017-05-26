@@ -8421,6 +8421,10 @@ video::-webkit-media-controls-enclosure{
   top: 85px;
 }
 
+.exp_hmm .home_last_mssg{
+  margin-top: 0px !important;
+}
+
 .exp_p_last{
   width: 48.5%;
 }

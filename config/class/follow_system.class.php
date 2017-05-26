@@ -293,7 +293,7 @@
           echo "<div class='m_on followings_m_on inst' data-fid='{$fid}'><div class='m_top'>
               <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($followers)}' alt=''>
               <div class='m_top_right'>
-                <a href='/faiyaz/instagram/profile/{$universal->GETsDetails($followers, "username")}'>". $universal->nameShortener($universal->GETsDetails($followers, "username"), 18) ."</a>
+                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($followers, "username")}'>". $universal->nameShortener($universal->GETsDetails($followers, "username"), 18) ."</a>
                 <span>";
                 echo $mutual->eMutual($followers);
               echo "</span>
