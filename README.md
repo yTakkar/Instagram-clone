@@ -23,10 +23,7 @@ Below are some screenshots of the app:
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.24.19.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.24.49.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.25.16.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.25.16.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.25.36.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.26.36.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.26.56.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.26.56.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.28.22.png)
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.29.05.png)
@@ -58,6 +55,7 @@ Few works to do:
   1. Import SQL file.          
   2. Change user, password and host (can be done easily by CTRL+SHIFT+F).
   3. Change root path /faiyaz/Instagram to yourrootpath.
+  4. Change `change_to_.htaccess.txt` file to `.htaccess` file.
  
  Didn't get it. Below are extended details:
  
@@ -66,3 +64,4 @@ Few works to do:
 3. Replace the `username`, `password` and `host` or `database` (if you want) of PDO connection with yours simply with CTRL+SHIFT+F (in Atom and VS Code for searching the whole project).
 4. Here's how to do it very easily: search `$db = newPDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password')` and replace it with `$db = newPDO('mysql:host=YOUR_HOST;dbname=instagram;charset=utf8mb4', 'USER', '****')` with CTRL+SHIFT+F.
 5. The root of this project is /faiyaz/Instagram/ and in your case the root will be different for eg. http://www.yoursite.com/. Search `/faiyaz/Instagram` and replace it with `yourroot`. Replace easily by CTRL+SHIFT+F.
+6. Change `change_to_.htaccess.txt` file to `.htaccess` file.
