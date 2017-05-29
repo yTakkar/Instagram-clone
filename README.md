@@ -3,9 +3,10 @@ Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. 
 
 # Quick links
 1. [Screenshots](#screenshots)
-2. [Own the project](#own-the-project)
+2. [Requirements](#Requirements)
+3. [Own the project](#own-the-project)
 
-# screenshots
+# Screenshots
 Below are some screenshots of the app:
 
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.29.09.png)
@@ -49,6 +50,9 @@ Below are some screenshots of the app:
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.27.33.png)
 
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
+
+# Requirements
+1. Latest version of PHP.
 
 # Own the project
 Few works to do:
