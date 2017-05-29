@@ -1,5 +1,5 @@
 # Instagram-clone
-Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. Believe it's much better than their Instagram!!!
+An Instagram-clone with my own flavors and features. Same app which will be single-page app with MERN, Redux and NoSQL coming soon!!
 
 # Quick links
 1. [Screenshots](#screenshots)
