@@ -3,7 +3,7 @@ Whole new Instagram web-app with features from Facebook, Twitter &amp; Google+. 
 
 # Quick links
 1. [Screenshots](#screenshots)
-2. [Requirements](#Requirements)
+2. [Requirements](#requirements)
 3. [Own the project](#own-the-project)
 
 # Screenshots
