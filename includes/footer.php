@@ -1,4 +1,3 @@
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script type="text/javascript" src="<?php echo DIR; ?>/public/js/autosize.js"></script>
 <!-- <script src="//twemoji.maxcdn.com/twemoji.min.js"></script> -->
 <script type='text/javascript' src="<?php echo DIR; ?>/public/js/emoji.js"></script>
