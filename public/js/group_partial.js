@@ -126,7 +126,7 @@
                 name.val('');
                 ta.val('');
                 setTimeout(function(){
-                  window.location.href = "/faiyaz/Instagram//groups/"+data.mssg;
+                  window.location.href = "/faiyaz/Instagram/groups/"+data.mssg;
                 }, 500);
               }
             });

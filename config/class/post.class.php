@@ -456,7 +456,7 @@
           $text = $universal->toAbsURL($text);
           return
             "<div class='e ". self::addMoreClass($text) ."' spellcheck='false'>
-            <span class='p_text' style='font-size: {$size}px'>{$text}</span>
+            <span class='p_text hyphenate' style='font-size: {$size}px'>{$text}</span>
             </div>
             <div class='load_more_div'>". self::addMoreLink($text, "load_more_text") ."</div>";
         }

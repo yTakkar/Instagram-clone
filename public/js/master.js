@@ -4,8 +4,8 @@ console.log(
   "Welcome to Instagram 😍😊😎"
 );
 
-console.log('[Looks best in maximum window]');
-mario();
+// console.log('[Looks best in maximum window]');
+// mario();
 
 //for replacing illegal characters
 $('.s_username, .s_email').on('keyup', function(e){

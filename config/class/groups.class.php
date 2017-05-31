@@ -60,7 +60,7 @@
       $query = $this->db->prepare("INSERT INTO group_members(group_id, group_member, added_by, time) VALUES (:grp, :member, :by, now())");
       $query->execute(array(':grp' => $id, ":member" => $session, ":by" => $session));
 
-      mkdir("../../group/$id");
+      mkdir("../../groups/$id");
       return $id;
 
     }

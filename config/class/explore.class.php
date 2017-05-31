@@ -138,6 +138,11 @@
           }
 
         }
+      } else if($query->rowCount() == 0) {
+        echo "<div class='home_last_mssg'>
+          <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          <span>Sorry, no audios to explore</span>
+        </div>";
       }
 
     }

@@ -68,6 +68,6 @@
   $('.c_g').createGroup();
   $('.join_grp').joinGrp();
   $('.leave_grp').leaveGrp();
-  $('.user_grps_srajkumar').stick_in_parent();
+  // $('.user_grps_srajkumar').stick_in_parent();
 
 </script>

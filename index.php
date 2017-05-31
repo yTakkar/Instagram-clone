@@ -48,6 +48,7 @@
 <?php include_once 'needs/stickers.php'; ?>
 <?php include_once 'needs/search.php'; ?>
 <?php include_once 'needs/noti_speak.php'; ?>
+<?php include 'needs/create_group.php'; ?>
 
 <?php
   // $help = array(
