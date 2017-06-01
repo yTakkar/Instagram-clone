@@ -48,12 +48,14 @@
         $srow = $sget->fetch(PDO::FETCH_OBJ);
         $uid = $srow->id;
 
-        $e = $universal->GETsDetails($uid, "email");
-        if (strrpos($text, "@gmail.com")) {
-          $email = "www.".$e;
-        } else {
-          $email = $e;
-        }
+        $email = $universal->GETsDetails($uid, "email");
+
+        // IF MAIL DOESN'T REACH TO GMAIL USERS THEN UNCOMMENT FOLLOWING LINES
+        // if (strrpos($text, "@gmail.com")) {
+        //   $email = "www.".$e;
+        // } else {
+        //   $email = $e;
+        // }
 
         // $url = 'https://gypsum.000webhostapp.com/activate?id='.$uid;
 
@@ -61,19 +63,19 @@
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'teaminstagramme@gmail.com';                 // SMTP username
-        $mail->Password = 'iamfaiyaz786';                           // SMTP password
+        $mail->Username = 'YOUR_GMAIL';                 // SMTP username
+        $mail->Password = 'YOUR_GMAIL_PASSWORD';                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->setFrom('teaminstagramme@gmail.com', 'Team Instagram');
+        $mail->setFrom('YOUR_GMAIL', 'Team Instagram');
         $mail->addAddress($email);               // Name is optional
-        $mail->addReplyTo('teaminstagramme@gmail.com', 'Team Instagram');
+        $mail->addReplyTo('YOUR_GMAIL', 'Team Instagram');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
 
-        $mail->addCC('teaminstagramme@gmail.com');
-        $mail->addBCC('teaminstagramme@gmail.com');
+        $mail->addCC('YOUR_GMAIL');
+        $mail->addBCC('YOUR_GMAIL');
 
         $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
         $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
