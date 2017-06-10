@@ -94,15 +94,15 @@
   <div class="pro_bottom">
     <div class="pro_post">
       <span class="pro_hg"><?php echo $post->postCount($get_id); ?></span>
-      <span class="pro_nhg">posts</span>
+      <span class="pro_nhg">Posts</span>
     </div>
     <div class="<?php if($universal->isPrivate($get_id) == false && $universal->isLoggedIn()){ echo "pro_followers"; } ?>">
       <span class="pro_hg no_of_followers"><?php echo $follow->getFollowers($get_id); ?></span>
-      <span class="pro_nhg">followers</span>
+      <span class="pro_nhg">Followers</span>
     </div>
     <div class="<?php if($universal->isPrivate($get_id) == false && $universal->isLoggedIn()){ echo "pro_followings"; } ?>">
       <span class="pro_hg no_of_followings"><?php echo $follow->getFollowings($get_id); ?></span>
-      <span class="pro_nhg">following</span>
+      <span class="pro_nhg">Following</span>
     </div>
     <?php if($universal->MeOrNot($get_id)){ ?>
     <div class="pro_recomm">
@@ -112,12 +112,12 @@
     <?php } ?>
     <div class="pro_views">
       <span class="pro_hg"><?php echo $follow->getViewers($get_id); ?></span>
-      <span class="pro_nhg">profile views</span>
+      <span class="pro_nhg">Profile views</span>
     </div>
     <?php if($universal->MeOrNot($get_id) == false){ ?>
     <div class="pro_fav">
       <span class="pro_hg"><?php echo $fav->noOfFavs($get_id); ?></span>
-      <span class="pro_nhg">favourites</span>
+      <span class="pro_nhg">Favourites</span>
     </div>
     <?php } ?>
   </div>
