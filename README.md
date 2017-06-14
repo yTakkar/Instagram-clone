@@ -106,9 +106,7 @@ Few works to do:
   1. Import SQL file.          
   2. Change user, password and host (can be done easily by CTRL+SHIFT+F).
   3. Change root path `/faiyaz/Instagram` to `yourrootpath`.
-  4. Change `change_to_.htaccess.txt` file to `.htaccess` file.
-  5. If there's no `temp` folder then create it, and `resized` and `uploaded` folders in it.
-  6. Change `YOUR_GMAIL` and `YOUR_GMAIL_PASSWORD` with your `gmail account` and `gmail password` resp.
+  4. Change `YOUR_GMAIL` and `YOUR_GMAIL_PASSWORD` with your `gmail account` and `gmail password` resp.
 
 Didn't get it. Below are extended details:
 
@@ -117,6 +115,4 @@ Didn't get it. Below are extended details:
 3. Replace the `username`, `password` and `host` or `database` (if you want) of PDO connection with yours simply with CTRL+SHIFT+F (in Atom and VS Code for searching the whole project).
 4. Here's how to do it very easily: search `$db = newPDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password')` and replace it with `$db = newPDO('mysql:host=YOUR_HOST;dbname=instagram;charset=utf8mb4', 'USER', '****')` with CTRL+SHIFT+F.
 5. The root of this project is /faiyaz/Instagram/ and in your case the root will be different for eg. http://www.yoursite.com/. Search `/faiyaz/Instagram` and replace it with `yourroot`. Replace easily by CTRL+SHIFT+F.
-6. Change `change_to_.htaccess.txt` file to `.htaccess` file.
-7. If there's no `temp` folder then create it, and `resized` and `uploaded` folders in it.
-8. Open `login.class.php` and `forgot.class.php` in `config>class`. Replace `YOUR_GMAIL` with `your gmail account` and `YOUR_GMAIL_PASSWORD` with `your gmail password`. (Can be done easily with CTRL+SHIFT+F).
+6. Open `login.class.php` and `forgot.class.php` in `config>class`. Replace `YOUR_GMAIL` with `your gmail account` and `YOUR_GMAIL_PASSWORD` with `your gmail password`. (Can be done easily with CTRL+SHIFT+F).
