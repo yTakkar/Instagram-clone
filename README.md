@@ -106,7 +106,7 @@ Few works to do:
   1. Import SQL file.          
   2. Change user, password and host (can be done easily by CTRL+SHIFT+F).
   3. Change root path `/faiyaz/Instagram` to `yourrootpath`.
-  4. Change `YOUR_GMAIL` and `YOUR_GMAIL_PASSWORD` with your `gmail account` and `gmail password` resp.
+  4. Change `YOUR_GMAIL` and `GMAIL_PASSWORD` with your `gmail account` and `gmail password` resp.
 
 Didn't get it. Below are extended details:
 
