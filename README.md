@@ -106,7 +106,7 @@ Few works to do:
   1. Import SQL file.          
   2. Change user, password and host (can be done easily by CTRL+SHIFT+F).
   3. Change root path `/faiyaz/Instagram` to `yourrootpath`.
-  4. Change `YOUR_GMAIL` and `YOUR_GMAIL_PASSWORD` with your `gmail account` and `gmail password` resp.
+  4. Change `YOUR_GMAIL` and `GMAIL_PASSWORD` with your `gmail account` and `gmail password` resp.
 
 Didn't get it. Below are extended details:
 
@@ -116,3 +116,4 @@ Didn't get it. Below are extended details:
 4. Here's how to do it very easily: search `$db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'root', 'user')` and replace it with `$db = new PDO('mysql:host=YOUR_HOST;dbname=instagram;charset=utf8mb4', 'USER', '****')` with CTRL+SHIFT+F.
 5. The root of this project is /faiyaz/Instagram/ and in your case the root will be different for eg. http://www.yoursite.com/. Search `/faiyaz/Instagram` and replace it with `yourroot`. Replace easily by CTRL+SHIFT+F.
 6. Open `login.class.php` and `forgot.class.php` in `config>class`. Replace `YOUR_GMAIL` with `your gmail account` and `GMAIL_PASSWORD` with `your gmail password`. (Can be done easily with CTRL+SHIFT+F).
+6. Open `login.class.php` and `forgot.class.php` in `config>class`. Replace `YOUR_GMAIL` with `your gmail account` and `YOUR_GMAIL_PASSWORD` with `your gmail password`.
