@@ -6,7 +6,7 @@
 
     public function __construct(){
       try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
+        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'root', 'user');
         $this->db = $db;
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $ee = $this->e;
@@ -105,19 +105,19 @@
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'YOUR_GMAIL';                 // SMTP username
-        $mail->Password = 'YOUR_GMAIL_PASSWORD';                           // SMTP password
+        $mail->Username = 'email@gmail.com';                 // SMTP username
+        $mail->Password = '*****';                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->setFrom('YOUR_GMAIL', 'Team Instagram');
+        $mail->setFrom('email@gmail.com', 'Team Instagram');
         $mail->addAddress($email);               // Name is optional
-        $mail->addReplyTo('YOUR_GMAIL', 'Team Instagram');
+        $mail->addReplyTo('email@gmail.com', 'Team Instagram');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
 
-        $mail->addCC('YOUR_GMAIL');
-        $mail->addBCC('YOUR_GMAIL');
+        $mail->addCC('email@gmail.com');
+        $mail->addBCC('email@gmail.com');
 
         $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
         $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
