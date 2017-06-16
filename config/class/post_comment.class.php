@@ -169,19 +169,22 @@
       $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
       $allowed = array("jpg", "png", "gif", "jpeg");
 
-      if (in_array($ext, $allowed)) {
-        if ($error == 0) {
-          $new_name = time().".".$ext;
-          if (move_uploaded_file($tmp_name, "../../comments/Instagram_".$new_name)) {
+      $to = $Post->postDetails($post, "user_id");
+      if($settings->AmIBlocked($to) == false){
+        if (in_array($ext, $allowed)) {
+          if ($error == 0) {
+            $new_name = time().".".$ext;
+            if (move_uploaded_file($tmp_name, "../../comments/Instagram_".$new_name)) {
 
-            $q = $this->db->prepare("SELECT post_id FROM post_comments WHERE post_id = :post AND user_id = :user AND data = :data AND type = :type");
-            $q->execute(array(":post" => $post, ":user" => $session, ":data" => $new_name, ":type" => "image"));
-            if ($q->rowCount() == 0) {
-              $query = $this->db->prepare("INSERT INTO post_comments (post_id, user_id, data, type, time) VALUES(:post, :user, :data, :type, now())");
-              $query->execute(array(":post" => $post, ":user" => $session, ":data" => $new_name, ":type" => "image"));
-              $to = $Post->postDetails($post, "user_id");
-              $noti->actionNotify($to, $post, "comment");
-              return "ok";
+              $q = $this->db->prepare("SELECT post_id FROM post_comments WHERE post_id = :post AND user_id = :user AND data = :data AND type = :type");
+              $q->execute(array(":post" => $post, ":user" => $session, ":data" => $new_name, ":type" => "image"));
+              if ($q->rowCount() == 0) {
+                $query = $this->db->prepare("INSERT INTO post_comments (post_id, user_id, data, type, time) VALUES(:post, :user, :data, :type, now())");
+                $query->execute(array(":post" => $post, ":user" => $session, ":data" => $new_name, ":type" => "image"));
+                $to = $Post->postDetails($post, "user_id");
+                $noti->actionNotify($to, $post, "comment");
+                return "ok";
+              }
             }
           }
         }
@@ -391,21 +394,26 @@
       include 'notifications.class.php';
       include 'post.class.php';
       include 'universal.class.php';
+      include 'settings.class.php'
 
       $noti = new notifications;
       $Post = new post;
       $universal = new universal;
+      $settings = new settings;
 
-      $ext = pathinfo($sticker, PATHINFO_EXTENSION);
-      $image = substr($sticker, strrpos($sticker, "/")+1);
-      $from = "../../images/stickers/$image";
-      $to = "../../comments/Instagram_".time().".".$ext;
-      $new_name = substr($to, 25);
-      @copy($from, $to);
-      $query = $this->db->prepare("INSERT INTO post_comments (post_id, user_id, data, type, time) VALUES(:post, :user, :data, :type, now())");
-      $query->execute(array(":post" => $post, ":user" => $session, ":data" => $new_name, ":type" => "sticker"));
       $to = $Post->postDetails($post, "user_id");
-      $noti->actionNotify($to, $post, "comment");
+      if($settings->AmIBlocked($to) == false){
+        $ext = pathinfo($sticker, PATHINFO_EXTENSION);
+        $image = substr($sticker, strrpos($sticker, "/")+1);
+        $from = "../../images/stickers/$image";
+        $to = "../../comments/Instagram_".time().".".$ext;
+        $new_name = substr($to, 25);
+        @copy($from, $to);
+        $query = $this->db->prepare("INSERT INTO post_comments (post_id, user_id, data, type, time) VALUES(:post, :user, :data, :type, now())");
+        $query->execute(array(":post" => $post, ":user" => $session, ":data" => $new_name, ":type" => "sticker"));
+        $to = $Post->postDetails($post, "user_id");
+        $noti->actionNotify($to, $post, "comment");
+      }
     }
 
   }

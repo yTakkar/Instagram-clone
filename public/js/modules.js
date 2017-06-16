@@ -1458,9 +1458,7 @@ function getFF(data){
                 commCount.text(data.comments);
                 $('.notify').notify({value: "You commented"});
                 if (settings.commRefresh == "yes") {
-                  setTimeout(function () {
-                    location.reload();
-                  }, 300);
+                  setTimeout(function () { location.reload(); }, 300);
                 }
               }
             });
@@ -1972,7 +1970,7 @@ function s(data){
         var username = $(this).data('username');
         $('.prompt').myPrompt({
           title: "Block "+username,
-          value: username+" will no longer be able to follow, message, comment (text), recommend or add you in any group.",
+          value: username+" will no longer be able to follow, message, comment, recommend or add you in any group. Instagram won't let "+ username+" know you blocked him/her. You can unblock from settings.",
           doneText: "Block",
           type: "block_user",
           post: $(this)

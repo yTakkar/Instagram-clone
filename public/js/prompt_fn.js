@@ -152,7 +152,7 @@ function bl__ock(elem){
     data : {block: get},
     success: function(data){
       console.log(data);
-      $('.notify').notify({ value: "Blocked "+data+", unblock from settings" });
+      $('.notify').notify({ value: "Blocked "+data });
       elem.hide();
     }
   });
