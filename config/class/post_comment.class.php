@@ -394,7 +394,7 @@
       include 'notifications.class.php';
       include 'post.class.php';
       include 'universal.class.php';
-      include 'settings.class.php'
+      include 'settings.class.php';
 
       $noti = new notifications;
       $Post = new post;
