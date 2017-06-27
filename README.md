@@ -118,4 +118,4 @@ Below are extended & more useful details:
 5. The root of this project is /faiyaz/Instagram/ and in your case the root will be different for eg. http://www.yoursite.com/. Search `/faiyaz/Instagram` and replace it with `yourroot`. Replace easily by CTRL+SHIFT+F.
 6. Open `login.class.php` and `forgot.class.php` in `config>class`.
   1. Replace `YOUR_GMAIL` with `your gmail account` and `GMAIL_PASSWORD` with `your gmail password`.
-  2. If root of project is `HTTP || HTTPS`, go to line `130` of `login.class.php` file & line `88` of `forgot.class.php` file and change the messed up url of `Activate` button of mail body.
+  2. If root of project is `HTTP || HTTPS`, go to line `130` of `login.class.php` file & line `88` of `forgot.class.php` file and fix bit messed up url of `Activate` button of mail body.
