@@ -111,3 +111,4 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
     3. `modules.js` :=> For JS use.
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
 5. Open `config/class/login.class.php`, `config/class/forgot.class.php` & replace `YOUR_GMAIL` with your Gmail account & `GMAIL_PASSWORD` with your Gmail password.
+6. Enjoy!!
