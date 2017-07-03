@@ -106,5 +106,8 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
 1. Open PHPMyAdmin, create a Database & import `instagram.sql`. 
 2. Open `config/class/needy_class.php` & fill up your PDO details.
 3. Open `config/declare.php`, `config/class/needy_class.php` & `public/js/modules.js` & replace `DIR` variable containing my root path with your root path. (Note: Do not add forward slash in the end!).
+    1. `declare.php` :=> For almost every PHP file.
+    2. `needy_class.php` :=> For class files.
+    3. `modules.js` :=> For JS use.
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
 5. Open `config/class/login.class.php`, `config/class/forgot.class.php` & replace `YOUR_GMAIL` with your Gmail account & `GMAIL_PASSWORD` with your Gmail password.
