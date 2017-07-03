@@ -2,17 +2,14 @@
   class favourite{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function isFav($id){
@@ -61,7 +58,7 @@
       $count = $query->rowCount();
 
       if ($count == 0) {
-        echo "<div class='home_last_mssg fav_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg fav_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
         <span>";
         if ($id == $session) {
           echo "You have no favourites.";
@@ -76,9 +73,9 @@
           $time = $row->time;
 
           echo "<div class='m_on inst'><div class='m_top'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($user)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($user)}' alt=''>
               <div class='m_top_right'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($user, "username")}'>". $universal->nameShortener($universal->GETsDetails($user, "username"), 18) ."</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($user, "username")}'>". $universal->nameShortener($universal->GETsDetails($user, "username"), 18) ."</a>
                 <span>";
                 echo $mutual->eMutual($user);
               echo "</span>
@@ -88,7 +85,7 @@
               <a href='#' class='sec_btn rem_fav' data-userid='{$user}' data-username='{$universal->GETsDetails($user, "username")}'>Remove</a>
               <div data-getid='$user' class='fav_ff'>";
               if ($session == $user) {
-                echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($user, "username") ."' class='sec_btn '>Profile</a>";
+                echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($user, "username") ."' class='sec_btn '>Profile</a>";
               } else {
                 if ($follow->isFollowing($user)) {
                   echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";

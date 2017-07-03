@@ -2,17 +2,14 @@
   class share{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function DidIShareHimTo($post, $user){
@@ -42,7 +39,7 @@
       $query->execute(array(":by" => $session));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($count > 0) {
         echo "<input type='hidden' class='share_postid'>";
         echo "<input type='hidden' class='share_userid'>";
@@ -54,7 +51,7 @@
               echo "already_shared";
             }
             echo "' data-userid='{$userid}'><div class='d_i_img'>
-            <img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
+            <img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
             <span class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 15) ."</span>
             <span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ". $universal->GETsDetails($userid, "surname"), 15) ."</span></div></div></div>";
           }
@@ -120,19 +117,19 @@
       $query = $this->db->prepare("SELECT share_by, share_to FROM shares WHERE post_id = :post ORDER BY share_id DESC");
       $query->execute(array(":post" => $posting));
       if ($query->rowCount() == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($query->rowCount() != 0) {
         while ($fetch = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $fetch->share_by;
           $to = $fetch->share_to;
           echo "<div class='display_items' data-getid='$userid'><div class='d_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
           echo "</div><div class='d_i_content'><div class='d_i_info'>";
-          echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
-          echo "<span class='d_i_name'>to <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($to, "username")}'>{$universal->nameShortener($universal->GETsDetails($to, "username"), 20)}</a></span></div><div class='d_i_act display_ff' data-getid='$userid'>";
+          echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
+          echo "<span class='d_i_name'>to <a href='{$this->DIR}/profile/{$universal->GETsDetails($to, "username")}'>{$universal->nameShortener($universal->GETsDetails($to, "username"), 20)}</a></span></div><div class='d_i_act display_ff' data-getid='$userid'>";
 
           if ($session == $userid) {
-            echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
+            echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
           } else {
             if ($follow->isFollowing($userid)) {
               echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -188,14 +185,14 @@
       $query->execute(array(":by" => $session, ":post" => $post));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($count > 0) {
         echo "<input type='hidden' class='share_postid'>";
         echo "<input type='hidden' class='share_userid'>";
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $row->share_to;
           echo "<div class='display_items select_receiver' data-userid='{$userid}'><div class='d_i_img'>
-          <img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
+          <img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
           <span class='d_i_username username'>" .$universal->nameShortener($universal->GETsDetails($userid, "username"), 15). "</span>
           <span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ". $universal->GETsDetails($userid, "surname"), 15) ."</span></div></div></div>";
 

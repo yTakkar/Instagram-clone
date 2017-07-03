@@ -1,3 +1,4 @@
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script type="text/javascript" src="public/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="public/js/modules.js"></script>
 <script type="text/javascript" src="public/js/login_fn.js"></script>

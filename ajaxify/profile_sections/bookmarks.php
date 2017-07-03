@@ -34,7 +34,7 @@
       <div class="recomm_top header_of_divs">
         <span>Suggested</span>
         <a href="#" class="recomm_refresh" data-description='refresh'><i class="fa fa-refresh" aria-hidden="true"></i></a>
-        <a href="/faiyaz/Instagram/explore?ask=exp_people" class="recomm_all" data-description='view all'><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        <a href="<?php echo DIR; ?>/explore?ask=exp_people" class="recomm_all" data-description='view all'><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
       </div>
       <div class="recomm_main">
         <?php $suggestions->HomeSuggestions("ajax"); ?>
@@ -129,7 +129,7 @@
 
   $('.p_comments').on('click', function(e){
     var post = $(this).parent().data('postid');
-    window.location.href = "/faiyaz/Instagram/view_post/"+post;
+    window.location.href = DIR+"/view_post/"+post;
   });
 
   $('.post_end').on('click', function(e){

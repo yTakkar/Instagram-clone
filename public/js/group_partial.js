@@ -12,7 +12,7 @@
 
       var fetchAndInsert = function(href){
         $.ajax({
-          url: '/faiyaz/Instagram/ajaxify/grp_sections/'+href.split('=').pop(),
+          url: DIR+'/ajaxify/grp_sections/'+href.split('=').pop(),
           method: "GET",
           data: {grp: grp},
           beforeSend: function(e){
@@ -111,7 +111,7 @@
             name.focus();
           } else if (grpname != "") {
             $.ajax({
-              url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+              url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
               data: {
                 create_group: grpname,
                 grp_bio: bio
@@ -126,7 +126,7 @@
                 name.val('');
                 ta.val('');
                 setTimeout(function(){
-                  window.location.href = "/faiyaz/Instagram/groups/"+data.mssg;
+                  window.location.href = DIR+"/groups/"+data.mssg;
                 }, 500);
               }
             });
@@ -152,7 +152,7 @@
     elem.on('click', function(e){
       e.preventDefault();
       $.ajax({
-        url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
         method: "POST",
         data: {inviteToGrp: grp},
         beforeSend: function(){
@@ -177,7 +177,7 @@
             post.val(grp);
 
             $.ajax({
-              url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+              url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
               dataType: "JSON",
               method: "POST",
               data: {
@@ -219,7 +219,7 @@
       elem.on('click', function(e){
         e.preventDefault();
         $.ajax({
-          url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
           method: "GET",
           data: {joinGrp: to},
           beforeSend: function(){
@@ -256,7 +256,7 @@
       elem.on('click', function(e){
         e.preventDefault();
         $.ajax({
-          url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
           method: "GET",
           data: {leaveGrp: to},
           beforeSend: function(){
@@ -290,7 +290,7 @@
       var grp = $(this).data('grp');
       if (value != "" && value != " ") {
         $.ajax({
-          url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
           data: {getGrpMem: value, getGrpGrp: grp},
           success: function(data){
             div.find('.grp_to_ul').html(data);
@@ -303,7 +303,7 @@
               div.hide();
               elem.val('');
               $.ajax({
-                url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
                 data: {grpAddMem: id, grpAdd: grp},
                 success: function(data){
                   elem.focus();
@@ -342,7 +342,7 @@
       var options = ((checked) ? "private" : "public");
 
       $.ajax({
-        url: "/faiyaz/Instagram//ajaxify/ajax_requests/groups_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
         data: {
           editname: grpname.val(),
           editbio: grpbio.val(),
@@ -469,7 +469,7 @@
         }
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
           data: data,
           beforeSend: function(){
 
@@ -508,7 +508,7 @@
 //     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 //       $('.feed_inserted').html('Looking for more posts..');
 //       $.ajax({
-//         url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+//         url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
 //         data: {grpFeeds: $('.posts:last').data('postid'), grpGrp: $('.user_info').data('grp')},
 //         beforeSend: function(){
 //           $('.feed_inserted').html('Looking for more posts..');
@@ -526,7 +526,7 @@ function grpMemFeeds(elem){
   elem.addClass('a_disabled');
   elem.text('Loading members..');
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
     data: {grpMFeeds: $('.grp_m_on:last').data('memid'), grpMGrp: $('.user_info').data('grp')},
     beforeSend: function(){
       elem.addClass('a_disabled');

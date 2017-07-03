@@ -69,10 +69,10 @@
   <?php include_once 'ajaxify/profile/profile_banner.php'; ?>
   <?php
     if($universal->isLoggedIn() == false){
-      echo "<div class='home_last_mssg private_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+      echo "<div class='home_last_mssg private_last_mssg'><img src='". DIR ."/images/needs/large.jpg'>
       <span>You are not logged in. Login to connect with {$universal->GETsDetails($get_id, "username")}</span></div>";
     } else if ($universal->isPrivate($get_id)) {
-      echo "<div class='home_last_mssg private_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+      echo "<div class='home_last_mssg private_last_mssg'><img src='". DIR ."/images/needs/large.jpg'>
       <span>Account is private. Follow to connect with {$universal->GETsDetails($get_id, "username")} and refresh.</span>
       <span>";
       if ($mutual->mutualCount($get_id) != 0) {
@@ -110,7 +110,7 @@
     function fetch(elem){
       var username = $('.user_info').data('username');
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/profile_sections/"+elem+".php",
+        url: DIR+"/ajaxify/profile_sections/"+elem+".php",
         method: "GET",
         cache: false,
         data: {u: username},

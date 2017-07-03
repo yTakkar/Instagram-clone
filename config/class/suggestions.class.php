@@ -2,17 +2,14 @@
   class suggestion{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function HomeSuggestions($when){
@@ -28,14 +25,14 @@
       while ($row = $query->fetch(PDO::FETCH_OBJ)) {
         $id = $row->id;
         if ($follow->isFollowing($id) == false) {
-          echo "<div class='recomms'><img src='/faiyaz/Instagram/";
+          echo "<div class='recomms'><img src='{$this->DIR}/";
           if ($when == "direct") {
             echo $avatar->GETsAvatar($id);
           } else if ($when == "ajax") {
             echo $avatar->DisplayAvatar($id);
           }
           echo "' alt=''>
-            <div class='recomms_cont'><a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($id, "username")}' class='recomms_username' data-getid='{$id}'>". $universal->nameShortener($universal->GETsDetails($id, "username"), 15) ."</a><span>";
+            <div class='recomms_cont'><a href='{$this->DIR}/profile/{$universal->GETsDetails($id, "username")}' class='recomms_username' data-getid='{$id}'>". $universal->nameShortener($universal->GETsDetails($id, "username"), 15) ."</a><span>";
             echo $mutual->eMutual($id);
             echo "</span></div><div class='recomms_ff' data-getid='{$id}'>";
             if ($follow->isFollowing($id)) {
@@ -80,8 +77,8 @@
       while ($row = $query->fetch(PDO::FETCH_OBJ)) {
         $id = $row->follow_by;
         if ($follow->isFollowing($id) == false) {
-          echo "<div class='recomms'><img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($id)}' alt=''>
-            <div class='recomms_cont'><a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($id, "username")}' class='recomms_username' class='' data-getid='{$id}'>". $universal->nameShortener($universal->GETsDetails($id, "username"), 15). "</a><span>";
+          echo "<div class='recomms'><img src='{$this->DIR}/{$avatar->DisplayAvatar($id)}' alt=''>
+            <div class='recomms_cont'><a href='{$this->DIR}/profile/{$universal->GETsDetails($id, "username")}' class='recomms_username' class='' data-getid='{$id}'>". $universal->nameShortener($universal->GETsDetails($id, "username"), 15). "</a><span>";
             echo $mutual->eMutual($id);
             echo "</span></div><div class='recomms_ff' data-getid='{$id}'>";
             if ($follow->isFollowing($id)) {

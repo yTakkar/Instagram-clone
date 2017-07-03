@@ -9,7 +9,7 @@
 
       var fetchAndInsert = function(href){
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/settings/"+href.split('=').pop(),
+          url: DIR+"/ajaxify/settings/"+href.split('=').pop(),
           beforeSend: function(){
             $('.settings_loader').html('<div class="spinner"><span></span><span></span><span></span></div>');
             $('.settings_rajkumar > .settings_loader > .spinner').addClass('hmm_spinner_show');
@@ -88,7 +88,7 @@
       } else {
         $(this).addClass('update_toggle');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/settings_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/settings_requests.php",
           data: {
             change_password: "yes",
             current: current,
@@ -124,7 +124,7 @@
       var options = ((checked) ? "private" : "public");
 
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/privacy_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/privacy_requests.php",
         data: {emailPrivacy: options},
         success: function(data){
           if(options == "private"){
@@ -154,7 +154,7 @@
       var hint = ((checked) ? "private" : "public");
       console.log(hint);
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/privacy_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/privacy_requests.php",
         data: {mobilePrivacy: hint},
         success: function(data){
           if(hint == "private"){
@@ -181,7 +181,7 @@
     elem.on('change', function(e){
       var value = $(this).val();
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/settings_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/settings_requests.php",
         data: {accountType: value},
         success: function(data){
           $('.notify').notify({  value: "Account set to "+data  });

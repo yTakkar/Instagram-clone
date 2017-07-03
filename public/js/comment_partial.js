@@ -17,7 +17,7 @@
             var post = div.data('postid');
 
             $.ajax({
-              url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+              url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
               type: "GET",
               dataType: "JSON",
               data: {
@@ -79,7 +79,7 @@
           form.append('post', parent.data('postid'));
 
           $.ajax({
-            url : "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+            url : DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
             type: "POST",
             processData: false,
             contentType: false,
@@ -170,7 +170,7 @@
           console.log(post);
           if (text != "") {
             $.ajax({
-              url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+              url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
               data: {
                 cedit: "yes",
                 text: text,
@@ -213,7 +213,7 @@
         var parent = $(this).parent();
         var id = parent.data('commentid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
           dataType: "JSON",
           data: {likeComment: id},
           success: function(data){
@@ -245,7 +245,7 @@
         var parent = $(this).parent();
         var id = parent.data('commentid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
           dataType: "JSON",
           data: {unlikeComment: id},
           success: function(data){
@@ -278,7 +278,7 @@
         var parent = $(this).parent().parent().parent();
         var id = parent.data('commentid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
           data: {commentLikers: id},
           beforeSend: function(){
             $('.display_content').html("<div class='spinner'><span></span><span></span><span></span></div>");

@@ -50,5 +50,7 @@
 
     $('.post_photos > img').imageShow();
 
+    $('.photos_senapati').css('height', 'inherit');
+
   });
 </script>

@@ -2,17 +2,14 @@
   class follow_system{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function isFollowing($get){
@@ -91,17 +88,17 @@
       $query = $this->db->prepare("SELECT follow_by FROM follow_system WHERE follow_to = :get ORDER BY time DESC");
       $query->execute(array(":get" => $get));
       if ($query->rowCount() == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($query->rowCount() != 0) {
         while ($fetch = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $fetch->follow_by;
           echo "<div class='display_items' data-getid='$userid'><div class='d_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
           echo "</div><div class='d_i_content'><div class='d_i_info'>";
-          echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
+          echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
           echo "<span class='d_i_name'>". $mutual->eMutual($userid) ."</span></div><div class='d_i_act display_ff' data-getid='$userid'>";
           if ($session == $userid) {
-            echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
+            echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
           } else {
             if (self::isFollowing($userid)) {
               echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -124,17 +121,17 @@
       $query = $this->db->prepare("SELECT follow_to FROM follow_system WHERE follow_by = :get ORDER BY time DESC");
       $query->execute(array(":get" => $get));
       if ($query->rowCount() == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($query->rowCount() != 0) {
         while ($fetch = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $fetch->follow_to;
           echo "<div class='display_items'><div class='d_i_img' data-getid='$userid'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
           echo "</div><div class='d_i_content'><div class='d_i_info'>";
-          echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
+          echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
           echo "<span class='d_i_name'>". $mutual->eMutual($userid) ."</span></div><div class='d_i_act display_ff' data-getid='$userid'>";
           if ($session == $userid) {
-            echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn'>Profile</a>";
+            echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn'>Profile</a>";
           } else {
             if (self::isFollowing($userid)) {
               echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -173,17 +170,17 @@
       $query = $this->db->prepare("SELECT view_from FROM profile_views WHERE view_to = :get ORDER BY view_id DESC");
       $query->execute(array(":get" => $get));
       if ($query->rowCount() == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($query->rowCount() != 0) {
         while ($fetch = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $fetch->view_from;
           echo "<div class='display_items' data-getid='$userid'><div class='d_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
           echo "</div><div class='d_i_content'><div class='d_i_info'>";
-          echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
+          echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
           echo "<span class='d_i_name'>". $mutual->eMutual($userid) ."</span></div><div class='d_i_act display_ff' data-getid='$userid'>";
           if ($session == $userid) {
-            echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn'>Profile</a>";
+            echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn'>Profile</a>";
           } else {
             if (self::isFollowing($userid)) {
               echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -218,7 +215,7 @@
 
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
           <span>No followers of</span></div>";
         }
       } else if ($count > 0) {
@@ -230,9 +227,9 @@
           $time = $row->time;
 
           echo "<div class='m_on followers_m_on inst' data-fid='{$fid}'><div class='m_top'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($followers)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($followers)}' alt=''>
               <div class='m_top_right'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($followers, "username")}'>". $universal->nameShortener($universal->GETsDetails($followers, "username"), 18) ."</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($followers, "username")}'>". $universal->nameShortener($universal->GETsDetails($followers, "username"), 18) ."</a>
                 <span>";
                 echo $mutual->eMutual($followers);
               echo "</span>
@@ -240,7 +237,7 @@
               <span class='recommend_time'>{$Time->timeAgo($time)}</span>
               <div class='m_bottom' data-getid='$followers'>";
               if ($session == $followers) {
-                echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($followers, "username") ."' class='sec_btn '>Profile</a>";
+                echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($followers, "username") ."' class='sec_btn '>Profile</a>";
               } else {
                 if (self::isFollowing($followers)) {
                   echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -279,7 +276,7 @@
 
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
           <span>No followings</span></div>";
         }
       } else if ($count > 0) {
@@ -291,9 +288,9 @@
           $time = $row->time;
 
           echo "<div class='m_on followings_m_on inst' data-fid='{$fid}'><div class='m_top'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($followers)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($followers)}' alt=''>
               <div class='m_top_right'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($followers, "username")}'>". $universal->nameShortener($universal->GETsDetails($followers, "username"), 18) ."</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($followers, "username")}'>". $universal->nameShortener($universal->GETsDetails($followers, "username"), 18) ."</a>
                 <span>";
                 echo $mutual->eMutual($followers);
               echo "</span>
@@ -301,7 +298,7 @@
               <span class='recommend_time'>{$Time->timeAgo($time)}</span>
               <div class='m_bottom' data-getid='$followers'>";
               if ($session == $followers) {
-                echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($followers, "username") ."' class='sec_btn '>Profile</a>";
+                echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($followers, "username") ."' class='sec_btn '>Profile</a>";
               } else {
                 if (self::isFollowing($followers)) {
                   echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";

@@ -122,7 +122,7 @@ LinkIndicator('profile');
 
   $('.p_comments').on('click', function(e){
     var post = $(this).parent().data('postid');
-    window.location.href = "/faiyaz/Instagram/view_post/"+post;
+    window.location.href = DIR+"/view_post/"+post;
   });
   $('.post_end').on('click', function(e){
     $('html, body').animate({scrollTop: 0}, 450);

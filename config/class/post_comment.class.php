@@ -3,17 +3,14 @@
   class postComment{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function simpleGetComments($post){
@@ -263,17 +260,17 @@
       $query = $this->db->prepare("SELECT like_by FROM comment_likes WHERE comment_id = :comment ORDER BY time DESC");
       $query->execute(array(":comment" => $comment));
       if ($query->rowCount() == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($query->rowCount() != 0) {
         while ($fetch = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $fetch->like_by;
           echo "<div class='display_items' data-getid='$userid'><div class='d_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
           echo "</div><div class='d_i_content'><div class='d_i_info'>";
-          echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
+          echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
           echo "<span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ".$universal->GETsDetails($userid, "surname"), 30) ."</span></div><div class='d_i_act display_ff' data-getid='$userid'>";
           if ($session == $userid) {
-            echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
+            echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
           } else {
             if ($follow->isFollowing($userid)) {
               echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -303,7 +300,7 @@
       $avatar = new Avatar;
       $Time = new time;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $session = $_SESSION['id'];
 
@@ -328,18 +325,18 @@
 
           } else if ($type == "image") {
             if($user_id == $session){ $z = "You"; } else { $z = $universal->GETsDetails($user_id, "username");}
-            $return = "<img src='/faiyaz/Instagram/comments/Instagram_{$data}' class='comments_img' data-imgby='{$z}' data-time='{$Time->timeAgo($time)}'>";
+            $return = "<img src='{$this->DIR}/comments/Instagram_{$data}' class='comments_img' data-imgby='{$z}' data-time='{$Time->timeAgo($time)}'>";
 
           } else if ($type == "sticker") {
-            $return = "<img src='/faiyaz/Instagram/comments/Instagram_{$data}' class='comment_sticker'>";
+            $return = "<img src='{$this->DIR}/comments/Instagram_{$data}' class='comment_sticker'>";
           }
 
           echo "<div class='comments ";
           if (self::MyCommentOrNot($comment_id)) {
             echo "my_comment";
           }
-          echo "' data-commentid='{$comment_id}'><img class='comments_avatar' src='/faiyaz/Instagram/{$avatar->GETsAvatar($user_id)}'>
-            <div class='comments_content'><a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($user_id, "username")}' class='comments_user'>{$universal->GETsDetails($user_id, "username")}</a>";
+          echo "' data-commentid='{$comment_id}'><img class='comments_avatar' src='{$this->DIR}/{$avatar->GETsAvatar($user_id)}'>
+            <div class='comments_content'><a href='{$this->DIR}/profile/{$universal->GETsDetails($user_id, "username")}' class='comments_user'>{$universal->GETsDetails($user_id, "username")}</a>";
 
             if ($type == "text") {
               echo "<div class='comment_edit_tools'><a href='#' class='comment_cancel sec_btn'>Cancel</a>
@@ -414,6 +411,7 @@
         $to = $Post->postDetails($post, "user_id");
         $noti->actionNotify($to, $post, "comment");
       }
+
     }
 
   }

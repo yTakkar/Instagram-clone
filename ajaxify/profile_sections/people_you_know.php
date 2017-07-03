@@ -27,7 +27,7 @@
       if ($get_id != $session_id){
         $mutual->peopleMightKnow($get_id);
       } else if ($get_id == $session_id) {
-        echo "<div class='home_last_mssg rec_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg rec_last_mssg'><img src='". DIR ."/images/needs/large.jpg'>
         <span>You know yourself the most</span></div>";
       }
      ?>

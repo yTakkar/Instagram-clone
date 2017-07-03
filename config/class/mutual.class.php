@@ -1,20 +1,18 @@
 <?php
 
   class mutual{
+
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
-    }
+      $db = N::_DB();
+      $DIR = N::$DIR;
 
+      $this->db = $db;
+      $this->DIR = $DIR;
+    }
+    
     public function mutualCount($get){
       $session = $_SESSION['id'];
       $first = array();
@@ -80,10 +78,10 @@
         } else if ($count > 0) {
           echo "<div class='mutual_info header_of_divs'>
           <span>{$count} followers you might know</span>
-          <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($get, "username")}?ask=people_you_know' data-description='view all' class='view_all_yk'><i class='fa fa-chevron-right' aria-hidden='true'></i></a>
+          <a href='{$this->DIR}/profile/{$universal->GETsDetails($get, "username")}?ask=people_you_know' data-description='view all' class='view_all_yk'><i class='fa fa-chevron-right' aria-hidden='true'></i></a>
           </div><div class='mutual_main'>";
           foreach ($final as $key => $value) {
-            echo "<a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($value, "username")}' data-description='{$universal->nameShortener($universal->GETsDetails($value, "username"), 20)}' class='mutual_links'><img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($value)}' alt=''></a>";
+            echo "<a href='{$this->DIR}/profile/{$universal->GETsDetails($value, "username")}' data-description='{$universal->nameShortener($universal->GETsDetails($value, "username"), 20)}' class='mutual_links'><img src='{$this->DIR}/{$avatar->DisplayAvatar($value)}' alt=''></a>";
           }
 
           echo "</div>";
@@ -123,7 +121,7 @@
       $count = count($final);
 
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
         <span>No mutual followers</span></div>";
       } else if ($count > 0) {
 
@@ -131,7 +129,7 @@
 
         foreach ($final as $value) {
           echo "<div class='m_on inst'><div class='m_top'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($value)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($value)}' alt=''>
               <div class='m_top_right'>
                 <a href='#'>{$universal->nameShortener($universal->GETsDetails($value, "username"), 20)}</a>
                 <span>";

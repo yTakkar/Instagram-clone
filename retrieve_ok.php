@@ -25,7 +25,7 @@
 <div class="badshah">
 
   <div class="about_div inst thanks_div">
-    <img src="/faiyaz/Instagram/images/needs/glyph-instagram.jpg" alt="">
+    <img src="<?php echo DIR; ?>/images/needs/glyph-instagram.jpg" alt="">
     <div class="">
       <span>A message has been sent to you email. Check your inbox and click on the link provided in the message to retrieve your account.</span>
     </div>

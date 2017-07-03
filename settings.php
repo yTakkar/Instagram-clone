@@ -40,10 +40,10 @@
     <div class="srajkumar settings_srajkumar">
       <div class="settings_nav_div">
         <ul>
-          <li><a href="/faiyaz/Instagram/settings/change_password" class="settings_nav change_password" data-url="change_password.php">Change password</a></li>
-          <li><a href="/faiyaz/Instagram/settings/profile_settings" class="settings_nav profile_settings" data-url="profile_settings.php">Profile settings</a></li>
-          <!-- <li><a href="/faiyaz/Instagram/settings/delete_account" class="settings_nav delete_account" data-url="delete_account.php">Delete account</a></li> -->
-          <li><a href="/faiyaz/Instagram/settings/login_details" class="settings_nav login_details" data-url="login_details.php">Login details</a></li>
+          <li><a href="<?php echo DIR; ?>/settings/change_password" class="settings_nav change_password" data-url="change_password.php">Change password</a></li>
+          <li><a href="<?php echo DIR; ?>/settings/profile_settings" class="settings_nav profile_settings" data-url="profile_settings.php">Profile settings</a></li>
+          <!-- <li><a href="<?php echo DIR; ?>/settings/delete_account" class="settings_nav delete_account" data-url="delete_account.php">Delete account</a></li> -->
+          <li><a href="<?php echo DIR; ?>/settings/login_details" class="settings_nav login_details" data-url="login_details.php">Login details</a></li>
         </ul>
       </div>
     </div>
@@ -73,7 +73,7 @@
     function fetch(elem){
       var username = $('.user_info').data('username');
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/settings/"+elem+".php",
+        url: DIR+"/ajaxify/settings/"+elem+".php",
         method: "GET",
         cache: false,
         beforeSend: function(e){

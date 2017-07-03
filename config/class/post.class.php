@@ -2,17 +2,14 @@
   class post{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function postCount($id){
@@ -54,7 +51,7 @@
       	}
 
         if (sizeof($image) == 0) {
-          $image[0] = "/faiyaz/Instagram/images/Default_Link_Cover/world.jpg";
+          $image[0] = "{$this->DIR}/images/Default_Link_Cover/world.jpg";
         }
 
         $array = array(
@@ -97,7 +94,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $session = $_SESSION['id'];
 
@@ -137,7 +134,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $name = $file['name'];
       $size = $file['size'];
@@ -191,7 +188,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $name = $file['name'];
       $size = $file['size'];
@@ -249,7 +246,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $name = preg_replace("#[\'\"]#i", "", $file['name']);
       $size = $file['size'];
@@ -293,7 +290,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $name = preg_replace("#[\'\"]#i", "", $file['name']);
       $size = $file['size'];
@@ -346,7 +343,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       if ($when == "user") {
         $query = $this->db->prepare("INSERT INTO post (user_id, type, time, font_size, address) VALUES (:id, :type, now(), :font, :loc)");
@@ -383,7 +380,7 @@
       $universal = new universal;
       $noti = new notifications;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       $session = $_SESSION['id'];
 
@@ -441,12 +438,12 @@
       $universal = new universal;
       $Time = new time;
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       if ($universal->isLoggedIn()) { $session = $_SESSION['id']; }
 
       if ($type == "text") {
-        $tquery = $this->db->prepare("SELECT text FROM text_post WHERE post_id = :post");
+        $tquery = $this->db->prepare("SELECT text FROM text_Post WHERE post_id = :post");
         $tquery->execute(array(":post" => $post_id));
         while ($trow = $tquery->fetch(PDO::FETCH_OBJ)) {
           $text = nl2br(trim($trow->text));
@@ -477,7 +474,7 @@
             "<div class='p_abt e ". self::addMoreClass($text) ."' style='font-size: {$size}px' spellcheck='false'><p>{$text}</p></div>
             <div class='load_more_div load_more_not_text_div'>". self::addMoreLink($text, "load_more_not_text") ."</div>
             <div class='post_marginer'></div>
-            <img src='/faiyaz/Instagram/media/Instagram_{$img}' alt='Instagram_{$img}' class='p_img {$filter}' data-postid='{$post_id}' data-imgby='{$u}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}'>";
+            <img src='{$this->DIR}/media/Instagram_{$img}' alt='Instagram_{$img}' class='p_img {$filter}' data-postid='{$post_id}' data-imgby='{$u}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}'>";
         }
       } else if ($type == "video") {
         $tquery = $this->db->prepare("SELECT video, about FROM video_post WHERE post_id = :post");
@@ -493,7 +490,7 @@
               <div class='load_more_div load_more_not_text_div'>". self::addMoreLink($text, "load_more_not_text") ."</div>
               <div class='post_marginer'></div>
               <div class='p_vid'>
-              <video src='/faiyaz/Instagram/media/Instagram_{$vid}' loop preload='auto'></video>
+              <video src='{$this->DIR}/media/Instagram_{$vid}' loop preload='auto'></video>
               <span class='p_vid_pp_large'><i class='material-icons'>play_arrow</i></span>
               <span class='p_vid_cur p_vid_time_teaser'>0:00</span>
               <span class='p_vid_time_bubble'>0:00</span><div class='p_vid_ctrls'><div class='p_vid_seek'>
@@ -521,7 +518,7 @@
             "<div class='p_abt e ". self::addMoreClass($text) ."' style='font-size: {$size}px' spellcheck='false'><p>$text</p></div>
             <div class='load_more_div load_more_not_text_div'>". self::addMoreLink($text, "load_more_not_text") ."</div>
             <div class='post_marginer'></div>
-            <div class='p_aud' data-song='/faiyaz/Instagram/media/{$audio}'>
+            <div class='p_aud' data-song='{$this->DIR}/media/{$audio}'>
             <span class='p_aud_time_bubble'>0:00</span><div class='p_aud_ctrls'><div class='p_aud_info'>
             <span class='p_aud_name'></span>
             </div><span class='p_aud_pp'><i class='material-icons'>play_arrow</i></span>
@@ -545,9 +542,9 @@
             <div class='load_more_div load_more_not_text_div'>". self::addMoreLink($text, "load_more_not_text") ."</div>
             <div class='post_marginer'></div>
             <div class='p_doc'>
-            <div class='p_doc_img'><img src='/faiyaz/Instagram/images/Default_Doc_Cover/20151125_5655085dda190-210x210.png' alt='Document'>
+            <div class='p_doc_img'><img src='{$this->DIR}/images/Default_Doc_Cover/20151125_5655085dda190-210x210.png' alt='Document'>
             </div><div class='p_doc_info'>
-            <a href='/faiyaz/Instagram/media/{$doc}' class='p_doc_link' download='{$doc}'>". substr($doc, 0, 50) ."</a>
+            <a href='{$this->DIR}/media/{$doc}' class='p_doc_link' download='{$doc}'>". substr($doc, 0, 50) ."</a>
             </div></div>";
         }
       } else if ($type == "location") {
@@ -629,7 +626,7 @@
 
           echo "<div class='posts home_posts inst' data-postid='{$post_id}' data-time='{$time}'><div class='p_i'><div class='p_i_img'>";
           if ($way == "get") {
-            echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($user_id)}' alt='{$universal->GETsDetails($user_id, "username")}'>";
+            echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($user_id)}' alt='{$universal->GETsDetails($user_id, "username")}'>";
           } else if ($way == "direct") {
             echo "<img src='". DIR ."/{$avatar->GETsAvatar($user_id)}' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
           }
@@ -642,7 +639,7 @@
           echo "<span class='p_tags'>". $taggings->getTaggings($post_id) ."</span>";
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($follow->isFollowing($user_id)) {
             echo "<li><a href='#' class='simple_unfollow'>Unfollow</a></li>";
           }
@@ -658,7 +655,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'><div class='p_actual'>";
           echo self::getDifferentPost($type, $post_id, $size);
           echo "</div></div><hr><div class='p_a'><div class='p_do'>";
@@ -682,7 +679,7 @@
           echo "<div class='p_comments'>". $comment->getComments($post_id) ."</div>";
           // echo "<div class='p_cit'><div class='p_cit_img'>";
           // if ($way == "get") {
-          //   echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($session)}' alt='{$universal->GETsDetails($session, "username")}'>";
+          //   echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($session)}' alt='{$universal->GETsDetails($session, "username")}'>";
           // } else if ($way == "direct") {
           //   echo "<img src='". DIR ."/{$avatar->GETsAvatar($session)}' alt='{$universal->GETsDetails($session, "username")}'s avatar'>";
           // }
@@ -704,7 +701,7 @@
       } else if ($query->rowCount() == 0) {
         if ($way == "direct") {
           echo "<div class='home_last_mssg'>
-            <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+            <img src='{$this->DIR}/images/needs/large.jpg'>
             <span>Looks like you're new, Follow some to fill up your feed or post from above options</span>
           </div>";
         }
@@ -750,7 +747,7 @@
       $count = $pquery->rowCount();
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
           if ($universal->MeOrNot($id)) {
             echo "You have no post";
           } else {
@@ -769,7 +766,7 @@
           $address = $prow->address;
 
           echo "<div class='posts user_posts inst'  data-postid='{$post_id}' data-time='{$time}' data-type='{$type}'><div class='p_i'><div class='p_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
           echo "</div><div class='p_i_1'>";
           echo "<a href='". DIR ."/profile/{$universal->GETsDetails($user_id, "username")}' title='{$universal->GETsDetails($user_id, "username")}'>{$universal->nameShortener($universal->GETsDetails($user_id, "username"), 25)}</a><span title='". self::addressTitle($address, $user_id) ."'>";
           echo self::addressN($address, $user_id);
@@ -779,7 +776,7 @@
           echo "<span class='p_tags'>". $taggings->getTaggings($post_id) ."</span>";
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($universal->MeOrNot($user_id)) {
             echo "<li><a href='#' class='edit_post'>Edit post</a></li>";
             echo "<li><a href='#' class='delete_post'>Delete post</a></li>";
@@ -800,7 +797,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'>";
           echo "<div class='p_edit_tools'>
           <span class='p_edit_tip'><i class='fa fa-info-circle' aria-hidden='true'></i>For hashtag, first remove all the text</span>
@@ -829,7 +826,7 @@
           echo "<div class='p_did'><span class='p_likes likes'>" .$post_like->getPostLikes($post_id). "</span></div></div><hr>";
           echo "<div class='p_comments'>" .$comment->getComments($post_id). "</div>";
           // echo "<div class='p_cit'><div class='p_cit_img'>";
-          // echo "<img src='/faiyaz/Instagram". $avatar->DisplayAvatar($session) ."' alt='{$universal->GETsDetails($session, "username")}'>";
+          // echo "<img src='{$this->DIR}". $avatar->DisplayAvatar($session) ."' alt='{$universal->GETsDetails($session, "username")}'>";
           // echo "</div><div class='p_cit_area'>";
           // echo "<textarea class='textarea_toggle comment_teaser' name='post_comment' spellcheck='false' placeholder='Wanna comment?'></textarea>";
           // // echo "<span data-description='Add emojis'><i class='material-icons'>sentiment_very_satisfied</i></span>";
@@ -883,7 +880,7 @@
 
       if ($query->rowCount() == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
           if ($universal->MeOrNot($id)) {
             echo "You are not tagged in any of the post";
           } else {
@@ -903,7 +900,7 @@
           $tag_id = $row->tagging_id;
 
           echo "<div class='posts tag_posts inst' data-postid='{$post_id}' data-type='{$type}' data-tagid='{$tag_id}'><div class='p_i'><div class='p_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
           echo "</div><div class='p_i_1'>";
           echo "<a href='". DIR ."/profile/{$universal->GETsDetails($user_id, "username")}' title='{$universal->GETsDetails($user_id, "username")}'>{$universal->nameShortener($universal->GETsDetails($user_id, "username"), 25)}</a><span title='". self::addressTitle($address, $user_id) ."'>";
           echo self::addressN($address, $user_id);
@@ -913,7 +910,7 @@
           echo "<span class='p_tags'>". $taggings->getTaggings($post_id) ."</span>";
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($universal->MeOrNot($user_id) == false) {
             if ($follow->isFollowing($user_id)) {
               echo "<li><a href='#' class='simple_unfollow'>Unfollow</li>";
@@ -934,7 +931,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'>";
           echo "<div class='p_edit_tools'><span class='p_edit_tip'><i class='fa fa-info-circle' aria-hidden='true'></i>For hashtag, first remove all the text</span>
           <a href='#' class='p_edit_cancel sec_btn'>Cancel</a>
@@ -998,7 +995,7 @@
 
       if ($query->rowCount() == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
           <span>You have no bookmarked posts</span></div>";
         }
       } else if ($query->rowCount() > 0) {
@@ -1014,13 +1011,13 @@
           $bk = $row->bkmrk_id;
 
           echo "<div class='posts bkmrk_posts inst' data-postid='{$post_id}' data-type='{$type}' data-bookmarkid='{$bk}'><div class='p_i'><div class='p_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
           echo "</div><div class='p_i_1 ";
           if($of == "group"){ echo "grp_p_i_1"; }
           echo "'>";
           echo "<a href='". DIR ."/profile/{$universal->GETsDetails($user_id, "username")}' title='{$universal->GETsDetails($user_id, "username")}'>{$universal->nameShortener($universal->GETsDetails($user_id, "username"), 25)}</a>";
           if ($of == "group") {
-            echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='/faiyaz/Instagram/groups/{$grp}' class='to_grp_name' title='{$groups->GETgrp($grp, "grp_name")}'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
+            echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='{$this->DIR}/groups/{$grp}' class='to_grp_name' title='{$groups->GETgrp($grp, "grp_name")}'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
           }
           echo "<span title='". self::addressTitle($address, $user_id) ."'>";
           echo self::addressN($address, $user_id);
@@ -1030,7 +1027,7 @@
           echo "<span class='p_tags'>". $taggings->getTaggings($post_id) ."</span>";
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($universal->MeOrNot($user_id)) {
             echo "<li><a href='#' class='edit_post'>Edit post</li>";
           }
@@ -1051,7 +1048,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'>";
           echo "<div class='p_edit_tools'><span class='p_edit_tip'><i class='fa fa-info-circle' aria-hidden='true'></i>For hashtag, first remove all the text</span>
           <a href='#' class='p_edit_cancel sec_btn'>Cancel</a>
@@ -1120,7 +1117,7 @@
 
       if ($query->rowCount() == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
           if ($universal->MeOrNot($id)) {
             echo "No one shared posts with you";
           } else {
@@ -1143,17 +1140,17 @@
           $grp = $row->grp_id;
 
           echo "<div class='posts inst share_posts' data-postid='{$post_id}' data-type='{$type}' data-shareid='{$share_id}'>";
-          echo "<div class='post_share_info'>by <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($shareby, "username")}' title='{$universal->GETsDetails($shareby, "username")}'>";
+          echo "<div class='post_share_info'>by <a href='{$this->DIR}/profile/{$universal->GETsDetails($shareby, "username")}' title='{$universal->GETsDetails($shareby, "username")}'>";
           if ($shareby == $session) { echo "You"; } else { echo $universal->nameShortener($universal->GETsDetails($shareby, "username"), 20); }
           echo "</a> <span>{$Time->timeAgo($sharetime)}</span></div>";
           echo "<div class='p_i'><div class='p_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($user_id) ."' alt='{$universal->GETsDetails($user_id, "username")}'s avatar'>";
           echo "</div><div class='p_i_1 ";
           if($of == "group"){ echo "grp_p_i_1"; }
           echo "'>";
           echo "<a href='". DIR ."/profile/{$universal->GETsDetails($user_id, "username")}' title='{$universal->GETsDetails($user_id, "username")}'>{$universal->nameShortener($universal->GETsDetails($user_id, "username"), 25)}</a>";
           if ($of == "group") {
-            echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='/faiyaz/Instagram/groups/{$grp}' class='to_grp_name' title='{$groups->GETgrp($grp, "grp_name")}'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
+            echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='{$this->DIR}/groups/{$grp}' class='to_grp_name' title='{$groups->GETgrp($grp, "grp_name")}'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
           }
           echo "<span title='". self::addressTitle($address, $user_id) ."'>";
           echo self::addressN($address, $user_id);
@@ -1163,7 +1160,7 @@
           echo "<span class='p_tags'>". $taggings->getTaggings($post_id) ."</span>";
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($universal->MeOrNot($shareby) == false) {
             if ($follow->isFollowing($user_id)) {
               echo "<li><a href='#' class='simple_unfollow'>Unfollow</li>";
@@ -1187,7 +1184,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'>";
           echo "<div class='p_edit_tools'><span class='p_edit_tip'><i class='fa fa-info-circle' aria-hidden='true'></i>For hashtag, first remove all the text</span>
           <a href='#' class='p_edit_cancel sec_btn'>Cancel</a>
@@ -1233,7 +1230,7 @@
 
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
         if ($universal->MeOrNot($id)) { echo "You have no photos"; } else { echo $universal->GETsDetails($id, "username")." got no photos"; }
         echo "</span></div>";
       } else if ($count > 0) {
@@ -1249,7 +1246,7 @@
           <span><i class='material-icons'>favorite</i> <span>{$like->simpleGetPostLikes($post_id)}</span></span>
           <span><i class='material-icons'>chat_bubble</i> <span>{$comment->simpleGetComments($post_id)}</span></span>
           </div>
-          <img src='/faiyaz/Instagram/media/Instagram_{$image}' alt='' data-postid='{$post_id}' data-imgby='{$r}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}' class='p_pho_img {$filter}'></div>";
+          <img src='{$this->DIR}/media/Instagram_{$image}' alt='' data-postid='{$post_id}' data-imgby='{$r}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}' class='p_pho_img {$filter}'></div>";
         }
         // echo "<div class='post_end'>Looks like you've reached the end</div>";
       }
@@ -1273,7 +1270,7 @@
       $query->execute(array(":user" => $id, ":type" => "video", ":grp" => "group"));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
         if ($universal->MeOrNot($id)) {
           echo "You have no videos";
         } else {
@@ -1287,7 +1284,7 @@
           $video = $row->video;
 
           echo "<div class='p_vid video_vid user_post_vid'>
-            <video src='/faiyaz/Instagram/media/Instagram_{$video}' loop preload='auto'></video>
+            <video src='{$this->DIR}/media/Instagram_{$video}' loop preload='auto'></video>
             <span class='p_vid_pp_large'><i class='material-icons'>play_arrow</i></span>
             <span class='p_vid_cur p_vid_time_teaser'>0:00</span>
             <span class='p_vid_time_bubble'>0:00</span><div class='p_vid_ctrls'><div class='p_vid_seek'>
@@ -1325,7 +1322,7 @@
       $query->execute(array(":user" => $id, ":type" => "audio", ":grp" => "group"));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
         if ($universal->MeOrNot($id)) {
           echo "You have no audios";
         } else {
@@ -1338,7 +1335,7 @@
           $user_id = $row->user_id;
           $audio = $row->audio;
 
-          echo "<div class='p_aud user_aud' data-song='/faiyaz/Instagram/media/{$audio}'>
+          echo "<div class='p_aud user_aud' data-song='{$this->DIR}/media/{$audio}'>
             <span class='p_aud_time_bubble'>0:00</span><div class='p_aud_ctrls'><div class='p_aud_info'>
             <span class='p_aud_name'></span>
             </div><span class='p_aud_pp'><i class='material-icons'>play_arrow</i></span>
@@ -1492,7 +1489,7 @@
       $count = $query->rowCount();
 
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>No such post found</span></div>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>No such post found</span></div>";
       } else if ($count == 1) {
 
         $row = $query->fetch(PDO::FETCH_OBJ);
@@ -1512,7 +1509,7 @@
         echo "'>";
         echo "<a href='". DIR ."/profile/{$universal->GETsDetails($user_id, "username")}'>{$universal->nameShortener($universal->GETsDetails($user_id, "username"), 25)}</a>";
         if ($of == "group") {
-          echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='/faiyaz/Instagram/groups/{$grp}' class='to_grp_name'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
+          echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='{$this->DIR}/groups/{$grp}' class='to_grp_name'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
         }
         echo "<span title='". self::addressTitle($address, $user_id) ."'>";
         echo self::addressN($address, $user_id);
@@ -1542,7 +1539,7 @@
         if ($share->AmIsharedBy($post_id)) {
           echo "<li><a href='#' class='un__share'>Unshare</a></li>";
         }
-        echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+        echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
         echo "</ul></div></div><div class='p_o'>";
         echo "<div class='p_edit_tools'><span class='p_edit_tip'><i class='fa fa-info-circle' aria-hidden='true'></i>For hashtag, first remove all the text</span>
         <a href='#' class='p_edit_cancel sec_btn'>Cancel</a>
@@ -1598,7 +1595,7 @@
     public function editPost($text, $post, $type){
 
       $hashtag = new hashtag;
-      $mention = new mention;
+      $mention = new mention_class;
 
       if ($type == "text") {
         $query = $this->db->prepare("UPDATE text_post SET text = :text WHERE post_id = :post");

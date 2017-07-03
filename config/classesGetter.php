@@ -1,4 +1,5 @@
 <?php
+  include_once 'class/needy_class.php';
   include 'class/universal.class.php';
   include 'class/tags.class.php';
   include 'class/avatar.class.php';

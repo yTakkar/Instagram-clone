@@ -2,17 +2,14 @@
   class forgot{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function retrieve($input){
@@ -48,16 +45,14 @@
         $srow = $sget->fetch(PDO::FETCH_OBJ);
         $uid = $srow->id;
 
-        $email = $universal->GETsDetails($uid, "email");
+        $e = $universal->GETsDetails($uid, "email");
+        if (strrpos($text, "@gmail.com")) {
+          $email = "www.".$e;
+        } else {
+          $email = $e;
+        }
 
-        // IF MAIL DOESN'T REACH TO GMAIL USERS THEN UNCOMMENT FOLLOWING LINES
-        // if (strrpos($text, "@gmail.com")) {
-        //   $email = "www.".$e;
-        // } else {
-        //   $email = $e;
-        // }
-
-        // $url = 'https://gypsum.000webhostapp.com/activate?id='.$uid;
+        $url = $universal->urlChecker($this->DIR);
 
         //$mail->SMTPDebug = 3;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -85,11 +80,7 @@
 
         $mail->Body = "<span>Hello, You received this message because you created an account on INSTAGRAM.<span><br>
         <span>Click on button below to retrieve your Instagram account and explore.</span><br><br>
-        <a href='http://localhost/faiyaz/Instagram/ajaxify/deep/most/topmost/retrieve.php?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Retrieve</a>";
-
-        // $mail->AltBody = "<span>Hello, You're receiving this message because you created an account on INSTAGRAM.<span><br>
-        // <span>Click on button below to activate your Instagram account and explore.</span><br><br>
-        // <a href='http://localhosthttps://gypsum.000webhostapp.com/activate?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
+        <a href='{$url}/ajaxify/deep/most/topmost/retrieve.php?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Retrieve</a>";
 
         if($mail->send()) {
           return 'ok';

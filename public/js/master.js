@@ -66,7 +66,7 @@ $('.p_cit_area span').description({
 
 $('.post_it img').on('click', function(e){
   var username = $('.user_info').data('username');
-  window.location.href = "/faiyaz/Instagram/profile/"+username;
+  window.location.href = DIR+"/profile/"+username;
 });
 
 //Toggle Extra Post Toggle
@@ -173,7 +173,7 @@ $('.comments_img').imageShow({info: "no_post_yes"});
 
 $('.p_comments').on('click', function(e){
   var post = $(this).parent().data('postid');
-  window.location.href = "/faiyaz/Instagram/view_post/"+post;
+  window.location.href = DIR+"/view_post/"+post;
 });
 
 $('.edit_post').editPost();
@@ -185,15 +185,15 @@ $('.pro_more_horiz').toggleMenu({
 
 $('.pro_post').on('click', function(e){
   var username = $('.user_info').data('username');
-  window.location.href = "/faiyaz/Instagram/profile/"+username+"?ask=posts";
+  window.location.href = DIR+"/profile/"+username+"?ask=posts";
 });
 $('.pro_recomm').on('click', function(e){
   var username = $('.user_info').data('username');
-  window.location.href = "/faiyaz/Instagram/profile/"+username+"?ask=recommends";
+  window.location.href = DIR+"/profile/"+username+"?ask=recommends";
 });
 $('.pro_fav').on('click', function(e){
   var username = $('.user_info').data('username');
-  window.location.href = "/faiyaz/Instagram/profile/"+username+"?ask=favourites";
+  window.location.href = DIR+"/profile/"+username+"?ask=favourites";
 });
 
 //FOR SLIDE TOGGLE TAGS DIV

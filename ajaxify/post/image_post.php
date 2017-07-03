@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  include '../../config/declare.php';
+  include_once '../../config/class/needy_class.php';
   include '../../config/class/universal.class.php';
   include '../../config/class/avatar.class.php';
 
@@ -11,55 +12,55 @@
   <div class="add_filters">
     <div class="add_filters_main">
       <div class="filter_div" data-filter='normal'>
-        <img class='normal' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='normal' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Normal</span>
       </div>
       <div class="filter_div" data-filter='grayscale'>
-        <img class='grayscale' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='grayscale' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Grayscale</span>
       </div>
       <div class="filter_div" data-filter='sepia'>
-        <img class='sepia' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='sepia' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Sepia</span>
       </div>
       <div class="filter_div" data-filter='saturation'>
-        <img class='saturation' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='saturation' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Saturation</span>
       </div>
       <div class="filter_div" data-filter='hue-rotate'>
-        <img class='hue-rotate' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='hue-rotate' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Hue-rotate</span>
       </div>
       <div class="filter_div" data-filter='invert'>
-        <img class='invert' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='invert' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Invert</span>
       </div>
       <div class="filter_div" data-filter='opacity'>
-        <img class='opacity' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='opacity' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Opacity</span>
       </div>
       <div class="filter_div" data-filter='brightness'>
-        <img class='brightness' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='brightness' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Brightness</span>
       </div>
       <div class="filter_div" data-filter='contrast'>
-        <img class='contrast' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='contrast' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Contrast</span>
       </div>
       <div class="filter_div" data-filter='blur'>
-        <img class='blur' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='blur' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Blur</span>
       </div>
       <div class="filter_div" data-filter='tint'>
-        <img class='tint' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='tint' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Tint</span>
       </div>
       <div class="filter_div" data-filter='mix'>
-        <img class='mix' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='mix' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Mix</span>
       </div>
       <div class="filter_div" data-filter='inkwell'>
-        <img class='inkwell' src="/faiyaz/Instagram/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
+        <img class='inkwell' src="<?php echo DIR; ?>/images/avatars/3995428-world-famous-landmark-series-taj-mahal-agra-india.jpg" alt="">
         <span>Inkwell</span>
       </div>
     </div>
@@ -67,7 +68,7 @@
 
   <div class="i_p_top p_top">
     <div class="i_p_info p_info">
-      <img src="/faiyaz/Instagram/<?php echo $avatar->DisplayAvatar($session); ?>" alt="s's avatar">
+      <img src="<?php echo DIR; ?>/<?php echo $avatar->DisplayAvatar($session); ?>" alt="s's avatar">
       <span><?php echo $universal->GETsDetails($session, "username"); ?></span>
       <span class="loc_text"></span>
     </div>
@@ -81,7 +82,7 @@
       <textarea name="name" placeholder="What's new with you, @<?php echo $universal->GETsDetails($session, "username"); ?>? #cool" spellcheck="false" class="t_p_ta"></textarea>
     </div>
     <div class="i_p_img">
-      <img src="/faiyaz/Instagram/images/needs/17455538fd839328f5606d284d0c360d.jpg" alt="">
+      <img src="<?php echo DIR; ?>/images/needs/17455538fd839328f5606d284d0c360d.jpg" alt="">
     </div>
   </div>
 

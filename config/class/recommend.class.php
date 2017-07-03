@@ -2,17 +2,14 @@
   class recommend{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function getRecommends($user){
@@ -48,7 +45,7 @@
         $query->execute(array(":by" => $session, ":no" => $user));
         $count = $query->rowCount();
         if ($count == 0) {
-          echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+          echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
         } else if ($count > 0) {
           echo "<input type='hidden' class='share_postid'>";
           echo "<input type='hidden' class='share_userid'>";
@@ -60,7 +57,7 @@
               echo "already_shared";
             }
             echo "' data-userid='{$userid}'><div class='d_i_img'>
-            <img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
+            <img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
             <span class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 15). "</span>
             <span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ". $universal->GETsDetails($userid, "surname"), 15) ."</span></div></div></div>";
 
@@ -102,7 +99,7 @@
       $count = $query->rowCount();
 
       if ($count == 0) {
-        echo "<div class='home_last_mssg rec_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg rec_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
         <span>No recommendations by anyone</span></div>";
       } else if ($count > 0) {
 
@@ -115,9 +112,9 @@
           $time = $row->time;
 
           echo "<div class='m_on inst'><div class='m_top'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($of)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($of)}' alt=''>
               <div class='m_top_right'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($of, "username")}'>". substr($universal->GETsDetails($of, "username"), 0, 22) ."</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($of, "username")}'>". substr($universal->GETsDetails($of, "username"), 0, 22) ."</a>
                 <span>";
                 echo $mutual->eMutual($of);
               echo "</span>
@@ -126,9 +123,9 @@
               <div class='m_bottom'>
               <span class='recommend_by'>by";
               if ($by == $session) {
-                echo "<a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($session, "username")}'>You</a>";
+                echo "<a href='{$this->DIR}/profile/{$universal->GETsDetails($session, "username")}'>You</a>";
               } else {
-                echo "<a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}'> {$universal->GETsDetails($by, "username")}</a>";
+                echo "<a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}'> {$universal->GETsDetails($by, "username")}</a>";
               }
               echo "</span>";
               echo "<div data-getid='$of'>";

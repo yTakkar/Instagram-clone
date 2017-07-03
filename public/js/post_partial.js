@@ -243,7 +243,7 @@ function successOfPost(el, div, data, when){
   var username = $('.user_info').data('username');
   $('.home_notify').homeNotify({
     value: "Check your profile page to see the post",
-    btnLink: "/faiyaz/Instagram/profile/"+username+"?ask=posts",
+    btnLink: DIR+"/profile/"+username+"?ask=posts",
     btnValue: "Check out",
     timeOut: true
   });
@@ -272,7 +272,7 @@ function successOfPost(el, div, data, when){
 
     elem.on('click', function(e){
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/post/text_post.php",
+        url: DIR+"/ajaxify/post/text_post.php",
         beforeSend: function(){
           $('.overlay').show();
           blur.addBlur();
@@ -332,7 +332,7 @@ function successOfPost(el, div, data, when){
             if (value.val() != "") {
 
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/post_requests.php",
                 data: {
                   text: value.val(),
                   tags: hidden_input.val(),
@@ -398,7 +398,7 @@ function successOfPost(el, div, data, when){
         reader.onload = function(e){
 
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/post/image_post.php",
+            url: DIR+"/ajaxify/post/image_post.php",
             beforeSend: function(){
               $('.overlay').show();
               blur.addBlur();
@@ -486,7 +486,7 @@ function successOfPost(el, div, data, when){
                 el.addClass('a_disabled').text('Wait');
 
                 $.ajax({
-                  url : "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                  url : DIR+"/ajaxify/ajax_requests/post_requests.php",
                   type: "POST",
                   processData: false,
                   contentType: false,
@@ -551,7 +551,7 @@ function successOfPost(el, div, data, when){
         reader.onload = function(e){
 
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/post/video_post.php",
+            url: DIR+"/ajaxify/post/video_post.php",
             beforeSend: function(){
               $('.overlay').show();
               blur.addBlur();
@@ -625,7 +625,7 @@ function successOfPost(el, div, data, when){
                 el.addClass('a_disabled').text('Wait');
 
                 $.ajax({
-                  url : "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                  url : DIR+"/ajaxify/ajax_requests/post_requests.php",
                   type: "POST",
                   processData: false,
                   contentType: false,
@@ -690,7 +690,7 @@ function successOfPost(el, div, data, when){
       } else {
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/post/audio_post.php",
+          url: DIR+"/ajaxify/post/audio_post.php",
           beforeSend: function(){
             $('.overlay').show();
             blur.addBlur();
@@ -745,7 +745,7 @@ function successOfPost(el, div, data, when){
               el.addClass('a_disabled').text('Wait');
 
               $.ajax({
-                url : "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                url : DIR+"/ajaxify/ajax_requests/post_requests.php",
                 type: "POST",
                 processData: false,
                 contentType: false,
@@ -805,7 +805,7 @@ function successOfPost(el, div, data, when){
       } else {
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/post/document_post.php",
+          url: DIR+"/ajaxify/post/document_post.php",
           beforeSend: function(){
             $('.overlay').show();
             blur.addBlur();
@@ -886,7 +886,7 @@ function successOfPost(el, div, data, when){
               el.addClass('a_disabled').text('Wait');
 
               $.ajax({
-                url : "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                url : DIR+"/ajaxify/ajax_requests/post_requests.php",
                 type: "POST",
                 processData: false,
                 contentType: false,
@@ -933,7 +933,7 @@ function successOfPost(el, div, data, when){
     elem.on('click', function(e){
 
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/post/location_post.php",
+        url: DIR+"/ajaxify/post/location_post.php",
         beforeSend: function(){
           $('.overlay').show();
           blur.addBlur();
@@ -1024,7 +1024,7 @@ function successOfPost(el, div, data, when){
             el.addClass('a_disabled').text('Wait');
 
             $.ajax({
-              url : "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+              url : DIR+"/ajaxify/ajax_requests/post_requests.php",
               type: "POST",
               data: {
                 src: src,
@@ -1075,7 +1075,7 @@ function successOfPost(el, div, data, when){
     elem.on('click', function(e){
 
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/post/link_post.php",
+        url: DIR+"/ajaxify/post/link_post.php",
         beforeSend: function(){
           $('.overlay').show();
           blur.addBlur();
@@ -1137,7 +1137,7 @@ function successOfPost(el, div, data, when){
             if (value != "") {
 
               $.ajax({
-                 url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                 url: DIR+"/ajaxify/ajax_requests/post_requests.php",
                  dataType: "JSON",
                  type: "POST",
                  data: {value: value},
@@ -1191,7 +1191,7 @@ function successOfPost(el, div, data, when){
               link_enter.focus();
             } else if (hint != ""){
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/post_requests.php",
                 type: "POST",
                 data: {
                   link_text: link_value.val(),
@@ -1276,7 +1276,7 @@ function successOfPost(el, div, data, when){
           // console.log(text);
           e.preventDefault();
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/ajax_requests/edit_post_requests.php",
+            url: DIR+"/ajaxify/ajax_requests/edit_post_requests.php",
             type: "POST",
             data: {
               edit: "yes",
@@ -1329,7 +1329,7 @@ function successOfPost(el, div, data, when){
         var update = div.find('.likes');
         var parent = $(this).parent();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_like_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_like_requests.php",
           dataType: "JSON",
           data: {
             // like: user,
@@ -1370,7 +1370,7 @@ function successOfPost(el, div, data, when){
         var update = div.find('.likes');
         var parent = $(this).parent();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_like_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_like_requests.php",
           dataType: "JSON",
           data: {
             // unlike: user,
@@ -1408,7 +1408,7 @@ function successOfPost(el, div, data, when){
         var post = div.data('postid');
         var parent = $(this).parent();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/bkmrk_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/bkmrk_requests.php",
           data: {bkmrk: post},
           success: function(data){
             console.log(data);
@@ -1441,7 +1441,7 @@ function successOfPost(el, div, data, when){
         var post = div.data('postid');
         var parent = $(this).parent();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/bkmrk_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/bkmrk_requests.php",
           data: {unbkmrk: post},
           success: function(data){
             console.log(data);
@@ -1474,7 +1474,7 @@ function successOfPost(el, div, data, when){
         div = $(this).parent().parent().parent().parent();
         postId = div.data('postid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/share_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/share_requests.php",
           method: "POST",
           data: {getFollowings: postId},
           beforeSend: function(){
@@ -1502,7 +1502,7 @@ function successOfPost(el, div, data, when){
               console.log(post.val());
 
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/share_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/share_requests.php",
                 dataType: "JSON",
                 method: "POST",
                 data: {
@@ -1546,7 +1546,7 @@ function successOfPost(el, div, data, when){
         var post = div.data('postid');
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_like_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_like_requests.php",
           method: "POST",
           data: {post: post},
           beforeSend: function(){
@@ -1587,7 +1587,7 @@ function successOfPost(el, div, data, when){
         var post = div.data('postid');
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/taggings_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/taggings_requests.php",
           method: "POST",
           data: {post: post},
           beforeSend: function(){
@@ -1628,7 +1628,7 @@ function successOfPost(el, div, data, when){
         var post = div.data('postid');
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/share_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/share_requests.php",
           type: "POST",
           data: {posting:post},
           beforeSend: function(){
@@ -1694,7 +1694,7 @@ function successOfPost(el, div, data, when){
         var parent = $(this).parent().parent().parent().parent().parent();
         var post = parent.data('postid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/share_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/share_requests.php",
           method: "POST",
           data: {getShareTos: post},
           beforeSend: function(){
@@ -1715,7 +1715,7 @@ function successOfPost(el, div, data, when){
               var username = $(this).find('.d_i_username').text();
 
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/share_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/share_requests.php",
                 dataType: "JSON",
                 data: {
                   remove_share: user,
@@ -1784,7 +1784,7 @@ function successOfPost(el, div, data, when){
         var post = $(this).data('postid');
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/taggings_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/taggings_requests.php",
           data: {delete_tag: user, post: post},
           dataType: "json",
           success: function(data){
@@ -1918,7 +1918,7 @@ function isPostLengthy(text){
 
         $('.feed_inserted').html('Looking for more posts..');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/post_requests.php",
           data: data,
           beforeSend: function(){
             $('.feed_inserted').html('Looking for more posts..');
@@ -1939,7 +1939,7 @@ function isPostLengthy(text){
 //     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 //       $('.feed_inserted').html('Looking for more posts..');
 //       $.ajax({
-//         url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+//         url: DIR+"/ajaxify/ajax_requests/post_requests.php",
 //         data: {userFeeds: $('.posts:last').data('postid'), userForFeeds: $('.user_info').data('userid')},
 //         beforeSend: function(){
 //           $('.feed_inserted').html('Looking for more posts..');
@@ -1957,7 +1957,7 @@ function isPostLengthy(text){
 //     $('.feed_inserted').html('Looking for more posts..');
 //     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 //       $.ajax({
-//         url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+//         url: DIR+"/ajaxify/ajax_requests/post_requests.php",
 //         data: {tagFeeds: $('.posts:last').data('tagid'), tagForFeeds: $('.user_info').data('userid')},
 //         beforeSend: function(){
 //           $('.feed_inserted').html('Looking for more posts..');
@@ -1975,7 +1975,7 @@ function isPostLengthy(text){
 //     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 //       $('.feed_inserted').html('Looking for more posts..');
 //       $.ajax({
-//         url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+//         url: DIR+"/ajaxify/ajax_requests/post_requests.php",
 //         data: {bookmarkFeeds: $('.posts:last').data('bookmarkid')},
 //         beforeSend: function(){
 //           $('.feed_inserted').html('Looking for more posts..');
@@ -1993,7 +1993,7 @@ function isPostLengthy(text){
 //     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 //       $('.feed_inserted').html('Looking for more posts..');
 //       $.ajax({
-//         url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+//         url: DIR+"/ajaxify/ajax_requests/post_requests.php",
 //         data: {shareFeeds: $('.posts:last').data('shareid'), shareForFeeds: $('.user_info').data('userid')},
 //         beforeSend: function(){
 //           $('.feed_inserted').html('Looking for more posts..');
@@ -2013,7 +2013,7 @@ function isPostLengthy(text){
 //       $('.feed_inserted').html('Looking for more posts..');
 //       var post = $('.posts:last').data('postid');
 //       $.ajax({
-//         url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+//         url: DIR+"/ajaxify/ajax_requests/post_requests.php",
 //         data: {feedAtBottom: post},
 //         beforeSend: function(){
 //           $('.feed_inserted').html('Looking for more posts..');

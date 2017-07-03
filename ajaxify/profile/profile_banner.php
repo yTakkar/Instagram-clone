@@ -15,15 +15,15 @@
           <?php if ($fav->isFav($get_id) == false) { ?>
             <li><a href="#" data-getid="<?php echo $get_id; ?>" class="add_fav">Add to favourites</a></li>
           <?php } ?>
-          <li><a href="/faiyaz/Instagram/messages" class="">Message</a></li>
+          <li><a href="<?php echo DIR; ?>/messages" class="">Message</a></li>
         <?php } ?>
         <?php if ($universal->MeOrNot($get_id) == true) { ?>
-          <li><a href="/faiyaz/Instagram/edit">Edit profile</a></li>
+          <li><a href="<?php echo DIR; ?>/edit">Edit profile</a></li>
         <?php } ?>
         <?php } else { ?>
-          <li><a href="/faiyaz/Instagram/login?next=/faiyaz/Instagram/profile/<?php echo $universal->GETsDetails($get_id, "username") ?>">Login</a></li>
+          <li><a href="<?php echo DIR; ?>/login?next=<?php echo DIR; ?>/profile/<?php echo $universal->GETsDetails($get_id, "username") ?>">Login</a></li>
         <?php } ?>
-        <li><a href="#" class="p_copy_link" data-link='localhost/faiyaz/Instagram/profile/<?php echo $universal->GETsDetails($get_id, "username"); ?>' >Copy profile link</a></li>
+        <li><a href="#" class="p_copy_link" data-link='<?php echo $universal->urlChecker(DIR); ?>/profile/<?php echo $universal->GETsDetails($get_id, "username"); ?>' >Copy profile link</a></li>
       </ul>
     </div>
     <div class="pro_ff" data-getid="<?php echo $get_id; ?>">
@@ -37,10 +37,10 @@
         <a href="#" class="pri_btn ff pro_follow follow">Follow</a>
       <?php } ?>
       <?php } else { ?>
-        <a href="/faiyaz/Instagram/edit" class="pri_btn ff">Edit profile</a>
+        <a href="<?php echo DIR; ?>/edit" class="pri_btn ff">Edit profile</a>
       <?php } ?>
       <?php } else { ?>
-        <a href="/faiyaz/Instagram/login?next=/faiyaz/Instagram/profile/<?php echo $universal->GETsDetails($get_id, "username") ?>" class="pri_btn">Login</a>
+        <a href="<?php echo DIR; ?>/login?next=<?php echo DIR; ?>/profile/<?php echo $universal->GETsDetails($get_id, "username") ?>" class="pri_btn">Login</a>
       <?php } ?>
     </div>
 
@@ -60,7 +60,7 @@
 
   <div class="pro_info">
     <div class="pro_username">
-      <a href="<?php echo DIR ?>/profile/<?php echo $universal->GETsDetails($get_id, "username"); ?>" class="username"><?php echo $universal->GETsDetails($get_id, 'username'); ?></a>
+      <a href="<?php echo DIR; ?>/profile/<?php echo $universal->GETsDetails($get_id, "username"); ?>" class="username"><?php echo $universal->GETsDetails($get_id, 'username'); ?></a>
     </div>
     <div class="pro_name">
       <span><?php echo $universal->GETsDetails($get_id, "firstname") ?> <?php echo $universal->GETsDetails($get_id, "surname"); ?></span>

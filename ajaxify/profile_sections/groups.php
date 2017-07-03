@@ -34,7 +34,7 @@
     <div class="c_g_div inst">
       <span>Explore more groups from all around Instagram.</span>
       <div class="grp_c_we">
-        <a href="/faiyaz/Instagram/explore?ask=exp_groups" class="sec_btn">Explore</a>
+        <a href="<?php echo DIR; ?>/explore?ask=exp_groups" class="sec_btn">Explore</a>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
 
   <div class="prajkumar">
     <!-- <div class='home_last_mssg pro_last_mssg'>
-      <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+      <img src='<?php echo DIR; ?>/images/needs/large.jpg'>
       <span>You have no groups</span>
     </div> -->
 
@@ -68,6 +68,5 @@
   $('.c_g').createGroup();
   $('.join_grp').joinGrp();
   $('.leave_grp').leaveGrp();
-  // $('.user_grps_srajkumar').stick_in_parent();
 
 </script>

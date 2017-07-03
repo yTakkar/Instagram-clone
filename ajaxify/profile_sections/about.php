@@ -28,11 +28,11 @@
     <div class="sabout">
 
       <div class="sabout_one inst">
-        <img src="/faiyaz/Instagram/images/needs/tree.png" alt="">
+        <img src="<?php echo DIR; ?>/images/needs/tree.png" alt="">
         <div class="sabout_one_info">
           <span>Update or edit you profile to make it look more attractive</span>
-          <a href="/faiyaz/Instagram/" class="sec_btn">Update profile</a>
-          <a href="/faiyaz/Instagram/edit" class="pri_btn">Edit profile</a>
+          <a href="<?php echo DIR; ?>/" class="sec_btn">Update profile</a>
+          <a href="<?php echo DIR; ?>/edit" class="pri_btn">Edit profile</a>
         </div>
       </div>
 
@@ -69,7 +69,7 @@
     <div class="fabout">
       <div class="a_edit">
         <?php if($universal->MeOrNot($get_id)){ ?>
-          <a href="/faiyaz/Instagram/edit"><i class="material-icons">mode_edit</i></a>
+          <a href="<?php echo DIR; ?>/edit"><i class="material-icons">mode_edit</i></a>
         <?php } ?>
       </div>
 
@@ -111,7 +111,7 @@
           if($universal->GETsDetails($get_id, "facebook") == ""){
             if ($universal->MeOrNot($get_id)) {
         ?>
-              <a href="/faiyaz/Instagram/edit">Add Facebook account</a>
+              <a href="<?php echo DIR; ?>/edit">Add Facebook account</a>
         <?php
             }
           } else {
@@ -126,7 +126,7 @@
           if($universal->GETsDetails($get_id, "instagram") == ""){
             if ($universal->MeOrNot($get_id)) {
         ?>
-              <a href="/faiyaz/Instagram/edit">Add Instagram account</a>
+              <a href="<?php echo DIR; ?>/edit">Add Instagram account</a>
         <?php
             }
           } else {
@@ -141,7 +141,7 @@
           if($universal->GETsDetails($get_id, "youtube") == ""){
             if ($universal->MeOrNot($get_id)) {
         ?>
-              <a href="/faiyaz/Instagram/edit">Add Youtube account</a>
+              <a href="<?php echo DIR; ?>/edit">Add Youtube account</a>
         <?php
             }
           } else {
@@ -156,7 +156,7 @@
           if($universal->GETsDetails($get_id, "twitter") == ""){
             if ($universal->MeOrNot($get_id)) {
         ?>
-              <a href="/faiyaz/Instagram/edit">Add Twitter account</a>
+              <a href="<?php echo DIR; ?>/edit">Add Twitter account</a>
         <?php
             }
           } else {
@@ -171,7 +171,7 @@
           if($universal->GETsDetails($get_id, "website") == ""){
             if ($universal->MeOrNot($get_id)) {
         ?>
-              <a href="/faiyaz/Instagram/edit">Add website</a>
+              <a href="<?php echo DIR; ?>/edit">Add website</a>
         <?php
             }
           } else {
@@ -187,7 +187,7 @@
           if($universal->GETsDetails($get_id, "mobile") == ""){
             if ($universal->MeOrNot($get_id)) {
         ?>
-              <a href="/faiyaz/Instagram/edit">Add Mobile</a>
+              <a href="<?php echo DIR; ?>/edit">Add Mobile</a>
         <?php
         }
           } else {?>
@@ -201,7 +201,7 @@
             if($universal->GETsDetails($get_id, "mobile") == ""){
               if ($universal->MeOrNot($get_id)) {
           ?>
-                <a href="/faiyaz/Instagram/edit">Add Mobile</a>
+                <a href="<?php echo DIR; ?>/edit">Add Mobile</a>
           <?php
           }
             } else {?>

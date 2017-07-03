@@ -1,6 +1,13 @@
 <?php
-  ob_start();
-  session_start();
+  include 'config/declare.php';
+  include_once 'config/class/needy_class.php';
+  include 'config/class/universal.class.php';
+  include 'config/class/login.class.php';
+?>
+
+<?php
+  $universal = new universal;
+  $login = new login_class;
 ?>
 
 <?php
@@ -26,14 +33,6 @@
     // setcookie("ids", null, time()-30*24*60*60);
 
   }
-?>
-
-<?php
-  include 'config/class/universal.class.php';
-  include 'config/class/login.class.php';
-
-  $universal = new universal;
-  $login = new login;
 ?>
 
 <?php

@@ -1,8 +1,15 @@
 <?php
   class tags extends universal{
 
+    protected $db;
+    protected $DIR;
+
     public function __construct(){
-      parent::__construct();
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function filterTags(){
@@ -14,14 +21,14 @@
       $query->execute(array(":id" => $get));
       if ($query->rowCount() == 0 || $query->rowCount() == null) {
         if (parent::MeOrNot($get)) {
-          echo "You got no tags! <a href='/faiyaz/Instagram/edit' class='add_tags'>add</a>";
+          echo "You got no tags! <a href='{$this->DIR}/edit' class='add_tags'>add</a>";
         } else {
           echo parent::GETsDetails($get, "username")." got no tags";
         }
       } else if ($query->rowCount() > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $each = $row->tags;
-          $tag = "<a href='/faiyaz/Instagram/tag?tag={$each}' class='tags'>$each</a>";
+          $tag = "<a href='{$this->DIR}/tag?tag={$each}' class='tags'>$each</a>";
           echo $tag;
         }
       }
@@ -34,7 +41,7 @@
       if ($query->rowCount() > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $each = $row->tags;
-          $tag = "<a href='/faiyaz/Instagram/tag?tag={$each}' class='tags'>{$each}</a>";
+          $tag = "<a href='{$this->DIR}/tag?tag={$each}' class='tags'>{$each}</a>";
           echo $tag;
         }
       }
@@ -45,7 +52,7 @@
       if ($query->rowCount() > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $tags = $row->tags;
-          echo "<a href='/faiyaz/Instagram/tag?tag={$tags}' class='tags'>{$tags}</a>";
+          echo "<a href='{$this->DIR}/tag?tag={$tags}' class='tags'>{$tags}</a>";
         }
       }
     }
@@ -84,7 +91,7 @@
       $query = $this->db->prepare("SELECT user_id, tags FROM tags WHERE tags = :tag");
       $query->execute(array(":tag" => $tag));
       if ($query->rowCount() == 0) {
-        echo "<div class='home_last_mssg hashtag_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>No one with {$tag} found</span></div>";
+        echo "<div class='home_last_mssg hashtag_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>No one with {$tag} found</span></div>";
       } else if ($query->rowCount() > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $user = $row->user_id;
@@ -92,9 +99,9 @@
 
           echo
           "<div class='m_on inst tag_peo'><div class='m_top'>
-            <img src='/faiyaz/Instagram/{$avatar->GETsAvatar($user)}' alt=''>
+            <img src='{$this->DIR}/{$avatar->GETsAvatar($user)}' alt=''>
             <div class='m_top_right'>
-              <a href='/faiyaz/Instagram/profile/'>";
+              <a href='{$this->DIR}/profile/'>";
               if ($user == $session) {
                 echo "You";
               } else {

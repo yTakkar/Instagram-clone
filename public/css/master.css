@@ -11,7 +11,7 @@
 }
 
 body{
-  font-family: 'Open Sans', 'Roboto', Tahoma, arial, sans-serif;
+  font-family: 'Open Sans', 'Roboto', sans-serif;
   background: #fbfbfb;
   color: #3d464d;
   /*#3d464d*/
@@ -49,6 +49,11 @@ i{
   pointer-events: none;
 }
 
+hr{
+  border: 0;
+  border-top: 1px solid #c1c7cd;
+}
+
 .hyphenate {
   /* Careful, this breaks the word wherever it is without a hyphen */
   overflow-wrap: break-word;
@@ -59,11 +64,6 @@ i{
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
-}
-
-hr{
-  border: 0;
-  border-top: 1px solid #c1c7cd;
 }
 
 li{
@@ -6177,11 +6177,6 @@ video::-webkit-media-controls-enclosure{
   display: block;
   margin-bottom: 10px;
 }
-
-/*.s_a{
-  position: absolute;
-  background-image: url("/faiyaz/Instagram/images/favicon/1488032107_basics-08.png");
-}*/
 
 .acc_type_main{
 

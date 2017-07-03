@@ -27,7 +27,7 @@
     <div class="c_g_div vid_c_grp inst">
       <span>Explore more recommended videos from all around Instagram.</span>
       <div class="grp_c_we">
-        <a href="/faiyaz/Instagram/explore?ask=exp_videos" class="sec_btn">Explore</a>
+        <a href="<?php echo DIR; ?>/explore?ask=exp_videos" class="sec_btn">Explore</a>
       </div>
     </div>
 

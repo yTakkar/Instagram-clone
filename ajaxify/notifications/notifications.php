@@ -23,13 +23,13 @@
   <?php $noti->getNotifications("direct", "0"); ?>
 
   <!-- <div class="noti action_noti">
-    <img src="/faiyaz/Instagram/images/avatars/voldemort.jpg" alt="" class="noti_avatar">
+    <img src="<?php echo DIR; ?>/images/avatars/voldemort.jpg" alt="" class="noti_avatar">
     <div class="noti_left">
       <a href="#" class="noti_bold noti_username">Voldemort</a>
       <span>liked your photo</span><span class="noti_time">1 day</span>
     </div>
     <div class="noti_right action_noti_right">
-      <a href="#"><img src="/faiyaz/Instagram/images/avatars/hrithik.jpg" alt=""></a>
+      <a href="#"><img src="<?php echo DIR; ?>/images/avatars/hrithik.jpg" alt=""></a>
     </div>
   </div> -->
 

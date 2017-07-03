@@ -29,7 +29,7 @@
   </div>
 
   <div class="banner">
-    <img src="/faiyaz/Instagram/images/needs/dbx_29.png" alt="">
+    <img src="<?php echo DIR; ?>/images/needs/dbx_29.png" alt="">
     <!-- <img src="http://chicohq.com/images/bg.svg" alt=""> -->
   </div>
 
@@ -44,7 +44,7 @@
     <div class="feature_desc">
       <h1>It's awesome to capture and share world's moments</h1>
       <h3>Instagram helps you connect with people with your amazing photos, videos and everything in between.</h3>
-      <a href="/faiyaz/Instagram/about" class="pri_btn">View more</a>
+      <a href="<?php echo DIR; ?>/about" class="pri_btn">View more</a>
     </div>
     <div class="index_login sign_up_div">
       <form class="index_form login" action="" method="post">

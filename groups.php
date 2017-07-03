@@ -55,13 +55,13 @@
 
   <?php if($groups->memberOrNot($grp, $session) == false && $groups->GETgrp($grp, "grp_privacy") == "private"){ ?>
 
-    <div class='home_last_mssg grp_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+    <div class='home_last_mssg grp_last_mssg'><img src='<?php echo DIR; ?>/images/needs/large.jpg'>
     <span>Group is private. Join to connect with this group and refresh.</span>
     <span><?php if($groups->mutualGrpMemCount($grp) != 0){ echo $groups->mutualGrpMemCount($grp)." mutual members"; } ?></span></div>
 
   <?php } else if($universal->isLoggedIn() == false) { ?>
 
-    <div class='home_last_mssg grp_logout_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+    <div class='home_last_mssg grp_logout_last_mssg'><img src='<?php echo DIR; ?>/images/needs/large.jpg'>
     <span>You are not logged in. Login to connect with this group.</span></div>
 
   <?php } else { ?>
@@ -98,7 +98,7 @@ $(function(){
     var username = $('.user_info').data('grpname');
     var grp = $('.user_info').data('grp');
     $.ajax({
-      url: "/faiyaz/Instagram/ajaxify/grp_sections/"+elem+".php",
+      url: DIR+"/ajaxify/grp_sections/"+elem+".php",
       method: "GET",
       cache: false,
       data: {grp: grp},

@@ -45,7 +45,7 @@
     <div class="posts_div">
       <div class="home_notify inst">
         <div class="home_notify_img">
-          <img src="/faiyaz/Instagram/images/needs/large.jpg" alt="">
+          <img src="<?php echo DIR; ?>/images/needs/large.jpg" alt="">
         </div>
         <div class="home_notify_info">
           <span>Check your post on profile page</span>
@@ -69,7 +69,7 @@
       <div class="recomm_top header_of_divs">
         <span>Suggested</span>
         <a href="#" class="recomm_refresh" data-description='refresh'><i class="fa fa-refresh" aria-hidden="true"></i></a>
-        <a href="/faiyaz/Instagram/explore?ask=exp_people" class="recomm_all" data-description='view all'><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        <a href="<?php echo DIR; ?>/explore?ask=exp_people" class="recomm_all" data-description='view all'><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
       </div>
       <div class="recomm_main">
         <?php $suggestions->HomeSuggestions("direct"); ?>

@@ -13,7 +13,7 @@
     </div>
     <div class="header_right">
       <?php if($universal->isLoggedIn()){ ?>
-      <a href="/faiyaz/Instagram/notifications" class="notification">
+      <a href="<?php echo DIR; ?>/notifications" class="notification">
         <span class="notification_span nav_icon">
           <?php
           if($noti->unreadCount() > 0){
@@ -40,9 +40,9 @@
           <li class="o_li"><a href="<?php echo DIR; ?>/settings" class="o_a" alt="Settings">Settings</a></li>
           <li class="o_li"><a href="<?php echo DIR; ?>/edit" class="o_a" alt="Edit">Edit</a></li>
         <?php } ?>
-        <li class="o_li"><a href="/faiyaz/Instagram/help" class="o_a" alt="Help">Help</a></li>
-        <li class="o_li"><a href="/faiyaz/Instagram/about">About</a></li>
-        <li class="o_li"><a href="/faiyaz/Instagram/developer">Developer</a></li>
+        <li class="o_li"><a href="<?php echo DIR; ?>/help" class="o_a" alt="Help">Help</a></li>
+        <li class="o_li"><a href="<?php echo DIR; ?>/about">About</a></li>
+        <li class="o_li"><a href="<?php echo DIR; ?>/developer">Developer</a></li>
         <?php if ($universal->isLoggedIn() == true) { ?>
           <li class="o_li o_divider"><hr class="menu_divider"></li>
           <li class="o_li"><a href="<?php echo DIR; ?>/logout" class="o_a" alt="Settings">Logout</a></li>

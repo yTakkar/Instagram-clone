@@ -63,7 +63,7 @@
 
   <div class="mssg_right">
     <div class='home_last_mssg mssg_last_mssg'>
-      <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+      <img src='<?php echo DIR; ?>/images/needs/large.jpg'>
       <span>Please select a conversation or group</span>
     </div>
   </div>
@@ -84,7 +84,7 @@
     <input type="hidden" name="" value="" class="grp_to_holder">
     <input type="hidden" name="" value="" class="grp_to_avatar">
     <div class="grp_to_img">
-      <img src="/faiyaz/Instagram/images/Default_group_con/Epic-Circle-31m3ldalla6v0uqb8ne6mi.png" alt="">
+      <img src="<?php echo DIR; ?>/images/Default_group_con/Epic-Circle-31m3ldalla6v0uqb8ne6mi.png" alt="">
     </div>
     <div class="grp_t_name_div">
       <span>Name your group</span>
@@ -103,7 +103,7 @@
     <div class="grp_to_persons">
       <div class="grp_to_persons_inner">
         <ul class="grp_to_ul">
-          <!-- <li class='grp_to_select_u'><img src='/faiyaz/Instagram/images/avatars/voldemort.jpg' alt=''><span>Voldemort</span></li> -->
+          <!-- <li class='grp_to_select_u'><img src='<?php echo DIR; ?>/images/avatars/voldemort.jpg' alt=''><span>Voldemort</span></li> -->
         </ul>
       </div>
     </div>
@@ -138,7 +138,7 @@
     //       console.log('status: '+status);
     //       var n = new Notification('Instagram', {
     //         body: "Wlecome to Instagram!",
-    //         icon: "/faiyaz/Instagram/images/avatars/voldemort.jpg"
+    //         icon: DIR+"/images/avatars/voldemort.jpg"
     //       });
     //     });
     //   }

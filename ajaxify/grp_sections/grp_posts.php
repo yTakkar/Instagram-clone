@@ -30,7 +30,7 @@
       <div class='grp_r_t_main'>
         <span><?php echo $groups->GETgrp($grp, "grp_bio"); ?></span>
         <?php if($groups->isGrpAdmin($grp, $session)){ ?>
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_edit" class="sec_btn">Not satisified</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_edit" class="sec_btn">Not satisified</a>
         <?php } ?>
     </div>
     </div>
@@ -42,7 +42,7 @@
       <div class="g_m_imgs">
         <?php $groups->newestMembers($grp); ?>
         <div class="g_m_b">
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_members" class="sec_btn">View all</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_members" class="sec_btn">View all</a>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
       <div class="g_m_imgs">
         <?php $groups->mutualGrpMembers($grp); ?>
         <div class="g_m_b">
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_members" class="sec_btn">View all</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_members" class="sec_btn">View all</a>
         </div>
       </div>
     </div>
@@ -68,14 +68,14 @@
     <div class="c_g_div inst">
       <span>You can create a public or private group of your interest with people you know by clicking on the options.</span>
       <div class="grp_c_we">
-        <a href="/faiyaz/Instagram/explore?ask=exp_groups" class="sec_btn grp_post_c_grp">Create</a>
+        <a href="<?php echo DIR; ?>/explore?ask=exp_groups" class="sec_btn grp_post_c_grp">Create</a>
       </div>
     </div>
 
     <div class="c_g_div inst">
       <span>Explore more groups from all around Instagram.</span>
       <div class="grp_c_we">
-        <a href="/faiyaz/Instagram/explore?ask=exp_groups" class="sec_btn">Explore</a>
+        <a href="<?php echo DIR; ?>/explore?ask=exp_groups" class="sec_btn">Explore</a>
       </div>
     </div>
 
@@ -133,7 +133,7 @@
 
     $('.post_it img').on('click', function(e){
       var username = $('.user_info').data('username');
-      window.location.href = "/faiyaz/Instagram/profile/"+username;
+      window.location.href = DIR+"/profile/"+username;
     });
 
     $('.post_teaser span:last-of-type').description({
@@ -224,7 +224,7 @@
 
     $('.p_comments').on('click', function(e){
       var post = $(this).parent().data('postid');
-      window.location.href = "/faiyaz/Instagram/view_post/"+post;
+      window.location.href = DIR+"/view_post/"+post;
     });
 
     $('.post_end').on('click', function(e){
@@ -238,7 +238,7 @@
     $('.unfollow').unfollow({ update: true });
     $('.home_recomm').HomeSuggestions();
     if ($('.recomm_main').children().length == 0) {
-      $('.recomm_main').html("<div class='home_last_mssg suggest_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>");
+      $('.recomm_main').html("<div class='home_last_mssg suggest_last_mssg'><img src='"+DIR+"/images/needs/large.jpg'></div>");
     }
     $('.recomm_t').recommend();
 
@@ -246,7 +246,7 @@
       .description({extraTop: -20})
       .on('click', function(e){
       var data = $(this).data('user');
-      window.location.href = "/faiyaz/Instagram/profile/"+data;
+      window.location.href = DIR+"/profile/"+data;
     });
 
     $('.grp_post_c_grp').createGroup();

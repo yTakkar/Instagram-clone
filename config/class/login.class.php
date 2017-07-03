@@ -1,18 +1,15 @@
 <?php
-  class login{
+  class login_class{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function LOGIN($username, $password, $ip){
@@ -101,6 +98,8 @@
           $email = $e;
         }
 
+        $url = $universal->urlChecker($this->DIR);
+
         //$mail->SMTPDebug = 3;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
@@ -127,11 +126,7 @@
 
         $mail->Body = "<span>Hello, You received this message because you created an account on INSTAGRAM.<span><br>
         <span>Click on button below to activate your Instagram account and explore.</span><br><br>
-        <a href='http://localhost/faiyaz/Instagram/ajaxify/deep/most/topmost/activate.php?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
-
-        // $mail->AltBody = "<span>Hello, You're receiving this message because you created an account on INSTAGRAM.<span><br>
-        // <span>Click on button below to activate your Instagram account and explore.</span><br><br>
-        // <a href='http://localhosthttps://gypsum.000webhostapp.com/activate?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
+        <a href='{$url}/ajaxify/deep/most/topmost/activate.php?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
 
         if($mail->send()) {
           return 'Successfull';

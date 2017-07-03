@@ -66,7 +66,7 @@
         $cookie = @array_slice(array_reverse($array), 0, 15);
         foreach ($cookie as $elem) {
           echo "<div class='q_l_div'>
-          <img src='/faiyaz/Instagram/{$avatar->GETsAvatar($elem)}' alt='' data-description='{$universal->GETsDetails($elem, "username")}' data-username='{$universal->GETsDetails($elem, "username")}' data-id='{$elem}'>
+          <img src='". DIR ."/{$avatar->GETsAvatar($elem)}' alt='' data-description='{$universal->GETsDetails($elem, "username")}' data-username='{$universal->GETsDetails($elem, "username")}' data-id='{$elem}'>
           </div>";
         }
       }
@@ -79,11 +79,11 @@
     </div>
     <div class="q_l_m_main">
       <div class="q_l_m_img_div">
-        <img src="/faiyaz/Instagram/images/avatars/voldemort.jpg" alt="">
+        <img src="<?php echo DIR; ?>/images/avatars/voldemort.jpg" alt="">
         <span class="q_l_username">Mirza ghalib</span>
       </div>
       <form class="q_l_m_form" method="post">
-        <input type="password" name="q_password" value="" autocomplete="off" placeholder="Password" id="q_l_password" class="" required maxlength="32">
+        <input type="password" name="q_password" value="" autocomplete="off" placeholder="Password" id="q_l_password" class="" spellcheck="false" required maxlength="32">
         <input type="submit" name="" value="Login to continue">
         <div class="q_l_m_bottom">
           <input type="hidden" name="" value="" class="_id">

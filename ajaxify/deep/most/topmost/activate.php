@@ -1,6 +1,5 @@
 <?php
-  ob_start();
-  session_start();
+  include '../../../../config/declare.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,26 +12,22 @@
 
 <?php
 
+  include_once '../../../../config/class/needy_class.php';
   include '../../../../config/class/universal.class.php';
   include '../../../../config/class/login.class.php';
   include '../../../../config/class/settings.class.php';
 
   $universal = new universal;
-  $login = new login;
+  $login = new login_class;
   $settings = new settings;
 
   if (!isset($_GET['id']) || $universal->isLoggedIn()) {
-    header("Location: /faiyaz/Instagram/");
+    header("Location: ".DIR);
   }
 
   if ($universal->GETsDetails($_GET['id'], "email_activated") == "no" || isset($_GET['id']) != isset($_SESSION['id'])) {
 
-    try {
-      $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-      echo $e->getMessage();
-    }
+    $db = N::_DB();
 
     $id = $_GET['id'];
     if (!file_exists("../../../../users/$id")) {
@@ -50,10 +45,10 @@
 
     $_SESSION['id'] = $id;
     $username = $universal->GETsDetails($id, "username");
-    header("Location: /faiyaz/Instagram/profile/{$username}");
+    header("Location: ". DIR ."/profile/{$username}");
 
   } else {
-    header("Location: /faiyaz/Instagram/");
+    header("Location: ".DIR);
   }
 
   include '../../../../index_include/index_footer.php';

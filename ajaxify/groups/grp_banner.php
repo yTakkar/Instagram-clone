@@ -10,14 +10,14 @@
         <li><a href="#" class="c_g">Create group</a></li>
         <li><a href="#" class="inv_g" data-grp='<?php echo $grp; ?>'>Invite to group</a></li>
         <?php if($groups->isGrpAdmin($grp, $session)){ ?>
-          <li><a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_edit">Edit group</a></li>
+          <li><a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_edit">Edit group</a></li>
           <li><a href="#" class='mk_admin_banner'>Make admin</a></li>
           <li><a href="#" class="d_g">Delete group</a></li>
         <?php } ?>
         <?php } else { ?>
-          <li><a href="/faiyaz/Instagram/login?next=/faiyaz/Instagram/groups/<?php echo $grp; ?>" class="">Login</a></li>
+          <li><a href="<?php echo DIR; ?>/login?next=<?php echo DIR; ?>/groups/<?php echo $grp; ?>" class="">Login</a></li>
         <?php } ?>
-        <li><a href="#" class="p_copy_link" data-link='localhost/faiyaz/Instagram/groups/<?php echo $grp; ?>' >Copy group link</a></li>
+        <li><a href="#" class="p_copy_link" data-link='<?php echo $universal->urlChecker(DIR); ?>/groups/<?php echo $grp; ?>' >Copy group link</a></li>
       </ul>
     </div>
     <div class="pro_ff" data-grp='<?php echo $grp; ?>'>
@@ -31,10 +31,10 @@
           <a href="#" class="pri_btn join_grp pro_join_grp">Join group</a>
         <?php } ?>
       <?php } else if($groups->isGrpAdmin($grp, $session)) { ?>
-        <a href="/faiyaz/Instagram/groups/3?ask=grp_edit" class="pri_btn">Edit group</a>
+        <a href="<?php echo DIR; ?>/groups/3?ask=grp_edit" class="pri_btn">Edit group</a>
       <?php } ?>
       <?php } else { ?>
-        <a href="/faiyaz/Instagram/login?next=/faiyaz/Instagram/groups/<?php echo $grp; ?>" class="pri_btn">Login</a>
+        <a href="<?php echo DIR; ?>/login?next=<?php echo DIR; ?>/groups/<?php echo $grp; ?>" class="pri_btn">Login</a>
       <?php } ?>
 
       <?php
@@ -46,10 +46,10 @@
         //       echo "<a href='#' class='pri_btn join_grp pro_join_grp'>Join group</a>";
         //     }
         //   } else if ($groups->isGrpAdmin($grp, $session)) {
-        //     echo "<a href='/faiyaz/Instagram/groups/3?ask=grp_edit' class='pri_btn'>Edit group</a>";
+        //     echo "<a href='". DIR ."/groups/3?ask=grp_edit' class='pri_btn'>Edit group</a>";
         //   }
         // } else {
-        //   echo "<a href='/faiyaz/Instagram/login' class='pri_btn'>Login</a>";
+        //   echo "<a href='". DIR ."/login' class='pri_btn'>Login</a>";
         // }
       ?>
 
@@ -71,7 +71,7 @@
 
   <div class="pro_info">
     <div class="pro_username">
-      <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>" class="username"><?php echo $groups->GETgrp($grp, "grp_name"); ?></a>
+      <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>" class="username"><?php echo $groups->GETgrp($grp, "grp_name"); ?></a>
     </div>
     <div class="pro_name">
       <span>

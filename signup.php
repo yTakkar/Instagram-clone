@@ -44,7 +44,7 @@
         <input type="text" name="s_first_name" value="" autocomplete="off" placeholder="First name" class="s_firstname small_input" spellcheck="false" maxlength="20" required>
         <input type="text" name="s_surname" value="" autocomplete="off" placeholder="Surname" class="s_surname small_input" spellcheck="false" maxlength="20" required>
         <input type="email" name="s_email" value="" autocomplete="off" placeholder="Email" class="s_email big_input" spellcheck="false" maxlength="52" required>
-        <input type="password" name="s_password" value="" autocomplete="off" placeholder="Password" class="s_password big_input"  maxlength="32" required id="password">
+        <input type="password" name="s_password" value="" autocomplete="off" placeholder="Password" class="s_password big_input"  maxlength="32" spellcheck="false" required id="password">
         <span class="show_psswrd" id="show_psswrd">
           <i class="fa fa-lock" aria-hidden="true"></i>
         </span>
@@ -90,7 +90,7 @@
       var password = $('.s_password').val();
       var terms = $('.s_terms').val();
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/register_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/register_requests.php",
         method: 'POST',
         cache: false,
         data: {
@@ -108,8 +108,8 @@
             $('.s_submit').prop('disabled', true);
             $('.s_submit').prop('value', 'Redirecting..');
             $('.overlay-2').show();
-            // window.location.href = "/faiyaz/Instagram/success";
-            window.location.href = "/faiyaz/Instagram/thanks";
+            // window.location.href = DIR+"/success";
+            window.location.href = DIR+"/thanks";
           } else {
             $('.s_submit').prop('disabled', false);
             $('.overlay-2').hide();

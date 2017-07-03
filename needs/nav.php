@@ -99,7 +99,7 @@
     <ul>
       <?php if ($universal->isLoggedIn() == true) { ?>
       <li><a href="<?php echo DIR; ?>/logout">Logout</a></li>
-      <li><a href="/faiyaz/Instagram/help">Help</a></li>
+      <li><a href="<?php echo DIR; ?>/help">Help</a></li>
       <li><a href="#" class=""><i class="material-icons">more_horiz</i></a></li>
       <?php } ?>
     </ul>
@@ -107,8 +107,8 @@
 
   <div class="options nav_options">
     <ul>
-      <li><a href="/faiyaz/Instagram/about">About</a></li>
-      <li><a href="/faiyaz/Instagram/developer">Developer</a></li>
+      <li><a href="<?php echo DIR; ?>/about">About</a></li>
+      <li><a href="<?php echo DIR; ?>/developer">Developer</a></li>
     </ul>
   </div>
 

@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  include '../../config/declare.php';
+  include_once '../../config/class/needy_class.php';
   include '../../config/class/universal.class.php';
   include '../../config/class/avatar.class.php';
 
@@ -11,7 +12,7 @@
 
 <div class="i_p_top p_top">
   <div class="i_p_info p_info">
-    <img src="/faiyaz/Instagram/<?php echo $avatar->DisplayAvatar($session); ?>" alt="<?php echo $universal->getUsernameFromSession(); ?>'s avatar">
+    <img src="<?php echo DIR; ?>/<?php echo $avatar->DisplayAvatar($session); ?>" alt="<?php echo $universal->getUsernameFromSession(); ?>'s avatar">
     <span><?php echo $universal->GETsDetails($session, "username"); ?></span>
     <span class="loc_text"></span>
   </div>
@@ -25,7 +26,7 @@
     <textarea name="name" placeholder="What's new with you, @<?php echo $universal->GETsDetails($session, "username"); ?>? #cool" spellcheck="false" class="t_p_ta"></textarea>
   </div>
   <div class="i_p_vid">
-    <video src="/faiyaz/Instagram/images/George Michael - Jesus to a Child (Official Music Video).mp4"></video>
+    <video src="<?php echo DIR; ?>/images/George Michael - Jesus to a Child (Official Music Video).mp4"></video>
   </div>
 </div>
 

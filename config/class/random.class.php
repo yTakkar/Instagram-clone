@@ -1,20 +1,6 @@
 <?php
   class random{
 
-    protected $db;
-    protected $e;
-
-    public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
-    }
-
     public function getOS(){
       $user_agent = $_SERVER['HTTP_USER_AGENT'];
       $os_platform = "Unknown OS Platform";

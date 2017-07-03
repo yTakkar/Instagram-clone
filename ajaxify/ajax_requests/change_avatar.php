@@ -3,6 +3,7 @@
 
   if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
+    include_once '../../config/class/needy_class.php';
     include '../../config/class/avatar.class.php';
     include '../../config/class/general.class.php';
     $avatar = new Avatar;

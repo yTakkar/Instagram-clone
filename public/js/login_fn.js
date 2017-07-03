@@ -35,7 +35,7 @@ function range(no){
 
       var input = elem.find('input[type="text"]');
       $.ajax({
-        url   : "/faiyaz/Instagram/ajaxify/ajax_requests/forgot_requests.php",
+        url   : DIR+"/ajaxify/ajax_requests/forgot_requests.php",
         method: "POST",
         data  : {input: input.val()},
         beforeSend: function(){
@@ -49,7 +49,7 @@ function range(no){
           //   submit.prop('value', 'Checking..');
           //   submit.prop('disabled', true);
           //   $('.notify').notify({ value: data.substr(2) });
-          //   window.location.href = "/faiyaz/Instagram/profile/"+data.substr(2);
+          //   window.location.href = DIR+"/profile/"+data.substr(2);
           // } else {
           //   $('.notify').notify({ value: data });
           //   submit.prop('disabled', false);
@@ -63,7 +63,7 @@ function range(no){
             $('.overlay-2').show();
             $('.notify').notify({ value: data });
             input.val('');
-            window.location.href = "/faiyaz/Instagram/retrieve_ok";
+            window.location.href = DIR+"/retrieve_ok";
           } else {
             $('.notify').notify({ value: data });
             submit.prop('disabled', false);
@@ -88,7 +88,7 @@ function range(no){
       $('.username_checker').show();
       if (value != "") {
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/u_checker_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/u_checker_requests.php",
           method: "GET",
           data: {value: value},
           success: function(data){
@@ -155,7 +155,7 @@ function range(no){
 // FUNCTION FOR LOGIN
 function login(ju, jp, btn){
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/login_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/login_requests.php",
     method: "POST",
     dataType: "json",
     data: {
@@ -177,7 +177,7 @@ function login(ju, jp, btn){
         if (regex.test(l)) {
           var url = next;
         } else if (regex.test(l) == false){
-          var url = "/faiyaz/Instagram/";
+          var url = DIR;
         }
 
         btn.prop('disabled', true);
@@ -246,7 +246,7 @@ function login(ju, jp, btn){
           div.fadeOut(100);
           input.val('');
           hidden.val('');
-          img.attr('src', '/faiyaz/Instagram/images/avatars/voldemort.jpg');
+          img.attr('src', DIR+'/images/avatars/voldemort.jpg');
           username.text('@Instagram');
         });
 

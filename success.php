@@ -48,10 +48,10 @@
         <span>Instagram</span>
       </div>
       <div class="right">
-        <a href="/faiyaz/Instagram/" class="">Home</a>
-        <a href="/faiyaz/Instagram/profile/<?php echo $universal->GETsDetails($session, "username"); ?>" class="">Profile</a>
-        <a href="/faiyaz/Instagram/about">About</a>
-        <a href="/faiyaz/Instagram/help">Help</a>
+        <a href="<?php echo DIR; ?>/" class="">Home</a>
+        <a href="<?php echo DIR; ?>/profile/<?php echo $universal->GETsDetails($session, "username"); ?>" class="">Profile</a>
+        <a href="<?php echo DIR; ?>/about">About</a>
+        <a href="<?php echo DIR; ?>/help">Help</a>
       </div>
     </div>
 
@@ -59,13 +59,13 @@
 <div class="badshah">
 
   <div class="about_div inst success_div">
-    <img src="/faiyaz/Instagram/images/needs/glyph-instagram.jpg" alt="">
+    <img src="<?php echo DIR; ?>/images/needs/glyph-instagram.jpg" alt="">
     <div class="">
       <span>Thanks for registering.</span>
       <span>Instagram is hosted freely, so you'll find it bit slow, because hosting company has allowed limited requests per minute.</span>
       <span>Email verification is one of many features which has been removed, because the hosting company allows only 50 emails to be sent per day.</span>
       <div class="dev_div_links">
-        <a href="/faiyaz/Instagram/profile/<?php echo $universal->GETsDetails($session, "username"); ?>" class="sec_btn">Continue</a>
+        <a href="<?php echo DIR; ?>/profile/<?php echo $universal->GETsDetails($session, "username"); ?>" class="sec_btn">Continue</a>
       </div>
     </div>
   </div>

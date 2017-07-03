@@ -2,17 +2,14 @@
   class group{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function validGrp($grp){
@@ -28,9 +25,9 @@
     public function grpAvatar($grp){
       $avatar = self::GETgrp($grp, "grp_avatar");
       if ($avatar == "") {
-        return "/faiyaz/Instagram/images/Default_group_con/Epic-Circle-31m3ldalla6v0uqb8ne6mi.png";
+        return "{$this->DIR}/images/Default_group_con/Epic-Circle-31m3ldalla6v0uqb8ne6mi.png";
       } else {
-        return "/faiyaz/Instagram/group/$grp/Instagram_$avatar";
+        return "{$this->DIR}/group/$grp/Instagram_$avatar";
       }
     }
 
@@ -60,7 +57,7 @@
       $query = $this->db->prepare("INSERT INTO group_members(group_id, group_member, added_by, time) VALUES (:grp, :member, :by, now())");
       $query->execute(array(':grp' => $id, ":member" => $session, ":by" => $session));
 
-      mkdir("../../groups/$id");
+      mkdir("../../group/$id");
       return $id;
 
     }
@@ -123,7 +120,7 @@
           $id = $row->follow_to;
           $username = $row->follow_to_u;
           if (self::memberOrNot($grp, $id) == false && $settings->AmIBlocked($id) == false) {
-            echo "<li class='grp_to_select_u select_user_to_add' data-user='{$id}' data-name='{$username}'><img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($id)}' alt=''><span>{$universal->nameShortener($universal->GETsDetails($id, "username"), 25)}</span></li>";
+            echo "<li class='grp_to_select_u select_user_to_add' data-user='{$id}' data-name='{$username}'><img src='{$this->DIR}/{$avatar->DisplayAvatar($id)}' alt=''><span>{$universal->nameShortener($universal->GETsDetails($id, "username"), 25)}</span></li>";
           }
         }
       }
@@ -160,7 +157,7 @@
       $query = $this->db->prepare("SELECT groups.group_id, groups.grp_name, groups.grp_avatar, groups.grp_admin, group_members.time FROM groups, group_members WHERE group_members.group_member = :user AND group_members.group_id = groups.group_id ORDER BY group_members.time DESC");
       $query->execute(array(":user" => $id));
       if ($query->rowCount() == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
         if ($session == $id) {
           echo "You have no groups";
         } else if ($session != $id) {
@@ -179,7 +176,7 @@
           echo "<div class='y_g inst'><div class='y_g_left'>
               <img src='". self::grpAvatar($grp). "' alt=''>
               <div class='y_g_content'>
-                <a href='/faiyaz/Instagram/groups/{$grp}'>". $universal->nameShortener($name, 30) ."</a>";
+                <a href='{$this->DIR}/groups/{$grp}'>". $universal->nameShortener($name, 30) ."</a>";
                 echo "<span class='y_g_light'>";
                 if (self::mutualGrpMemCount($grp) == 0) {
                   echo self::noOfGrpMembers($grp)." members";
@@ -220,7 +217,7 @@
         $member = $row->group_member;
         $time = $row->time;
         if($member == $session){ $x = "You"; } else { $x = $universal->nameShortener($universal->GETsDetails($member, "username"), 20); }
-        echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($member)}' alt='' data-description='{$x}' data-user='{$universal->GETsDetails($member, "username")}'>";
+        echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($member)}' alt='' data-description='{$x}' data-user='{$universal->GETsDetails($member, "username")}'>";
 
       }
     }
@@ -248,7 +245,7 @@
 
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>No members</span></div>";
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>No members</span></div>";
         }
       } else if ($count > 0) {
 
@@ -261,9 +258,9 @@
           $time = $row->time;
 
           echo "<div class='m_on inst grp_m_on' data-memid='{$memid}'><div class='m_top'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($member)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($member)}' alt=''>
               <div class='m_top_right'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($member, "username")}' title='{$universal->GETsDetails($member, "username")}'>". $universal->nameShortener($universal->GETsDetails($member, "username"), 16) ."</a>";
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($member, "username")}' title='{$universal->GETsDetails($member, "username")}'>". $universal->nameShortener($universal->GETsDetails($member, "username"), 16) ."</a>";
                 if (self::isGrpAdmin($grp, $member)) {
                   echo "<span class='grp_admin'>admin</span>";
                 }
@@ -276,9 +273,9 @@
               <span class='recommend_by'>";
               if ($by != $member) {
                 if ($by == $session) {
-                  echo "by <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($session, "username")}' title='You'>You</a>";
+                  echo "by <a href='{$this->DIR}/profile/{$universal->GETsDetails($session, "username")}' title='You'>You</a>";
                 } else {
-                  echo "by <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' title='{$universal->GETsDetails($by, "username")}'>{$universal->nameShortener($universal->GETsDetails($by, "username"), 20)}</a>";
+                  echo "by <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' title='{$universal->GETsDetails($by, "username")}'>{$universal->nameShortener($universal->GETsDetails($by, "username"), 20)}</a>";
                 }
               }
               echo "</span>";
@@ -287,7 +284,7 @@
               }
               echo "<div data-getid='$member'>";
               if ($session == $member) {
-                echo "<a href='/faiyaz/Instagram/profile/$session". $universal->GETsDetails($session, "username") ."' class='sec_btn '>Profile</a>";
+                echo "<a href='{$this->DIR}/profile/$session". $universal->GETsDetails($session, "username") ."' class='sec_btn '>Profile</a>";
               } else {
                 if ($follow->isFollowing($member)) {
                   echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";
@@ -338,7 +335,7 @@
       $count = $query->rowCount();
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>";
+          echo "<div class='home_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>";
           echo self::GETgrp($grp, "grp_name")." got no posts";
           echo "</span></div>";
         }
@@ -362,7 +359,7 @@
 
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($universal->MeOrNot($user_id)) {
             echo "<li><a href='#' class='edit_post'>Edit post</a></li>";
             echo "<li><a href='#' class='delete_post'>Delete post</a></li>";
@@ -380,7 +377,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'>";
           echo "<div class='p_edit_tools'><span class='p_edit_tip'><i class='fa fa-info-circle' aria-hidden='true'></i>For hashtag, first remove all the text</span>
           <a href='#' class='p_edit_cancel sec_btn'>Cancel</a>
@@ -425,7 +422,7 @@
 
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>Group has no photos</span></div>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>Group has no photos</span></div>";
       } else if ($count > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $post_id = $row->post_id;
@@ -438,7 +435,7 @@
           <span><i class='material-icons'>favorite</i> <span>{$like->simpleGetPostLikes($post_id)}</span></span>
           <span><i class='material-icons'>chat_bubble</i> <span>{$comment->simpleGetComments($post_id)}</span></span>
           </div>
-          <img src='/faiyaz/Instagram/media/Instagram_{$image}' alt='' data-imgby='{$universal->GETsDetails($userid, "username")}' data-postid='{$post_id}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}' class='{$filter}'></div>";
+          <img src='{$this->DIR}/media/Instagram_{$image}' alt='' data-imgby='{$universal->GETsDetails($userid, "username")}' data-postid='{$post_id}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}' class='{$filter}'></div>";
         }
       }
     }
@@ -459,7 +456,7 @@
       $query->execute(array(":user" => $grp, ":type" => "video", ":grp" => "group"));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>Group has no videos</span></div>";
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>Group has no videos</span></div>";
       }
 
       while ($row = $query->fetch(PDO::FETCH_OBJ)) {
@@ -467,7 +464,7 @@
         $video = $row->video;
 
         echo "<div class='p_vid video_vid'>
-          <video src='/faiyaz/Instagram/media/Instagram_{$video}' loop preload='auto'></video>
+          <video src='{$this->DIR}/media/Instagram_{$video}' loop preload='auto'></video>
           <span class='p_vid_pp_large'><i class='material-icons'>play_arrow</i></span>
           <span class='p_vid_cur p_vid_time_teaser'>0:00</span>
           <span class='p_vid_time_bubble'>0:00</span><div class='p_vid_ctrls'><div class='p_vid_seek'>
@@ -545,7 +542,7 @@
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $member = $row->group_member;
           if($member == $session){ $x = "You"; } else { $x = $universal->nameShortener($universal->GETsDetails($member, "username"), 20); }
-          echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($member)}' alt='' data-description='{$x}' data-user='{$universal->GETsDetails($member, "username")}'>";
+          echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($member)}' alt='' data-description='{$x}' data-user='{$universal->GETsDetails($member, "username")}'>";
         }
       }
     }
@@ -626,7 +623,7 @@
       $query->execute(array(":by" => $session));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($count > 0) {
         echo "<input type='hidden' class='share_postid'>";
         echo "<input type='hidden' class='share_userid'>";
@@ -638,7 +635,7 @@
               echo "already_shared";
             }
             echo "' data-userid='{$userid}'><div class='d_i_img'>
-            <img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
+            <img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
             <span class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 12). "</span>
             <span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ". $universal->GETsDetails($userid, "surname"), 17) ."</span></div></div></div>";
           }
@@ -677,7 +674,7 @@
       $query->execute(array(":grp" => $grp, ":me" => $session));
       $count = $query->rowCount();
       if ($count == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($count > 0) {
         echo "<input type='hidden' class='share_postid'>";
         echo "<input type='hidden' class='share_userid'>";
@@ -686,7 +683,7 @@
           if (self::isGrpAdmin($grp, $userid) == false) {
             echo "<div class='display_items select_receiver";
             echo "' data-userid='{$userid}'><div class='d_i_img'>
-            <img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
+            <img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'></div><div class='d_i_content'><div class='d_i_info'>
             <span class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 12) ."</span>
             <span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ". $universal->GETsDetails($userid, "surname"), 15) ."</span></div></div></div>";
           }

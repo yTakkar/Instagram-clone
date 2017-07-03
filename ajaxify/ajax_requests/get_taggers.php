@@ -1,5 +1,9 @@
 <?php
-  session_start();
+  include '../../config/declare.php';
+  include_once '../../config/class/needy_class.php';
+  include '../../config/class/avatar.class.php';
+  include '../../config/class/universal.class.php';
+
   if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == "xmlhttprequest") {
     if (isset($_GET['value'])) {
       $value = preg_replace("#[^a-z0-9_@.]#i", "", $_GET['value']);
@@ -10,17 +14,9 @@
 
       if ($value != "") {
 
-        try {
-          $db = new PDO("mysql:host=host;dbname=instagram;charset=utf8mb4", "user", "password");
-          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-          echo $e->getMessage();
-        }
-
-        include '../../config/class/avatar.class.php';
-        include '../../config/class/universal.class.php';
         $avatar = new Avatar;
         $universal = new universal;
+        $db = N::_DB();
 
         // QUERY FOR SELECTING FOLLOWERS ONLY
         $query = $db->prepare("SELECT DISTINCT follow_to_u FROM follow_system WHERE follow_to_u LIKE :username AND follow_by = :whome");
@@ -48,7 +44,7 @@
           $row = $nquery->fetch(PDO::FETCH_OBJ);
           $id = $row->id;
           $username = $row->username;
-          echo "<li class='tag_hmm'><img src='/faiyaz/Instagram/" .$avatar->DisplayAvatar($id) ."' alt=''>";
+          echo "<li class='tag_hmm'><img src='". DIR ."/" .$avatar->DisplayAvatar($id) ."' alt=''>";
           echo "<span>". $universal->nameShortener($username, 25) ."</span></li>";
         }
 

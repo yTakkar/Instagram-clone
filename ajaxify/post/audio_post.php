@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  include '../../config/declare.php';
+  include_once '../../config/class/needy_class.php';
   include '../../config/class/universal.class.php';
   include '../../config/class/avatar.class.php';
 
@@ -10,7 +11,7 @@
 
 <div class="i_p_top p_top">
   <div class="i_p_info p_info">
-    <img src="/faiyaz/Instagram/<?php echo $avatar->DisplayAvatar($session); ?>" alt="<?php echo $universal->getUsernameFromSession(); ?>'s avatar">
+    <img src="<?php echo DIR; ?>/<?php echo $avatar->DisplayAvatar($session); ?>" alt="<?php echo $universal->getUsernameFromSession(); ?>'s avatar">
     <span><?php echo $universal->GETsDetails($session, "username"); ?></span>
     <span class="loc_text"></span>
   </div>

@@ -25,12 +25,12 @@
 
     <div class="sabout">
       <div class="sabout_one">
-        <img src="/faiyaz/Instagram/images/needs/tree.png" alt="">
+        <img src="<?php echo DIR; ?>/images/needs/tree.png" alt="">
         <?php if($groups->isGrpAdmin($grp, $session)){ ?>
         <div class="sabout_one_info">
           <span>Update or edit group to make it look more attractive</span>
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_posts" class="sec_btn">Update group</a>
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_edit" class="pri_btn">Edit group</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_posts" class="sec_btn">Update group</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_edit" class="pri_btn">Edit group</a>
         </div>
         <?php } ?>
       </div>
@@ -39,7 +39,7 @@
     <div class="fabout">
       <div class="a_edit">
         <?php if($groups->isGrpAdmin($grp, $session)){ ?>
-        <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_edit"><i class="material-icons">mode_edit</i></a>
+        <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_edit"><i class="material-icons">mode_edit</i></a>
         <?php } ?>
       </div>
 
@@ -70,7 +70,7 @@
 
       <div class="a_c_by">
         <span class="a_label">Group created by</span>
-        <a class="a_info" href='/faiyaz/Instagram/profile/<?php echo $universal->GETsDetails($groups->GETgrp($grp, "grp_admin"), "username") ?>'><?php
+        <a class="a_info" href='<?php echo DIR; ?>/profile/<?php echo $universal->GETsDetails($groups->GETgrp($grp, "grp_admin"), "username") ?>'><?php
           if($groups->GETgrp($grp, "grp_admin") == $session){
             echo "You";
           } else {

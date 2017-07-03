@@ -31,14 +31,14 @@
 <div class="badshah">
   <div class="err">
     <h1>Oops, no such member found!</h1>
-    <img src="<?php echo DIR ?>/images/needs/error-3.svg" alt="404">
+    <img src="<?php echo DIR; ?>/images/needs/error-3.svg" alt="404">
     <?php
       if ($universal->isLoggedIn()) {
     ?>
-    <a href="<?php echo DIR ?>/profile/<?php echo $universal->getUsernameFromSession(); ?>" class="sec_btn">View profile</a>
+    <a href="<?php echo DIR; ?>/profile/<?php echo $universal->getUsernameFromSession(); ?>" class="sec_btn">View profile</a>
     <a href="<?php echo DIR; ?>" class="pri_btn">Try going to homepage</a>
     <?php } else { ?>
-      <a href="<?php echo DIR ?>/login" class="sec_btn">Login</a>
+      <a href="<?php echo DIR; ?>/login" class="sec_btn">Login</a>
       <a href="<?php echo DIR; ?>" class="pri_btn">Try going to homepage</a>
     <?php } ?>
   </div>

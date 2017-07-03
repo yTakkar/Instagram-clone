@@ -22,18 +22,18 @@
 <div class="senapati pro_senapati grp_senapati a_m_senapti">
 
   <?php if ($groups->isGrpAdmin($grp, $session) == false){
-    echo "<div class='home_last_mssg add_mem_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>You're not the admin of this group to add members.</span></div>";
+    echo "<div class='home_last_mssg add_mem_last_mssg'><img src='". DIR ."/images/needs/large.jpg'><span>You're not the admin of this group to add members.</span></div>";
   } else { ?>
 
   <div class="srajkumar grp_srajkumar">
 
     <div class="sabout inst">
       <div class="sabout_one">
-        <img src="/faiyaz/Instagram/images/needs/tree.png" alt="">
+        <img src="<?php echo DIR; ?>/images/needs/tree.png" alt="">
         <div class="sabout_one_info">
           <span>Update or edit group to make it look more attractive</span>
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_posts" class="sec_btn">Update group</a>
-          <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_edit" class="pri_btn">Edit group</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_posts" class="sec_btn">Update group</a>
+          <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_edit" class="pri_btn">Edit group</a>
         </div>
       </div>
     </div>

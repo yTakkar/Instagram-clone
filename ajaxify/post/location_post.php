@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  include '../../config/declare.php';
+  include_once '../../config/class/needy_class.php';
   include '../../config/class/universal.class.php';
   include '../../config/class/avatar.class.php';
 
@@ -10,7 +11,7 @@
 
 <div class="i_p_top p_top">
   <div class="i_p_info p_info">
-    <img src="/faiyaz/Instagram/<?php echo $avatar->DisplayAvatar($session); ?>" alt="Your avatar">
+    <img src="<?php echo DIR; ?>/<?php echo $avatar->DisplayAvatar($session); ?>" alt="Your avatar">
     <span><?php echo $universal->GETsDetails($session, "username"); ?></span>
     <span class="address_text"></span>
   </div>
@@ -24,7 +25,7 @@
     <textarea name="name" placeholder="What's new with you, @<?php echo $universal->GETsDetails($session, "username"); ?>? #cool" spellcheck="false" class="t_p_ta"></textarea>
   </div>
   <div class="i_p_loc">
-    <img src="/faiyaz/Instagram/images/needs/location_1674795.jpg" alt="">
+    <img src="<?php echo DIR; ?>/images/needs/location_1674795.jpg" alt="">
   </div>
 </div>
 

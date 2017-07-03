@@ -17,7 +17,7 @@
         var people = $('.mssg_persons');
         if(value != ""){
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+            url: DIR+"/ajaxify/ajax_requests/message_requests.php",
             data: {getPeople: value},
             success: function(data){
               // console.log(data);
@@ -62,7 +62,7 @@
                   var cname = name.val();
                   var to = hidden.val();
                   $.ajax({
-                    url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+                    url: DIR+"/ajaxify/ajax_requests/message_requests.php",
                     data: {
                       mssgViaBtn: value,
                       viaTo: to,
@@ -116,7 +116,7 @@
         var insert = $(this).find('.m_sr_unread');
         var con = $(this).data('cid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           data: {conUpdateCon: con},
           dataType: "JSON",
           success: function(data){
@@ -143,7 +143,7 @@
         var insert = $(this).find('.m_sr_unread');
         var con = $(this).data('gcid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           data: {conUpdateGrpCon: con},
           dataType: "JSON",
           success: function(data){
@@ -167,7 +167,7 @@ function delete_mssg(elem, by){
   var mssgid = parent.data('mssgid');
   var type = parent.data('type');
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/message_requests.php",
     data: {dltmssg: mssgid, dltconid: conid, mssgType: type, dltmssgby: by},
     success: function(data){
       parent.parent().slideUp(100, function(){
@@ -191,7 +191,7 @@ function edit_message(elem){
       var value = text.text();
       if(value != ""){
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           data: {editMssg: mssgid, editText:value},
           dataType: "JSON",
           success: function(data){
@@ -241,7 +241,7 @@ function textChat(elem, by){
     text.focus();
   } else {
     $.ajax({
-      url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+      url: DIR+"/ajaxify/ajax_requests/message_requests.php",
       data: d,
       type: "POST",
       beforeSend: function(){
@@ -296,7 +296,7 @@ function imageChat(elem, by){
     }
 
     $.ajax({
-      url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+      url: DIR+"/ajaxify/ajax_requests/message_requests.php",
       data: form,
       type: "POST",
       processData: false,
@@ -309,7 +309,7 @@ function imageChat(elem, by){
         console.log(data);
         $('.send_mssg_before').fadeOut(50);
         elem.val('');
-        var ht = "<div class='m_m_divs my_mm_div'><div class='m_m my_mm'><img src='/faiyaz/Instagram/message/Instagram_"+ data.m +"' class='m_m_img'></div><span class='m_m_time'>Just now</span></div>";
+        var ht = "<div class='m_m_divs my_mm_div'><div class='m_m my_mm'><img src='"+ DIR +"/message/Instagram_"+ data.m +"' class='m_m_img'></div><span class='m_m_time'>Just now</span></div>";
         $('.mssg_helper').before(ht);
         $('.m_m_wrapper').animate({scrollTop: 10000000}, 500);
         $('.m_m_img').imageShow();
@@ -336,7 +336,7 @@ function editConName(by){
       }
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           data: {
             editValue: value,
             editCon: con,
@@ -388,7 +388,7 @@ function change__grp__con__avatar(elem, e){
     form.append('edit_grp_con_grp', grp);
 
     $.ajax({
-      url : "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+      url : DIR+"/ajaxify/ajax_requests/message_requests.php",
       type: "POST",
       processData: false,
       contentType: false,
@@ -404,8 +404,8 @@ function change__grp__con__avatar(elem, e){
         $('.send_mssg_before').text('Sending message..');
         $('.send_mssg_before').fadeOut(50);
         $('.overlay-2').hide();
-        $('.sli_avatar_img').prop('src', '/faiyaz/Instagram/grp_mssg_avatar/Instagram_'+data.grp_av);
-        $('.mssg_left').find('#cgrp_'+grp).find('img').prop('src', '/faiyaz/Instagram/grp_mssg_avatar/Instagram_'+data.grp_av);
+        $('.sli_avatar_img').prop('src', DIR+'/grp_mssg_avatar/Instagram_'+data.grp_av);
+        $('.mssg_left').find('#cgrp_'+grp).find('img').prop('src', DIR+'/grp_mssg_avatar/Instagram_'+data.grp_av);
         var ht = "<div class='m_m_divs m_m_info_div'><span class='mssg_info'>You changed the group avatar</span></div>";
         $('.mssg_helper').before(ht);
         $(ht).hide().slideDown(100);
@@ -429,7 +429,7 @@ function add__grp__con__members(){
     var grp = $(this).parent().data('grp_con_id');
     if (value != "") {
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/message_requests.php",
         data: {getGrpConMem: value, getGrpConMemGrp: grp},
         success: function(data){
           console.log(data);
@@ -443,7 +443,7 @@ function add__grp__con__members(){
             div.hide();
             search.val('');
             $.ajax({
-              url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+              url: DIR+"/ajaxify/ajax_requests/message_requests.php",
               data: {grpConAddMem: id, grpConAdd: grp},
               beforeSend: function(){
                 $('.send_mssg_before').text('Adding..');
@@ -454,7 +454,7 @@ function add__grp__con__members(){
                 $('.send_mssg_before').text('Added successfully');
                 $('.send_mssg_before').fadeOut(50);
                 search.focus();
-                var ht = "<div class='m_m_divs m_m_info_div'><span class='mssg_info'>You added <a class='m_m_name_change' href='/faiyaz/Instagram/profile/"+ name +"'>"+ name +"</a> to group</span></div>";
+                var ht = "<div class='m_m_divs m_m_info_div'><span class='mssg_info'>You added <a class='m_m_name_change' href='"+ DIR +"/profile/"+ name +"'>"+ name +"</a> to group</span></div>";
                 $('.mssg_helper').before(ht);
                 $(ht).hide().slideDown(100);
                 $('.m_m_wrapper').animate({scrollTop: 100000}, 500);
@@ -482,7 +482,7 @@ function mmSlider(elem, by){
   }
 
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/message_requests.php",
     data: d,
     success: function(data){
       // console.log(data);
@@ -551,7 +551,7 @@ function mmSlider(elem, by){
         $(this).addClass('mssg_sr_toggle');
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           data: {
             selectC: id,
             user: user
@@ -657,7 +657,7 @@ function mmSlider(elem, by){
             $('.mssg_messages').on('mousemove', function(e){
               var con = $(this).data('conid');
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/message_requests.php",
                 data: {updateCon: con},
                 dataType: "JSON",
                 success: function(data){
@@ -694,7 +694,7 @@ function mmSlider(elem, by){
         $(this).addClass('mssg_sr_toggle');
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           data: { selectGrpCon: id },
           beforeSend: function(){
             $('.mssg_right').html('<div class="spinner"><span></span><span></span><span></span></div>');
@@ -808,7 +808,7 @@ function mmSlider(elem, by){
             $('.mssg_messages').on('mousemove', function(e){
               var con = $(this).data('grp_con_id');
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/message_requests.php",
                 data: {grpUpdateCon: con},
                 dataType: "JSON",
                 success: function(data){
@@ -836,7 +836,7 @@ function mmSlider(elem, by){
 
     setInterval(function(){
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/message_requests.php",
         data: {getAllUnreadMssg:"user"},
         dataType: "json",
         success: function(data){
@@ -929,7 +929,7 @@ function mmSlider(elem, by){
         var value = $(this).val();
         if (value != "") {
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+            url: DIR+"/ajaxify/ajax_requests/message_requests.php",
             method: "GET",
             data: {
               addGrpValue: value,
@@ -982,7 +982,7 @@ function mmSlider(elem, by){
         form.append('addGrpMembers', h_value);
         if (name_value != "" && h_value != "") {
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+            url: DIR+"/ajaxify/ajax_requests/message_requests.php",
             type: "POST",
             processData: false,
             contentType: false,

@@ -7,7 +7,7 @@
       <?php
         $glob = glob("images/stickers/*");
         foreach ($glob as $value) {
-          echo "<img src='/faiyaz/Instagram/$value' class='sti_img'>";
+          echo "<img src='". DIR ."/$value' class='sti_img'>";
         }
       ?>
     </div>

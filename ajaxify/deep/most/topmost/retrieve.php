@@ -1,6 +1,5 @@
 <?php
-  ob_start();
-  session_start();
+  include '../../../../config/declare.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +12,7 @@
 
 <?php
 
+  include_once '../../../../config/class/needy_class.php';
   include '../../../../config/class/universal.class.php';
   include '../../../../config/class/random.class.php';
 
@@ -20,17 +20,11 @@
   $random = new random;
 
   if (!isset($_GET['id']) || $universal->isLoggedIn()) {
-    header("Location: /faiyaz/Instagram/");
+    header("Location: ".DIR);
 
   } else {
 
-    try {
-      $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-      echo $e->getMessage();
-    }
-
+    $db = N::_DB();
     $id = $_GET['id'];
 
     $os = $random->getOS();
@@ -50,7 +44,7 @@
 
     $_SESSION['id'] = $id;
 
-    header("Location: /faiyaz/Instagram/");
+    header("Location: ".DIR);
 
   }
 

@@ -58,7 +58,7 @@
       </div>
       <div class="recomm_teaser padder inst">
         <span>Message <?php echo $universal->GETsDetails($get_id, "username"); ?> privately or create a group with <?php echo $universal->GETsDetails($get_id, "username"); ?>.</span>
-        <a href="/faiyaz/Instagram/messages" class="sec_btn">Message</a>
+        <a href="<?php echo DIR; ?>/messages" class="sec_btn">Message</a>
       </div>
     <?php } ?>
 
@@ -158,7 +158,7 @@
 
   $('.p_comments').on('click', function(e){
     var post = $(this).parent().data('postid');
-    window.location.href = "/faiyaz/Instagram/view_post/"+post;
+    window.location.href = DIR+"/view_post/"+post;
   });
 
   $('.post_end').on('click', function(e){
@@ -178,7 +178,7 @@
   $('.m_grps').description({extraTop: -20});
   $('.m_grps').on('click', function(e){
     var data = $(this).data('grp');
-    window.location.href = "/faiyaz/Instagram/groups/"+data;
+    window.location.href = DIR+"/groups/"+data;
   });
 
   $('.load_more_text').load_more_of_post({ type: "text" });

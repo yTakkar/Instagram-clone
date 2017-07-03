@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <base href="localhost/faiyaz/Instagram/" /> -->
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
     <meta name="keywords" content="<?php echo $keywords; ?>">

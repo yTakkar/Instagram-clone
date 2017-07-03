@@ -2,17 +2,14 @@
   class settings{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function settingsDefaults($id){
@@ -126,7 +123,7 @@
       $query = $this->db->prepare("SELECT * FROM block WHERE block_by = :by");
       $query->execute(array(":by" => $session));
       if ($query->rowCount() == 0) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
         <span>No blocked members</span></div>";
       } else if ($query->rowCount() > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
@@ -134,9 +131,9 @@
           $to = $row->block_to;
           $time = $row->time;
 
-          echo "<div class='blocked_users' data-blockid='{$to}'><img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($to)}' alt=''>
+          echo "<div class='blocked_users' data-blockid='{$to}'><img src='{$this->DIR}/{$avatar->DisplayAvatar($to)}' alt=''>
             <div class='blocked_u_content'><div class='blocked_info'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($to, "username")}' class='blocked_username'>{$universal->GETsDetails($to, 'username')}</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($to, "username")}' class='blocked_username'>{$universal->GETsDetails($to, 'username')}</a>
                 <span class='blocked_mutual'>{$mutual->eMutual($to)}</span></div>
               <a href='#' class='unblock sec_btn'>Unblock</a></div></div>";
 
@@ -181,7 +178,7 @@
       $query = $this->db->prepare("SELECT * FROM login WHERE user_id = :me ORDER BY login_id DESC");
       $query->execute(array(":me" => $session));
       if ($query->rowCount() == 0) {
-        echo "<div class='home_last_mssg login_det_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg login_det_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
         <span>You got no login details</span></div>";
       } else {
 

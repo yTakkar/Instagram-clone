@@ -35,8 +35,8 @@
 <div class="badshah">
 
   <div class="dev_div inst">
-    <img src="/faiyaz/Instagram/images/needs/tumblr_ne4s7eGNYj1snc5kxo1_500.gif" alt="">
-    <span>Developed by <a href="/faiyaz/Instagram/profile/takkar007">Faiyaz shaikh</a> currently 18 living in Dharavi, Mumbai.</span>
+    <img src="<?php echo DIR; ?>/images/needs/tumblr_ne4s7eGNYj1snc5kxo1_500.gif" alt="">
+    <span>Developed by <a href="<?php echo DIR; ?>/profile/takkar007">Faiyaz shaikh</a> currently 18 living in Dharavi, Mumbai.</span>
     <span>He's a full-stack developer and mostly writes code in JavaScript as it is his favourite language. And why he is programmer - 'coz he thinks programming languages can make anyone a magician!!</span>
     <span>Other Interests:</span>
     <span>Travelling</span>

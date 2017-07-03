@@ -94,7 +94,7 @@
 function delete__post(elem){
   // var post = elem.parent().parent().parent().parent().parent();
   $.ajax({
-    url     : "/faiyaz/Instagram/ajaxify/ajax_requests/post_requests.php",
+    url     : DIR+"/ajaxify/ajax_requests/post_requests.php",
     data    : {delete_post: elem.data('postid')},
     dataType: "JSON",
     success: function(data){
@@ -116,7 +116,7 @@ function delete__post(elem){
 function un__tag(elem){
   var tags_text = elem.find('.p_tags');
   $.ajax({
-    url     : "/faiyaz/Instagram/ajaxify/ajax_requests/taggings_requests.php",
+    url     : DIR+"/ajaxify/ajax_requests/taggings_requests.php",
     data    : {untag: elem.data('postid')},
     dataType: "JSON",
     success: function(data){
@@ -132,7 +132,7 @@ function un__tag(elem){
 
 function un__share(elem){
   $.ajax({
-    url  : "/faiyaz/Instagram/ajaxify/ajax_requests/share_requests.php",
+    url  : DIR+"/ajaxify/ajax_requests/share_requests.php",
     data : {unshare: elem.data('postid')},
     success: function(data){
       console.log(data);
@@ -148,7 +148,7 @@ function un__share(elem){
 function bl__ock(elem){
   var get = elem.data('getid');
   $.ajax({
-    url  : "/faiyaz/Instagram/ajaxify/ajax_requests/settings_requests.php",
+    url  : DIR+"/ajaxify/ajax_requests/settings_requests.php",
     data : {block: get},
     success: function(data){
       console.log(data);
@@ -163,7 +163,7 @@ function delete__comment(elem){
   var post = parent.parent().parent().data('postid');
   var id = parent.data('commentid');
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
     data: {
       delete_comment: id,
       post: post
@@ -185,7 +185,7 @@ function delete_all_mssg(elem, by){
     var con = elem.data('grp_con_id');
   }
   $.ajax({
-    url : "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url : DIR+"/ajaxify/ajax_requests/message_requests.php",
     data: {deleteAllMssg: con, dltAllBy: by},
     success: function(data){
       $('.my_mm_div').slideUp(100, function(){
@@ -204,7 +204,7 @@ function delete__con(elem, by){
   }
 
   $.ajax({
-    url : "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url : DIR+"/ajaxify/ajax_requests/message_requests.php",
     data: {dlt_con: con, dlt_con_by: by},
     success: function(data){
       console.log(data);
@@ -215,7 +215,7 @@ function delete__con(elem, by){
         $('.mssg_left').find('#cgrp_'+con).slideUp(100);
       }
 
-      var nothing = "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>Please select a conversation</span></div>";
+      var nothing = "<div class='home_last_mssg pro_last_mssg'><img src='"+ DIR +"/images/needs/large.jpg'><span>Please select a conversation</span></div>";
       $('.mssg_messages').slideUp(100);
       $('.mssg_right').html(nothing);
 
@@ -234,12 +234,12 @@ function delete__con(elem, by){
 function leave__ConGrp(elem){
   var grp = elem.parent().data('grp_con_id');
   $.ajax({
-    url : "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url : DIR+"/ajaxify/ajax_requests/message_requests.php",
     data: {leaveGrp: grp},
     success: function(data){
       console.log(data);
       $('.mssg_left').find('#cgrp_'+grp).slideUp(100);
-      var nothing = "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>Please select a conversation</span></div>";
+      var nothing = "<div class='home_last_mssg pro_last_mssg'><img src='"+ DIR +"/images/needs/large.jpg'><span>Please select a conversation</span></div>";
       $('.mssg_messages').slideUp(100);
       $('.mssg_right').html(nothing);
       location.reload();
@@ -253,7 +253,7 @@ function remove__GrpMem(elem){
   var name = elem.parent().data('username');
   elem.addClass('sec_btn_disabled');
   $.ajax({
-    url     : "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url     : DIR+"/ajaxify/ajax_requests/message_requests.php",
     data    : {removeGrpMem: grp, removeGrpId: user},
     dataType: "JSON",
     beforeSend: function(){
@@ -269,18 +269,18 @@ function remove__GrpMem(elem){
 
 function dlt__grp(elem){
   $.ajax({
-    url : "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+    url : DIR+"/ajaxify/ajax_requests/groups_requests.php",
     data: {dltGrp: $('.user_info').data('grp')},
     success: function(data){
       console.log(data);
-      window.location.href = "/faiyaz/Instagram/";
+      window.location.href = DIR;
     }
   });
 }
 
 function rem__mem(elem){
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
     data: {
       remMem: elem.data('member'),
       remG: $('.user_info').data('grp')
@@ -303,14 +303,14 @@ function dlt__acc(el){
   var value = input.val();
 
   $.ajax({
-    url     : "/faiyaz/Instagram/ajaxify/ajax_requests/settings_requests.php",
+    url     : DIR+"/ajaxify/ajax_requests/settings_requests.php",
     data    : {dltAcc: value},
     method  : "POST",
     dataType: "JSON",
     success : function(data){
       console.log(data);
       if (data.dlt == "yes") {
-        window.location.href = "/faiyaz/Instagram/ajaxify/dlt/delete_acc.php";
+        window.location.href = DIR+"/ajaxify/dlt/delete_acc.php";
       } else {
         $('.notify').notify({ value: data.dlt });
       }
@@ -322,7 +322,7 @@ function dlt__acc(el){
 function change__grp__admin(){
   var grp = $('.user_info').data('grp');
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
     data: { selectForGrpAdmin: grp },
     beforeSend: function(){
       $('.display_content').html("<div class='spinner'><span></span><span></span><span></span></div>");
@@ -340,7 +340,7 @@ function change__grp__admin(){
 
       function cgaFinal(user, post){
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/groups_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/groups_requests.php",
           dataType: "JSON",
           method: "GET",
           data: {
@@ -353,7 +353,7 @@ function change__grp__admin(){
             $('.overlay').hide();
             blur.removeBlur();
             $('.display').fadeOut('fast');
-            if (data.mssg == "ok") { window.location.href = "/faiyaz/Instagram/groups/"+grp; }
+            if (data.mssg == "ok") { window.location.href = DIR+"/groups/"+grp; }
           }
         });
       }
@@ -375,7 +375,7 @@ function change__grp__admin(){
 function change__con__grp__admin(elem){
   var grp = elem.data('grp');
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/message_requests.php",
     data: { selectForGrpConAdmin: grp },
     beforeSend: function(){
       $('.display_content').html("<div class='spinner'><span></span><span></span><span></span></div>");
@@ -393,7 +393,7 @@ function change__con__grp__admin(elem){
 
       function cgcaFinal(user, post){
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/message_requests.php",
           dataType: "JSON",
           method: "GET",
           data: {
@@ -435,7 +435,7 @@ function rem__from__fav(el){
   var parent = el.parent().parent();
   var getid = $('.user_info').data('userid');
   $.ajax({
-    url: "/faiyaz/Instagram/ajaxify/ajax_requests/fav_requests.php",
+    url: DIR+"/ajaxify/ajax_requests/fav_requests.php",
     method: "GET",
     dataType: "JSON",
     data: { remFav: user, getId: getid },

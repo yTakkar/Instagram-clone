@@ -66,7 +66,7 @@
 
     function fetch(elem){
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/explore/"+elem+".php",
+        url: DIR+"/ajaxify/explore/"+elem+".php",
         method: "GET",
         cache: false,
         beforeSend: function(e){

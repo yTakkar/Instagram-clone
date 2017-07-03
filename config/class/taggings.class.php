@@ -2,17 +2,14 @@
   class taggings{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function getTaggings($post){
@@ -42,14 +39,14 @@
       $query = $this->db->prepare("SELECT taggings_id FROM taggings WHERE post_id = :post ORDER BY tagging_id DESC");
       $query->execute(array(":post" => $post));
       if ($query->rowCount() == 0) {
-        echo "<div class='no_display'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>";
+        echo "<div class='no_display'><img src='{$this->DIR}/images/needs/large.jpg'></div>";
       } else if ($query->rowCount() != 0) {
         while ($fetch = $query->fetch(PDO::FETCH_OBJ)) {
           $userid = $fetch->taggings_id;
           echo "<div class='display_items' data-getid='$userid'><div class='d_i_img'>";
-          echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
+          echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($userid) ."' alt='profile'>";
           echo "</div><div class='d_i_content'><div class='d_i_info'>";
-          echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
+          echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='d_i_username username'>". $universal->nameShortener($universal->GETsDetails($userid, "username"), 20) ."</a>";
           echo "<span class='d_i_name'>". $universal->nameShortener($universal->GETsDetails($userid, "firstname")." ".$universal->GETsDetails($userid, "surname"), 20) ."</span></div><div class='d_i_act display_ff' data-getid='$userid'>";
 
           $mquery = $this->db->prepare("SELECT user_id FROM post WHERE post_id = :post LIMIT 1");
@@ -61,7 +58,7 @@
             echo "<a href='#' class='sec_btn delete_tag' data-postid='{$post}'>Remove tag</a>";
           } else if ($session != $user) {
             if ($session == $userid) {
-              echo "<a href='/faiyaz/Instagram/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
+              echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($userid, "username") ."' class='sec_btn '>Profile</a>";
             } else {
               if ($follow->isFollowing($userid)) {
                 echo "<a href='#' class='pri_btn display_unfollow unfollow'>Unfollow</a>";

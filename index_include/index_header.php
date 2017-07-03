@@ -29,6 +29,6 @@
         <a href="login" class="">Login</a>
         <a href="about">About</a>
         <a href="developer">Developer</a>
-        <a href="/faiyaz/Instagram/help">Help</a>
+        <a href="<?php echo DIR; ?>/help">Help</a>
       </div>
     </div>

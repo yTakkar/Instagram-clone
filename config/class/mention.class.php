@@ -1,24 +1,21 @@
 <?php
-  class mention{
+  class mention_class{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function mention($str){
       $str = trim($str);
       $regex = "/@+([^ <>]+)/";
-      $str = preg_replace($regex, "<a class="."hashtag"." href="."/faiyaz/Instagram/profile/$1".">$0</a>", $str);
+      $str = preg_replace($regex, "<a class="."hashtag"." href="."{$this->DIR}/profile/$1".">$0</a>", $str);
       return $str;
 
       // $query = $this->db->prepare("SELECT username FROM users WHERE username = :user");

@@ -1,3 +1,5 @@
+var DIR = "/faiyaz/Instagram";
+
 //FUNCTION FOR LINK INDICATOR WHEN CLICKING ON DIFFERENT PAGES FROM FIXED NAVIGATION
 function LinkIndicator(elem){
   $('.m_n_a').removeClass('active');
@@ -266,7 +268,7 @@ function copyTextToClipboard(text){
       elem.on('mouseover', function(e){
 
         if(settings.text == null){
-           var value = elem.data('description');
+          var value = elem.data('description');
         } else if (settings.text == "innerHTML"){
           var value = elem.text();
         }
@@ -777,18 +779,18 @@ function copyTextToClipboard(text){
       apply.on('click', function(e){
         e.preventDefault();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/change_avatar.php",
+          url: DIR+"/ajaxify/ajax_requests/change_avatar.php",
           method: "GET",
           data: {change_avatar: src, change_when: settings.when, change_grp: elem.data('grp')},
           success: function(data){
             if (data != "") {
 
               if (settings.when == "user") {
-                $('.pro_avatar > img').prop('src', '/faiyaz/Instagram/'+data);
-                $('.sp > img').prop('src', '/faiyaz/Instagram/'+data);
-                $('.v_p_img > img').prop('src', '/faiyaz/Instagram/'+data);
+                $('.pro_avatar > img').prop('src', DIR+'/'+data);
+                $('.sp > img').prop('src', DIR+'/'+data);
+                $('.v_p_img > img').prop('src', DIR+'/'+data);
               } else if (settings.when == "group") {
-                $('.pro_avatar > img').prop('src', '/faiyaz/Instagram/'+data);
+                $('.pro_avatar > img').prop('src', DIR+'/'+data);
               }
 
               $('.notify').notify({ value: 'Avatar changed!' });
@@ -912,12 +914,12 @@ function copyTextToClipboard(text){
                 success: function(data){
 
                   if (settings.when == "user") {
-                    $('.pro_avatar > img').prop('src', '/faiyaz/Instagram/users/'+data);
-                    $('.sp > img').prop('src', '/faiyaz/Instagram/users/'+data);
-                    $('.v_p_img > img').prop('src', '/faiyaz/Instagram/users/'+data);
+                    $('.pro_avatar > img').prop('src', DIR+'/users/'+data);
+                    $('.sp > img').prop('src', DIR+'/users/'+data);
+                    $('.v_p_img > img').prop('src', DIR+'/users/'+data);
 
                   } else if (settings.when == "group") {
-                    $('.pro_avatar > img').prop('src', '/faiyaz/Instagram/group/'+data);
+                    $('.pro_avatar > img').prop('src', DIR+'/group/'+data);
                   }
 
                   un.hide();
@@ -972,7 +974,7 @@ function getFF(data){
       elem.on('click', function(e){
         e.preventDefault();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/follow_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/follow_requests.php",
           method: "GET",
           dataType: "json",
           data: {follow: to, updateid: update_id},
@@ -1020,7 +1022,7 @@ function getFF(data){
       elem.on('click', function(e){
         e.preventDefault();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/follow_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/follow_requests.php",
           method: "GET",
           dataType: "json",
           data: {unfollow: to, updateid: update_id},
@@ -1058,7 +1060,7 @@ function getFF(data){
       var post = $(this).parent().parent().parent().parent().parent();
       var user = post.find('.p_i_1 > a').text();
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/follow_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/follow_requests.php",
         data: {simple_unfollow: user},
         success: function(data){
           console.log(data);
@@ -1091,7 +1093,7 @@ function getFF(data){
 
       elem.on('click', function(e){
         $.ajax({
-          url: "../ajaxify/ajax_requests/follow_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/follow_requests.php",
           method: "GET",
           data: {followers: userid},
           beforeSend: function(){
@@ -1107,7 +1109,7 @@ function getFF(data){
             $('.display').displayOptions({
               title: info,
               separateLink: true,
-              separateLinkURL: "/faiyaz/Instagram/profile/"+username+"?ask=followers"
+              separateLinkURL: DIR+"/profile/"+username+"?ask=followers"
             });
           }
         });
@@ -1137,7 +1139,7 @@ function getFF(data){
 
       elem.on('click', function(e){
         $.ajax({
-          url: "../ajaxify/ajax_requests/follow_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/follow_requests.php",
           method: "GET",
           data: {followings: userid},
           beforeSend: function(){
@@ -1153,7 +1155,7 @@ function getFF(data){
             $('.display').displayOptions({
               title: info,
               separateLink: true,
-              separateLinkURL: "/faiyaz/Instagram/profile/"+username+"?ask=followings"
+              separateLinkURL: DIR+"/profile/"+username+"?ask=followings"
             });
           }
         });
@@ -1195,12 +1197,13 @@ function getFF(data){
     info.text(settings.title);
 
     if (settings.separateLink == true) {
-      done.before("<a href='"+ settings.separateLinkURL +"' class='sec_btn display_separate'>Separate Link</a>");
+      done.before("<a href='"+ settings.separateLinkURL +"' class='sec_btn display_separate'>Open separately</a>");
     }
 
     blur.addBlur();
     overlay.show();
     elem.fadeIn('fast');
+    done.focus();
     // elem.show().addClass('animated slideInDown');
   }
 }(jQuery));
@@ -1388,7 +1391,7 @@ function getFF(data){
         var value = hidden.val();
         if (value != "") {
           $.ajax({
-            url: "/faiyaz/Instagram/ajaxify/ajax_requests/message_requests.php",
+            url: DIR+"/ajaxify/ajax_requests/message_requests.php",
             data: data,
             dataType: "JSON",
             beforeSend: function(){
@@ -1397,7 +1400,7 @@ function getFF(data){
             success: function(data){
               console.log(data);
               stickerCommonSuccess();
-              var ht = "<div class='m_m_divs my_mm_div'><div class='m_m my_mm'><img src='/faiyaz/Instagram/"+ data.sticker +"' class='m_m_sticker'></div><span class='m_m_time'>Just now</span></div>";
+              var ht = "<div class='m_m_divs my_mm_div'><div class='m_m my_mm'><img src='"+ DIR +"/"+ data.sticker +"' class='m_m_sticker'></div><span class='m_m_time'>Just now</span></div>";
               $('.mssg_helper').before(ht);
               $('.sti_done').off('click');
               sticker.removeClass('sti_img_active');
@@ -1443,7 +1446,7 @@ function getFF(data){
           var value = hidden.val();
           if (value != "") {
             $.ajax({
-              url: "/faiyaz/Instagram/ajaxify/ajax_requests/post_comment_requests.php",
+              url: DIR+"/ajaxify/ajax_requests/post_comment_requests.php",
               data: {
                 commSticker: value,
                 commStickerPost: postid
@@ -1597,7 +1600,7 @@ function getFF(data){
         update.addClass('a_disabled');
         $('.overlay-2').show();
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/edit_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/edit_requests.php",
           method: "POST",
           dataType: "JSON",
           data: {
@@ -1634,7 +1637,7 @@ function getFF(data){
             $('.edit_info > span').text("@"+data.username);
             $('.profile').text("@"+nameShortener(data.username, 20));
             $('.sp_span').text(nameShortener(data.username,20));
-            $('.sp').attr('href', '/faiyaz/Instagram/profile/'+data.username);
+            $('.sp').attr('href', DIR+'/profile/'+data.username);
           }
         });
 
@@ -1736,7 +1739,7 @@ function s(data){
 
   $('.p_comments').on('click', function(e){
     var post = $(this).parent().data('postid');
-    window.location.href = "/faiyaz/Instagram/view_post/"+post;
+    window.location.href = DIR+"/view_post/"+post;
   });
 
   $('.post_end').on('click', function(e){
@@ -1749,7 +1752,7 @@ function s(data){
   $('.unfollow').unfollow({ update: true });
   $('.home_recomm').HomeSuggestions();
   if ($('.recomm_main').children().length == 0) {
-    $('.recomm_main').html("<div class='home_last_mssg suggest_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'></div>");
+    $('.recomm_main').html("<div class='home_last_mssg suggest_last_mssg'><img src='"+ DIR +"/images/needs/large.jpg'></div>");
   }
   $('.load_more_text').load_more_of_post({ type: "text" });
 }
@@ -1769,7 +1772,7 @@ function s(data){
 
       var fetchAndInsert = function(href){
         $.ajax({
-          url: '/faiyaz/Instagram/ajaxify/profile_sections/'+href.split('=').pop(),
+          url: DIR+'/ajaxify/profile_sections/'+href.split('=').pop(),
           method: "GET",
           data: {u: username},
           beforeSend: function(e){
@@ -1852,7 +1855,7 @@ function s(data){
           $('.img_s_bottom').show();
           show.find('.img_s_window')
             .show()
-            .attr('href', '/faiyaz/Instagram/view_post/'+elem.data('postid'));
+            .attr('href', DIR+'/view_post/'+elem.data('postid'));
 
         } else if (settings.info = "no_post_yes") {
           $('.img_s_by')
@@ -1901,7 +1904,7 @@ function s(data){
         e.preventDefault();
 
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/recommend_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/recommend_requests.php",
           method: "POST",
           data: {getFollowings: get},
           beforeSend: function(){
@@ -1919,7 +1922,7 @@ function s(data){
 
             function recommendFinal(user, get){
               $.ajax({
-                url: "/faiyaz/Instagram/ajaxify/ajax_requests/recommend_requests.php",
+                url: DIR+"/ajaxify/ajax_requests/recommend_requests.php",
                 dataType: "JSON",
                 data: {
                   recommend: user,
@@ -1998,13 +2001,13 @@ function s(data){
         var parent = $(this).parent().parent();
         var blockid = parent.data('blockid');
         $.ajax({
-          url    : "/faiyaz/Instagram/ajaxify/ajax_requests/settings_requests.php",
+          url    : DIR+"/ajaxify/ajax_requests/settings_requests.php",
           data   : {unblock: blockid},
           success: function(data){
             console.log(data);
             parent.slideUp('fast');
             if($('.blocked_users').length == 1){
-              var ht = "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>No blocked members</span></div>";
+              var ht = "<div class='home_last_mssg pro_last_mssg'><img src='"+ DIR +"/images/needs/large.jpg'><span>No blocked members</span></div>";
               setTimeout(function () {
                 $('.block_header').after(ht).hide().slideDown("fast");
               }, 300);
@@ -2030,7 +2033,7 @@ function s(data){
 
       setInterval(function () {
         $.ajax({
-          url     : "/faiyaz/Instagram/ajaxify/ajax_requests/notifications_requests.php",
+          url     : DIR+"/ajaxify/ajax_requests/notifications_requests.php",
           method  : "GET",
           dataType: "JSON",
           data    : {getUnread: "Faiyaz"},
@@ -2053,7 +2056,7 @@ function s(data){
     var elem = this;
     elem.on('click', function(e){
       $.ajax({
-        url    : "/faiyaz/Instagram/ajaxify/ajax_requests/notifications_requests.php",
+        url    : DIR+"/ajaxify/ajax_requests/notifications_requests.php",
         method : "GET",
         data   : {clearAll: "Faiyaz"},
         success: function(data){
@@ -2064,7 +2067,7 @@ function s(data){
           }, 250);
           $('.noti_count').text('No notifications');
           $('.clear_noti').css('display', 'none');
-          $('.notifications_header').after("<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>You got no notifications</span></div>").hide().slideDown("fast");
+          $('.notifications_header').after("<div class='home_last_mssg pro_last_mssg'><img src='"+ DIR +"/images/needs/large.jpg'><span>You got no notifications</span></div>").hide().slideDown("fast");
           setTimeout(function () { location.reload(); }, 500);
         }
       });
@@ -2086,7 +2089,7 @@ function s(data){
     refresh.on('click', function(e){
       e.preventDefault();
       $.ajax({
-        url : "/faiyaz/Instagram/ajaxify/ajax_requests/suggestions_requests.php",
+        url : DIR+"/ajaxify/ajax_requests/suggestions_requests.php",
         data: {Homerefresh: "yes"},
         // beforeSend: function(){
         //   elem.find('.recomm_main').html('<div class="spinner home_recomm_"><span></span><span></span><span></span></div>');
@@ -2116,7 +2119,7 @@ function s(data){
 
       var fetchAndInsert = function(href){
         $.ajax({
-          url: '/faiyaz/Instagram/ajaxify/explore/'+href.split('=').pop(),
+          url: DIR+'/ajaxify/explore/'+href.split('=').pop(),
           method: "GET",
           beforeSend: function(e){
             $('.exp_hmm').html('<div class="spinner"><span></span><span></span><span></span></div>');
@@ -2192,7 +2195,7 @@ function s(data){
 
       } else if (value != "") {
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/search_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/search_requests.php",
           data: {searchInstagram: value},
           method: "POST",
           beforeSend: function(){
@@ -2224,7 +2227,7 @@ function s(data){
         e.preventDefault();
         var get = elem.data('getid');
         $.ajax({
-          url: "/faiyaz/Instagram/ajaxify/ajax_requests/fav_requests.php",
+          url: DIR+"/ajaxify/ajax_requests/fav_requests.php",
           data: {userFav: get},
           success: function(data){
             console.log(data);
@@ -2296,7 +2299,7 @@ function notificationFeeds(){
     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
       $('.feed_inserted').html('Looking for more notifications..');
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/notifications_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/notifications_requests.php",
         data: {notiFeeds: $('.noti:last').data('notiid')},
         beforeSend: function(){
           $('.feed_inserted').html('Looking for more notifications..');
@@ -2322,7 +2325,7 @@ function hashtagFeeds(){
     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
       $('.feed_inserted').html('Looking for more posts..');
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/hashtag_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/hashtag_requests.php",
         data: {
           hahstagFeeds: $('.posts:last').data('hashid'),
           hashtag: $('.user_info').data('tag')
@@ -2356,7 +2359,7 @@ function followersFeeds(when){
       }
       $('.feed_inserted').html('Looking for more followers..');
       $.ajax({
-        url: "/faiyaz/Instagram/ajaxify/ajax_requests/follow_requests.php",
+        url: DIR+"/ajaxify/ajax_requests/follow_requests.php",
         data: data,
         beforeSend: function(){
           $('.feed_inserted').html('Looking for more followers..');

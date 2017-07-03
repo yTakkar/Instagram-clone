@@ -35,7 +35,7 @@
 <div class="badshah">
 
   <div class="help_div">
-    <img src="/faiyaz/Instagram/images/needs/empty_screen_face-905ec56ff4d5ef0004450379807fd170.gif" alt="">
+    <img src="<?php echo DIR; ?>/images/needs/empty_screen_face-905ec56ff4d5ef0004450379807fd170.gif" alt="">
   </div>
 
 </div>

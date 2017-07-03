@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  include '../../config/declare.php';
+  include_once '../../config/class/needy_class.php';
   include '../../config/class/universal.class.php';
   include '../../config/class/avatar.class.php';
 
@@ -10,7 +11,7 @@
 
 <div class="i_p_top p_top">
   <div class="i_p_info p_info">
-    <img src="/faiyaz/Instagram/<?php echo $avatar->DisplayAvatar($session); ?>" alt="Your avatar">
+    <img src="<?php echo DIR; ?>/<?php echo $avatar->DisplayAvatar($session); ?>" alt="Your avatar">
     <span><?php echo $universal->GETsDetails($session, "username"); ?></span>
     <span class="loc_text"></span>
   </div>
@@ -33,7 +34,7 @@
         <span></span><span></span><span></span>
       </div>
       <div class="link_t_img">
-        <img src="/faiyaz/Instagram/Images/Default_Link_Cover/world.jpg" alt="">
+        <img src="<?php echo DIR; ?>/Images/Default_Link_Cover/world.jpg" alt="">
       </div>
       <div class="link_t_info">
         <span class="title">HTML5 Video Player Programming</span>

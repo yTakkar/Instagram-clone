@@ -28,7 +28,7 @@
       if ($universal->MeOrNot($get_id)){
         $recommend->profileRecommends($get_id);
       } else if ($universal->MeOrNot($get_id) == false) {
-        echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+        echo "<div class='home_last_mssg pro_last_mssg'><img src='". DIR ."/images/needs/large.jpg'>
         <span>You should recommend yourself the most</span></div>";
       }
      ?>

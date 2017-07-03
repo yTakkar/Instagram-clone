@@ -11,7 +11,7 @@
       <?php
         $images = glob('images/avatars/*');
         foreach ($images as $key => $value) {
-          echo "<img src='/faiyaz/Instagram/$value' class='pro_ava_avts'>";
+          echo "<img src='". DIR ."/$value' class='pro_ava_avts'>";
         }
       ?>
     </div>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="pro_pre_img">
-          <img src="/faiyaz/Instagram/images/needs/17455538fd839328f5606d284d0c360d.jpg" alt="">
+          <img src="<?php echo DIR; ?>/images/needs/17455538fd839328f5606d284d0c360d.jpg" alt="">
         </div>
         <div class="pro_pre_bottom">
           <a href="#" class="sec_btn pro_pre_cancel">Cancel</a>
@@ -44,7 +44,7 @@
 
 <div class="pro_crop model-shadow">
   <div class="pro_crop_img">
-    <img src="/faiyaz/Instagram/images/needs/17455538fd839328f5606d284d0c360d.jpg" alt="" class="crop_img">
+    <img src="<?php echo DIR; ?>/images/needs/17455538fd839328f5606d284d0c360d.jpg" alt="" class="crop_img">
     <div class="pro_crop_tool"></div>
   </div>
   <div class="pro_crop_act">

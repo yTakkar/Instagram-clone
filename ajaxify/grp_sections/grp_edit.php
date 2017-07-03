@@ -1,4 +1,4 @@
-<?php include '../../config/declare.php'; ?>
+<?php echo DIR; ?><?php include '../../config/declare.php'; ?>
 
 <!-- a universal file that has all the classes included -->
 <?php include '../../config/classesGetter.php'; ?>
@@ -22,7 +22,7 @@
 <div class="senapati pro_senapati a_m_senapti">
 
   <?php if ($groups->isGrpAdmin($grp, $session) == false){
-    echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>You're not the admin of this group to edit.</span></div>";
+    echo "<div class='home_last_mssg pro_last_mssg'><img src='". DIR ."/images/needs/large.jpg'><span>You're not the admin of this group to edit.</span></div>";
   } else { ?>
 
   <div class="srajkumar grp_srajkumar">
@@ -31,7 +31,7 @@
       <span>To change the avatar hover over the avatar.</span><br>
       <span>You can also add members to this group.</span>
       <div class="grp_c_we">
-        <a href="/faiyaz/Instagram/groups/<?php echo $grp; ?>?ask=grp_add_members" class="sec_btn">Add</a>
+        <a href="<?php echo DIR; ?>/groups/<?php echo $grp; ?>?ask=grp_add_members" class="sec_btn">Add</a>
       </div>
     </div>
 

@@ -2,17 +2,14 @@
   class notifications{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function notiCount(){
@@ -106,7 +103,7 @@
       $count = $query->rowCount();
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg pro_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          echo "<div class='home_last_mssg pro_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'>
           <span>You got no notifications</span></div>";
         }
       } else if ($count > 0) {
@@ -122,11 +119,11 @@
           if ($type == "follow") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
             if ($way == "direct") {
-              echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+              echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
             } else if ($way == "ajax") {
-              echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+              echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
             }
-            echo "<div class='noti_left'><a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+            echo "<div class='noti_left'><a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
               <span>started following you</span><span class='noti_time'>{$Time->timeAgo($time)}</span></div>
             <div class='noti_right follow_noti_right' data-getid='{$by}'>";
             if ($follow->isFollowing($by)) {
@@ -139,12 +136,12 @@
           } else if ($type == "recommend") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
             if ($way == "direct") {
-              echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+              echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
             } else if ($way == "ajax") {
-              echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+              echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
             }
-            echo "<div class='noti_left'><a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-            <span>recommended <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($of, "username")}' class='noti_bold' title='{$universal->GETsDetails($of, "username")}'>". $universal->nameShortener($universal->GETsDetails($of, "username"), 20) ."</a> to you</span>
+            echo "<div class='noti_left'><a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+            <span>recommended <a href='{$this->DIR}/profile/{$universal->GETsDetails($of, "username")}' class='noti_bold' title='{$universal->GETsDetails($of, "username")}'>". $universal->nameShortener($universal->GETsDetails($of, "username"), 20) ."</a> to you</span>
             <span class='noti_time'>{$Time->timeAgo($time)}</span></div>
             <div class='noti_right follow_noti_right' data-getid='{$by}'>";
             if ($follow->isFollowing($of)) {
@@ -157,209 +154,209 @@
           } else if ($type == "like") {
               echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
               if ($way == "direct") {
-                echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
               } else if ($way == "ajax") {
-                echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
               }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>liked your <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>post</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>liked your <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>post</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "comment") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>commented on your <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>post</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>commented on your <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>post</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "shareto") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>shared you a <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>post</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>shared you a <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>post</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if($type == "shareyour"){
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>shared your <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>post</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>shared your <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>post</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "commentLike") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
                   <span>liked your <span class='noti_bold'>comment</span></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "tag") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>tagged you in a <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>post</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>tagged you in a <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>post</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "post_mention") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>mentioned you in a <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>post</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>mentioned you in a <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>post</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "comment_mention") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>mentioned you in a <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_bold'>comment</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>mentioned you in a <a href='{$this->DIR}/view_post/{$postid}' class='noti_bold'>comment</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
+                  <a href='{$this->DIR}/view_post/{$postid}' class='noti_ff sec_btn'>View post</a>
                 </div></div>";
 
           } else if ($type == "grp_con") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>added you in conversation <a href='/faiyaz/Instagram/messages' class='noti_bold' title='{$message->getGrpCon($postid, "name")}'>". $universal->nameShortener($message->getGrpCon($postid, "name"), 20) ."</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>added you in conversation <a href='{$this->DIR}/messages' class='noti_bold' title='{$message->getGrpCon($postid, "name")}'>". $universal->nameShortener($message->getGrpCon($postid, "name"), 20) ."</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/messages' class='noti_ff sec_btn'>Open group</a>
+                  <a href='{$this->DIR}/messages' class='noti_ff sec_btn'>Open group</a>
                 </div></div>";
 
           } else if ($type == "grp_add") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>added you in <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_bold' title='{$group->GETgrp($postid, "grp_name")}'>". $universal->nameShortener($group->GETgrp($postid, "grp_name"), 20) ."</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>added you in <a href='{$this->DIR}/groups/{$postid}' class='noti_bold' title='{$group->GETgrp($postid, "grp_name")}'>". $universal->nameShortener($group->GETgrp($postid, "grp_name"), 20) ."</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
+                  <a href='{$this->DIR}/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
                 </div></div>";
 
           } else if ($type == "inviteGrp") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>invited you to <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_bold' title='{$group->GETgrp($postid, "grp_name")}'>". $universal->nameShortener($group->GETgrp($postid, "grp_name"), 20) ."</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>invited you to <a href='{$this->DIR}/groups/{$postid}' class='noti_bold' title='{$group->GETgrp($postid, "grp_name")}'>". $universal->nameShortener($group->GETgrp($postid, "grp_name"), 20) ."</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
+                  <a href='{$this->DIR}/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
                 </div></div>";
 
           } else if ($type == "changeGrpAdmin") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>made you admin of <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_bold' title='{$group->GETgrp($postid, "grp_name")}'>". $universal->nameShortener($group->GETgrp($postid, "grp_name"), 20) ."</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>made you admin of <a href='{$this->DIR}/groups/{$postid}' class='noti_bold' title='{$group->GETgrp($postid, "grp_name")}'>". $universal->nameShortener($group->GETgrp($postid, "grp_name"), 20) ."</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
+                  <a href='{$this->DIR}/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
                 </div></div>";
 
           } else if ($type == "changeGrpConAdmin") {
             echo "<div class='noti follow_noti' data-notiid='{$nid}'>";
                 if ($way == "direct") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->GETsAvatar($by)}' alt='' class='noti_avatar'>";
                 } else if ($way == "ajax") {
-                  echo "<img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
+                  echo "<img src='{$this->DIR}/{$avatar->DisplayAvatar($by)}' alt='' class='noti_avatar'>";
                 }
                 echo "<div class='noti_left'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
-                  <span>made you admin of conversation <a href='/faiyaz/Instagram/messages' class='noti_bold' title='{$message->getGrpCon($postid, "name")}'>". $universal->nameShortener($message->getGrpCon($postid, "name"), 20) ."</a></span>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($by, "username")}' class='noti_bold noti_username' title='{$universal->GETsDetails($by, "username")}'>". $universal->nameShortener($universal->GETsDetails($by, "username"), 20) ."</a>
+                  <span>made you admin of conversation <a href='{$this->DIR}/messages' class='noti_bold' title='{$message->getGrpCon($postid, "name")}'>". $universal->nameShortener($message->getGrpCon($postid, "name"), 20) ."</a></span>
                   <span class='noti_time'>{$Time->timeAgo($time)}</span>
                 </div>
                 <div class='noti_right follow_noti_right'>
-                  <a href='/faiyaz/Instagram/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
+                  <a href='{$this->DIR}/groups/{$postid}' class='noti_ff sec_btn'>Open group</a>
                 </div></div>";
           }
 

@@ -1,18 +1,12 @@
 <?php
+
   class Avatar{
 
     protected $db;
-    protected $e;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $ee = $this->e;
-      } catch (PDOException $ee) {
-        echo $ee->getMessage();
-      }
+      $db = N::_DB();
+      $this->db = $db;
     }
 
     public function SESSIONsAvatar(){
@@ -184,5 +178,5 @@
     $src = glob("users/$get/avatar/*");
     echo $src[0];
   }
-  
+
 ?>

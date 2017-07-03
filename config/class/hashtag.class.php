@@ -2,17 +2,14 @@
   class hashtag{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function toHashtag($str, $of){
@@ -22,7 +19,7 @@
 
       if ($t != "") {
         if ($of == "post") {
-          $str = preg_replace($regex, '<a class="hashtag" href="/faiyaz/Instagram/hashtag?tag=$1">$0</a>', $str);
+          $str = preg_replace($regex, '<a class="hashtag" href="'. $this->DIR .'/hashtag?tag=$1">$0</a>', $str);
         } else if ($of == "comment") {
           $str = preg_replace($regex, "<span class='hashtag'>$0</span>", $str);
         }
@@ -46,7 +43,7 @@
 
             if($t != ""){
               if($of == "post"){
-                $newString .= "<a class='hashtag' href='/faiyaz/Instagram/hashtag?tag={$t}'>{$each}</a> ";
+                $newString .= "<a class='hashtag' href='{$this->DIR}/hashtag?tag={$t}'>{$each}</a> ";
               } else if($of == "comment") {
                 $newString .= "<span class='hashtag'>{$each}</span>";
               }
@@ -111,7 +108,7 @@
         echo " recent hashtags</span></div><div class='my_h_main'>";
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $hashtag = $row->hashtag;
-          echo "<a href='/faiyaz/Instagram/hashtag?tag=". substr($hashtag, 1) ."'>{$hashtag}</a>";
+          echo "<a href='{$this->DIR}/hashtag?tag=". substr($hashtag, 1) ."'>{$hashtag}</a>";
         }
         echo "</div></div>";
       }
@@ -127,7 +124,7 @@
         <div class='my_h_main'>";
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
           $hashtag = $row->hashtag;
-          echo "<a href='/faiyaz/Instagram/hashtag?tag=". substr($hashtag, 1) ."'>{$hashtag}</a>";
+          echo "<a href='{$this->DIR}/hashtag?tag=". substr($hashtag, 1) ."'>{$hashtag}</a>";
         }
         echo "</div></div>";
       }
@@ -174,7 +171,7 @@
       $count = $query->rowCount();
       if ($count == 0) {
         if ($way == "direct") {
-          echo "<div class='home_last_mssg hashtag_last_mssg'><img src='/faiyaz/Instagram/images/needs/large.jpg'><span>No tagged posts found</span></div>";
+          echo "<div class='home_last_mssg hashtag_last_mssg'><img src='{$this->DIR}/images/needs/large.jpg'><span>No tagged posts found</span></div>";
         }
       } else if ($count > 0) {
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
@@ -190,17 +187,17 @@
 
           echo "<div class='posts inst' data-postid='{$post_id}' data-type='{$type}' data-hashid='{$hashid}'><div class='p_i'><div class='p_i_img'>";
           if ($way == "direct") {
-            echo "<img src='/faiyaz/Instagram/". $avatar->GETsAvatar($user_id) ."' alt=''>";
+            echo "<img src='{$this->DIR}/". $avatar->GETsAvatar($user_id) ."' alt=''>";
           } else if ($way == "ajax") {
-            echo "<img src='/faiyaz/Instagram/". $avatar->DisplayAvatar($user_id) ."' alt=''>";
+            echo "<img src='{$this->DIR}/". $avatar->DisplayAvatar($user_id) ."' alt=''>";
           }
 
           echo "</div><div class='p_i_1 ";
           if($of == "group"){ echo "grp_p_i_1"; }
           echo "'>";
-          echo "<a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($user_id, "username")}'>{$universal->GETsDetails($user_id, "username")}</a>";
+          echo "<a href='{$this->DIR}/profile/{$universal->GETsDetails($user_id, "username")}'>{$universal->GETsDetails($user_id, "username")}</a>";
           if ($of == "group") {
-            echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='/faiyaz/Instagram/groups/{$grp}' class='to_grp_name'>{$groups->GETgrp($grp, "grp_name")}</a>";
+            echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='{$this->DIR}/groups/{$grp}' class='to_grp_name'>{$groups->GETgrp($grp, "grp_name")}</a>";
           }
           echo "<span>";
           echo $Post->addressN($address, $user_id);
@@ -210,7 +207,7 @@
           echo "<span class='p_tags'>". $taggings->getTaggings($post_id) ."</span>";
           echo "<span class='p_comm'>". $share->getShares($post_id) ."</span>";
           echo "<span class='exp_p_menu'><i class='material-icons'>expand_more</i></span></div></div><div class='options p_options'><ul>";
-          echo "<li><a href='/faiyaz/Instagram/view_post/{$post_id}'>Open</a></li>";
+          echo "<li><a href='{$this->DIR}/view_post/{$post_id}'>Open</a></li>";
           if ($universal->MeOrNot($user_id)) {
             echo "<li><a href='#' class='edit_post'>Edit post</li>";
           }
@@ -231,7 +228,7 @@
           if ($share->AmIsharedBy($post_id)) {
             echo "<li><a href='#' class='un__share'>Unshare</a></li>";
           }
-          echo "<li><a href='#' data-link='localhost/faiyaz/Instagram/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
+          echo "<li><a href='#' data-link='{$universal->urlChecker($this->DIR)}/view_post/{$post_id}' class='p_copy_link'>Copy link</a></li>";
           echo "</ul></div></div><div class='p_o'>";
           echo "<div class='p_edit_tools'><span class='p_edit_tip'>*Click on tag btn to remove tags</span>
           <a href='#' class='p_edit_cancel sec_btn'>Cancel</a>

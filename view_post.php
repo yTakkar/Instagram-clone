@@ -49,7 +49,7 @@
         <div class="recomm_top header_of_divs">
           <span>Suggested</span>
           <a href="#" class="recomm_refresh" data-description='refresh'><i class="fa fa-refresh" aria-hidden="true"></i></a>
-          <a href="/faiyaz/Instagram/explore?ask=exp_people" class="recomm_all" data-description='view all'><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+          <a href="<?php echo DIR; ?>/explore?ask=exp_people" class="recomm_all" data-description='view all'><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
         <div class="recomm_main">
           <?php $suggestions->HomeSuggestions("direct"); ?>

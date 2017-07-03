@@ -2,17 +2,14 @@
   class explore{
 
     protected $db;
-    protected $e;
+    protected $DIR;
 
     public function __construct(){
-      try {
-        $db = new PDO('mysql:host=host;dbname=instagram;charset=utf8mb4', 'user', 'password');
-        $this->db = $db;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $e = $this->e;
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      $db = N::_DB();
+      $DIR = N::$DIR;
+
+      $this->db = $db;
+      $this->DIR = $DIR;
     }
 
     public function explorePhotos(){
@@ -36,22 +33,22 @@
 
           echo "<div class='exp_finds_ph inst'>
             <div class='exp_f_ph_img'>
-              <img src='/faiyaz/Instagram/media/Instagram_{$image}' alt='' data-imgby='{$universal->GETsDetails($user, "username")}' data-postid='{$post}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}' class='{$filter}'>
+              <img src='{$this->DIR}/media/Instagram_{$image}' alt='' data-imgby='{$universal->GETsDetails($user, "username")}' data-postid='{$post}' data-time='{$Time->timeAgo($time)}' data-filter='{$filter}' class='{$filter}'>
             </div>
             <div class='exp_f_ph_bottom'>
-              <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($user)}' alt=''>
+              <img src='{$this->DIR}/{$avatar->DisplayAvatar($user)}' alt=''>
               <div class='exp_f_ph_b_right'>
-                <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($user, "username")}'>{$universal->GETsDetails($user, "username")}</a>
+                <a href='{$this->DIR}/profile/{$universal->GETsDetails($user, "username")}'>{$universal->GETsDetails($user, "username")}</a>
                 <span class='exp_f_ph_light'>{$Time->timeAgo($time)}</span>
               </div>
-              <a class='exp_f_ph_open' href='/faiyaz/Instagram/view_post/{$post}'><i class='material-icons'>open_in_new</i></a>
+              <a class='exp_f_ph_open' href='{$this->DIR}/view_post/{$post}'><i class='material-icons'>open_in_new</i></a>
             </div>
           </div>";
 
         }
       } else if ($query->rowCount() == 0) {
         echo "<div class='home_last_mssg exp_p_last'>
-          <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          <img src='{$this->DIR}/images/needs/large.jpg'>
           <span>Sorry, no photos to explore</span>
         </div>";
       }
@@ -75,9 +72,9 @@
 
           if ($follow->isFollowing($id) == false) {
             echo "<div class='exp_f_ppl inst'>
-                <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($id)}' alt=''>
+                <img src='{$this->DIR}/{$avatar->DisplayAvatar($id)}' alt=''>
                 <div class='exp_p_ppl_content'>
-                  <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($id, "username")}'>{$universal->GETsDetails($id, "username")}</a>
+                  <a href='{$this->DIR}/profile/{$universal->GETsDetails($id, "username")}'>{$universal->GETsDetails($id, "username")}</a>
                   <span>{$mutual->eMutual($id)}</span>
                 </div>
                 <div class='exp_f_ppl_act' data-getid='{$id}'>";
@@ -94,7 +91,7 @@
         }
       } else if ($query->rowCount() == 0) {
         echo "<div class='home_last_mssg exp_p_last'>
-          <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          <img src='{$this->DIR}/images/needs/large.jpg'>
           <span>Sorry, no one to explore</span>
         </div>";
       }
@@ -118,7 +115,7 @@
             echo "<div class='exp_f_ppl inst'>
                 <img src='{$groups->grpAvatar($grp)}' alt=''>
                 <div class='exp_p_ppl_content'>
-                  <a href='/faiyaz/Instagram/groups/{$grp}'>{$name}</a>
+                  <a href='{$this->DIR}/groups/{$grp}'>{$name}</a>
                   <span>";
                   if ($groups->mutualGrpMemCount($grp) == 0) {
                     echo $groups->noOfGrpMembers($grp)." members";
@@ -138,11 +135,6 @@
           }
 
         }
-      } else if($query->rowCount() == 0) {
-        echo "<div class='home_last_mssg'>
-          <img src='/faiyaz/Instagram/images/needs/large.jpg'>
-          <span>Sorry, no audios to explore</span>
-        </div>";
       }
 
     }
@@ -159,7 +151,7 @@
       $query->execute(array(":me" => $session, ":type" => "audio"));
       if ($query->rowCount() == 0) {
         echo "<div class='home_last_mssg'>
-          <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          <img src='{$this->DIR}/images/needs/large.jpg'>
           <span>Sorry, no audios to explore</span>
         </div>";
       }
@@ -173,19 +165,19 @@
 
         echo "<div class='exp_audio inst'>
           <div class='exp_aud_top'>
-            <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($user)}' alt=''>
+            <img src='{$this->DIR}/{$avatar->DisplayAvatar($user)}' alt=''>
             <div class='exp_aud_con'>
-              <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($user, "username")}'>{$universal->nameShortener($universal->GETsDetails($user, "username"), 30)}</a>";
+              <a href='{$this->DIR}/profile/{$universal->GETsDetails($user, "username")}'>{$universal->nameShortener($universal->GETsDetails($user, "username"), 30)}</a>";
               if ($of == "group") {
-                echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='/faiyaz/Instagram/groups/{$grp}' class='to_grp_name exp_grp_name'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
+                echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='{$this->DIR}/groups/{$grp}' class='to_grp_name exp_grp_name'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
               }
               echo "<span>{$Time->timeAgo($time)}</span>
             </div>
-            <a href='/faiyaz/Instagram/view_post/{$post}' class='sec_btn exp_aud_open'>Open post</a>
+            <a href='{$this->DIR}/view_post/{$post}' class='sec_btn exp_aud_open'>Open post</a>
           </div>
           <hr>
 
-          <div class='p_aud' data-song='/faiyaz/Instagram/media/{$audio}'>
+          <div class='p_aud' data-song='{$this->DIR}/media/{$audio}'>
             <span class='p_aud_time_bubble'>0:00</span>
             <div class='p_aud_ctrls'>
               <div class='p_aud_info'>
@@ -224,7 +216,7 @@
       $query->execute(array(":me" => $session, ":type" => "video"));
       if ($query->rowCount() == 0) {
         echo "<div class='home_last_mssg'>
-          <img src='/faiyaz/Instagram/images/needs/large.jpg'>
+          <img src='{$this->DIR}/images/needs/large.jpg'>
           <span>Sorry, no videos to explore</span>
         </div>";
       }
@@ -238,19 +230,19 @@
 
         echo "<div class='exp_find_vid inst'>
           <div class='exp_aud_top'>
-            <img src='/faiyaz/Instagram/{$avatar->DisplayAvatar($user)}' alt=''>
+            <img src='{$this->DIR}/{$avatar->DisplayAvatar($user)}' alt=''>
             <div class='exp_aud_con'>
-              <a href='/faiyaz/Instagram/profile/{$universal->GETsDetails($user, 'username')}'>{$universal->nameShortener($universal->GETsDetails($user, 'username'), 30)}</a>";
+              <a href='{$this->DIR}/profile/{$universal->GETsDetails($user, 'username')}'>{$universal->nameShortener($universal->GETsDetails($user, 'username'), 30)}</a>";
               if ($of == "group") {
-                echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='/faiyaz/Instagram/groups/{$grp}' class='to_grp_name exp_grp_name'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
+                echo "<span class='to_grp_arrow'><i class='material-icons'>arrow_drop_up</i></span><a href='{$this->DIR}/groups/{$grp}' class='to_grp_name exp_grp_name'>{$universal->nameShortener($groups->GETgrp($grp, "grp_name"), 20)}</a>";
               }
               echo "<span>{$Time->timeAgo($time)}</span>
             </div>
-            <a href='/faiyaz/Instagram/view_post/{$post}' class='sec_btn exp_aud_open'>Open post</a>
+            <a href='{$this->DIR}/view_post/{$post}' class='sec_btn exp_aud_open'>Open post</a>
           </div>
           <hr>
           <div class='p_vid'>
-           <video src='/faiyaz/Instagram/media/Instagram_{$video}' loop preload='auto'></video>
+           <video src='{$this->DIR}/media/Instagram_{$video}' loop preload='auto'></video>
            <span class='p_vid_pp_large'><i class='material-icons'>play_arrow</i></span>
            <span class='p_vid_cur p_vid_time_teaser'>0:00</span>
            <span class='p_vid_time_bubble'>0:00</span><div class='p_vid_ctrls'><div class='p_vid_seek'>

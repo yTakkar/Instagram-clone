@@ -5,10 +5,11 @@
     if (isset($_POST['username']) && isset($_POST['firstname']) && isset($_POST['surname']) &&
     isset($_POST['email']) && isset($_POST['password']) && isset($_POST['terms'])) {
 
+      include_once '../../config/class/needy_class.php'; 
       include '../../config/class/login.class.php';
       include '../../config/class/random.class.php';
 
-      $login = new login;
+      $login = new login_class;
       $random = new random;
 
       $ip_add = $random->getIP();
