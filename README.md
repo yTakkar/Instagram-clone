@@ -6,6 +6,7 @@ An Instagram-clone with my own flavors and features. Same app which will be sing
 2. [Features](#features)
 3. [Requirements](#requirements)
 4. [Own the project](#own-the-project)
+5. [Images copyright claims](#copyright-claims)
 
 # Screenshots
 Below are some screenshots of the app:
@@ -113,3 +114,8 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
 5. Open `config/class/login.class.php`, `config/class/forgot.class.php` & replace `YOUR_GMAIL` with your Gmail account & `GMAIL_PASSWORD` with your Gmail password.
 6. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `9`.
 7. Enjoy!!
+
+# Copyright claims
+Many images used in the project belong to their respective creators/authors. No claim by me!!
+
+**Thanks for reading**
