@@ -116,6 +116,6 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
 7. Enjoy!!
 
 # Copyright claims
-Many images used in the project belong to their respective creators/authors. No claim by me!!
+Many images used in the project belong to their respective creators/authors. No claim by me, project downloaders & cloners!!
 
 **Thanks for reading**
