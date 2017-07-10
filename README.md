@@ -1,6 +1,8 @@
 # Instagram-clone
 An Instagram-clone with my own flavors and features. Same app which will be single-page app with MERN, Redux and NoSQL coming soon!!
 
+Feel free to contribute!!
+
 # Quick links
 1. [Screenshots](#screenshots)
 2. [Features](#features)
