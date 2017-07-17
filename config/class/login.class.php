@@ -91,12 +91,7 @@
 
         $uid = $this->db->lastInsertId();
 
-        $e = $universal->GETsDetails($uid, "email");
-        if (strrpos($email, "@gmail.com")) {
-          $email = "www.".$e;
-        } else {
-          $email = $e;
-        }
+        $email = $universal->GETsDetails($uid, "email");
 
         $url = $universal->urlChecker($this->DIR);
 
