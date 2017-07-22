@@ -1,1 +1,1 @@
-THIS FOLDER CONTAINS ALL THE RESIZED IMAGES WHICH ARE THEN DELETED MAKING THIS FOLDER EMPTY IN THE END!!
+This folder contains all the resized images which will be deleted in the end!!
