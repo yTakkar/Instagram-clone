@@ -103,15 +103,11 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
 
 # Requirements
 1. Latest version of PHP.
-2. Gmail account (for account verification & password retrieval).
 
 # Own the project
 1. Open PHPMyAdmin, create a Database & import `instagram.sql`. 
 2. Open `config/class/needy_class.php` & fill up your PDO, Path & Gmail details.
 3. Open `config/declare.php`, `config/class/needy_class.php` & `public/js/modules.js` & replace `DIR` variable containing my root path with your root path. (Note: Do not add forward slash in the end!).
-    1. `declare.php`     :=> For almost every PHP file.
-    2. `needy_class.php` :=> For class files.
-    3. `modules.js`      :=> For JS use.
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
 5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `9`.
 6. Enjoy!!
