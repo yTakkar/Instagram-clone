@@ -1621,23 +1621,13 @@ function getFF(data){
             update.removeClass('a_disabled');
             $('.overlay-2').hide();
             $('.notify').notify({
-              value: "Profile updated"
+              value: data.mssg
             });
-            console.log(data);
-            username.val(data.username);
-            firstname.val(data.firstname);
-            surname.val(data.surname);
-            bio.val(data.bio);
-            instagram.val(data.instagram);
-            youtube.val(data.youtube);
-            facebook.val(data.facebook);
-            twitter.val(data.twitter);
-            website.val(data.website);
-            mobile.val(data.mobile);
-            $('.edit_info > span').text("@"+data.username);
-            $('.profile').text("@"+nameShortener(data.username, 20));
-            $('.sp_span').text(nameShortener(data.username,20));
-            $('.sp').attr('href', DIR+'/profile/'+data.username);
+            console.log(data.mssg);
+            if (data.mssg == "Profile updated!!") {
+              location.reload();
+            }
+
           }
         });
 

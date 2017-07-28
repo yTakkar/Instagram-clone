@@ -3,6 +3,7 @@
   if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == "xmlhttprequest") {
 
     include_once '../../config/class/needy_class.php';
+    include '../../config/class/universal.class.php';
     include '../../config/class/edit_profile.class.php';
     $edit = new editProfile;
 
@@ -21,8 +22,9 @@
 
       $session = $_SESSION['id'];
 
-      $edit->saveProfileEditing($username, $firstname, $surname, $bio, $instagram, $youtube, $facebook, $twitter, $website, $mobile, $tags);
-      return $edit->getProfileEditing();
+      $m=$edit->saveProfileEditing($username, $firstname, $surname, $bio, $instagram, $youtube, $facebook, $twitter, $website, $mobile, $tags);
+      $array = array("mssg" => $m);
+      echo json_encode($array);
     }
 
   }
