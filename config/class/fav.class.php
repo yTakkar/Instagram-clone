@@ -81,9 +81,11 @@
               echo "</span>
               </div></div>
               <span class='recommend_time'>{$Time->timeAgo($time)}</span>
-              <div class='m_bottom'>
-              <a href='#' class='sec_btn rem_fav' data-userid='{$user}' data-username='{$universal->GETsDetails($user, "username")}'>Remove</a>
-              <div data-getid='$user' class='fav_ff'>";
+              <div class='m_bottom'>";
+              if($id == $session){
+                echo "<a href='#' class='sec_btn rem_fav' data-userid='{$user}' data-username='{$universal->GETsDetails($user, "username")}'>Remove</a>";
+              }
+              echo "<div data-getid='$user' class='fav_ff'>";
               if ($session == $user) {
                 echo "<a href='{$this->DIR}/profile/". $universal->GETsDetails($user, "username") ."' class='sec_btn '>Profile</a>";
               } else {
