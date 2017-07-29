@@ -11,6 +11,11 @@ Feel free to contribute!!
 5. [Images copyright claims](#copyright-claims)
 
 # Screenshots
+
+Here's a video which will take you on a tour of this project!!
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/pwoXUIjRxfk/0.jpg)](https://www.youtube.com/watch?v=pwoXUIjRxfk)
+
 Below are some screenshots of the app:
 
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.29.09.png)
@@ -106,7 +111,9 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
 
 # Own the project
 
-**If you're interested in watching a video on how to use it, visit this [link](https://youtu.be/jI_z-4XWLLk)**.
+If you're interested in watching a video on how to use or set it up, click the below image!!
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/jI_z-4XWLLk/0.jpg)](https://www.youtube.com/watch?v=jI_z-4XWLLk)
 
 1. Open PHPMyAdmin, create a Database & import `instagram.sql`. 
 2. Open `config/class/needy_class.php` & fill up your PDO, Path & Gmail details.
