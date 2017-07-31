@@ -119,7 +119,7 @@ If you're interested in watching a video on how to use or set it up, click the b
 2. Open `config/class/needy_class.php` & fill up your PDO, Path & Gmail details.
 3. Open `config/declare.php`, `config/class/needy_class.php` & `public/js/modules.js` & replace `DIR` variable containing my root path with your root path. (Note: Do not add forward slash in the end!).
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
-5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `9`.
+5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `8`.
 6. Enjoy!!
 
 # Copyright claims

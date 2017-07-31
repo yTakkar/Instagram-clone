@@ -24,7 +24,12 @@
     </div>
     <div class="edit_update">
       <span data-description="Add emojis to bio"><i class="material-icons">sentiment_very_satisfied</i></span>
-      <a href="#" class="edit_update_a">Update profile</a>
+      <a href="#" class="pri_btn edit_update_a">Update profile</a>
+      <?php 
+        if(!$universal->e_verified($_SESSION['id'])){
+          echo "<a href='#' class='sec_btn resend_vl'>Resend verification link</a>";
+        }
+      ?>
     </div>
   </div>
 

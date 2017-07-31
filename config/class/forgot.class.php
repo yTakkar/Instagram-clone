@@ -51,7 +51,12 @@
         $srow = $sget->fetch(PDO::FETCH_OBJ);
         $uid = $srow->id;
 
-        $email = $universal->GETsDetails($uid, "email");
+        $e = $universal->GETsDetails($uid, "email");
+        if (strrpos($text, "@gmail.com")) {
+          $email = "www.".$e;
+        } else {
+          $email = $e;
+        }
 
         $url = $universal->urlChecker($this->DIR);
 

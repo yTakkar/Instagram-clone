@@ -101,7 +101,7 @@
 
         $url = $universal->urlChecker($this->DIR);
 
-        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+        // $mail->SMTPDebug = 3;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -110,7 +110,8 @@
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->setFrom($this->gmail, 'Team Instagram');
+        $mail->From = $this->gmail;
+        $mail->FromName = "Team Instagram";
         $mail->addAddress($email);               // Name is optional
         $mail->addReplyTo($this->gmail, 'Team Instagram');
         // $mail->addCC('cc@example.com');
@@ -123,15 +124,27 @@
         $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
 
-        $mail->Subject = 'Activate your Instagram account';
+        $mail->Subject = 'Verify your Instagram account';
 
         $mail->Body = "<span>Hello, You received this message because you created an account on INSTAGRAM.<span><br>
-        <span>Click on button below to activate your Instagram account and explore.</span><br><br>
+        <span>Click on button below to verify your Instagram account and explore.</span><br><br>
         <a href='{$url}/ajaxify/deep/most/topmost/activate.php?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
 
-        if($mail->send()) {
-          return 'Successfull';
+        if (!file_exists("../../users/$uid")) {
+          mkdir("../../users/$uid", 0755);
+          mkdir("../../users/$uid/avatar", 0755);
         }
+        $avatar = "../../images/avatars/spacecraft.jpg";
+        $dest = "../../users/$uid/avatar/spacecraft.jpg";
+        copy($avatar, $dest);
+        
+        $settings->settingsDefaults($uid);
+
+        $_SESSION['id'] = $uid;
+
+        if($mail->send() || !$mail->send()){
+          return "Successfull";
+        } 
 
       }
 

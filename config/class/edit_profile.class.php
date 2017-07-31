@@ -2,10 +2,20 @@
   class editProfile{
 
     protected $db;
+    protected $DIR;
+    protected $gmail;
+    protected $gmail_password;
 
     public function __construct(){
       $db = N::_DB();
+      $DIR = N::$DIR;
+      $GMAIL = N::$GMAIL;
+      $GMAIL_PASS = N::$GMAIL_PASSWORD;
+
       $this->db = $db;
+      $this->DIR = $DIR;
+      $this->gmail = $GMAIL;
+      $this->gmail_password = $GMAIL_PASS;
     }
 
     public function saveProfileEditing($username, $firstname, $surname, $bio, $instagram, $youtube, $facebook, $twitter, $website, $mobile, $tags){
@@ -47,6 +57,53 @@
 
         }
 
+      }
+
+    }
+
+    public function resend_vl(){
+      include 'PHPMailerAutoload.php';
+
+      $universal = new universal;
+      $mail = new PHPMailer;
+      $id = $_SESSION['id'];
+
+      $email = $universal->GETsDetails($id, "email");
+      $url = $universal->urlChecker($this->DIR);
+
+      // $mail->SMTPDebug = 3;                               // Enable verbose debug output
+      $mail->isSMTP();                                      // Set mailer to use SMTP
+      $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+      $mail->SMTPAuth = true;                               // Enable SMTP authentication
+      $mail->Username = $this->gmail;                 // SMTP username
+      $mail->Password = $this->gmail_password;                           // SMTP password
+      $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+      $mail->Port = 587;                                    // TCP port to connect to
+
+      $mail->From = $this->gmail;
+      $mail->FromName = "Team Instagram";
+      $mail->addAddress($email);               // Name is optional
+      $mail->addReplyTo($this->gmail, 'Team Instagram');
+      // $mail->addCC('cc@example.com');
+      // $mail->addBCC('bcc@example.com');
+
+      $mail->addCC($this->gmail);
+      $mail->addBCC($this->gmail);
+
+      $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+      $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+      $mail->isHTML(true);                                  // Set email format to HTML
+
+      $mail->Subject = 'Verify your Instagram account';
+
+      $mail->Body = "<span>Hello, You received this message because you created an account on INSTAGRAM.<span><br>
+      <span>Click on button below to verify your Instagram account and explore.</span><br><br>
+      <a href='{$url}/ajaxify/deep/most/topmost/activate.php?id={$id}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
+
+      if($mail->send()){
+        return "Verification link sent!!";
+      } else {
+        return "Error sending verification link!!";
       }
 
     }
