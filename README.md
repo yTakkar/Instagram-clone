@@ -61,7 +61,7 @@ Below are some screenshots of the app:
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
 
 # Features
-1. Login, Signup, Forgot password (with email).
+1. Login, Signup, Forgot password (with email verification).
 2. Quick Login like in Facebook and Instagram (this means app remembers that you had logged in, so you only have enter password to login again).
 3. Indicates that users exists as you type username when signing up.
 4. About, Developer, Help, 404, No such user, No such group page.
