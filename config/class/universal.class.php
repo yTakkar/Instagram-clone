@@ -69,6 +69,15 @@
       }
     }
 
+    public function e_verified($id){
+      $email = self::GETsDetails($id, "email_activated");
+      if($email == "no"){
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     public function isPrivate($get){
       $follow = new follow_system;
       if ((self::MeOrNot($get) == false) && ($follow->isFollowing($get) == false) && (self::GETsDetails($get, "type") == "private")) {

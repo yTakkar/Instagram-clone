@@ -2,7 +2,7 @@
   session_start();
   if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == "xmlhttprequest") {
 
-    include_once '../../config/class/needy_class.php';
+    include_once '../../config/classesGetter.php';
     include '../../config/class/edit_profile.class.php';
     $edit = new editProfile;
 
@@ -21,8 +21,15 @@
 
       $session = $_SESSION['id'];
 
-      $edit->saveProfileEditing($username, $firstname, $surname, $bio, $instagram, $youtube, $facebook, $twitter, $website, $mobile, $tags);
-      return $edit->getProfileEditing();
+      $m=$edit->saveProfileEditing($username, $firstname, $surname, $bio, $instagram, $youtube, $facebook, $twitter, $website, $mobile, $tags);
+      $array = array("mssg" => $m);
+      echo json_encode($array);
+    }
+
+    if(isset($_POST['resend_vl'])){
+      $m = $edit->resend_vl();
+      $array = array("mssg" => $m);
+      echo json_encode($array);
     }
 
   }
