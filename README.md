@@ -8,6 +8,8 @@ Feel free to contribute!!
 2. [Features](#features)
 3. [Requirements](#requirements)
 4. [Own the project](#own-the-project)
+5. [Login/Signup Error](#login/signup-error)
+4. [Contribute](#contribute)
 5. [Images copyright claims](#copyright-claims)
 
 # Screenshots
@@ -122,10 +124,15 @@ If you're interested in watching a video on how to use or set it up, click the b
 5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `8`.
 6. Enjoy!!
 
-**Login/Signup Error**
+# Login/Signup Error
 
-If you have followed all the steps, especially step no.3 and using Chrome browser for initial testing and you're unable to login or signup, then try changing the Chrome browser for initial testing and it will work. Because Chrome sometimes doesn't reload the files.
+If you have followed all the steps, especially step no. 3 and using Chrome browser for initial testing and you're unable to login or signup, then try changing the Chrome browser for initial testing and it will work. Because Chrome sometimes doesn't reload the files.
 4-5 issues are regarding this error only!!
+
+# Contribute
+Show your support by 🌟 the project!!
+
+Feel free to contribute!
 
 # Copyright claims
 Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!
