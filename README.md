@@ -8,9 +8,9 @@ Feel free to contribute!!
 2. [Features](#features)
 3. [Requirements](#requirements)
 4. [Own the project](#own-the-project)
-5. [Login/Signup Error](#login/signup-error)
-4. [Contribute](#contribute)
-5. [Images copyright claims](#copyright-claims)
+5. [Login/Signup Error](#loginsignup-error)
+6. [Contribute](#contribute)
+7. [Images copyright claims](#copyright-claims)
 
 # Screenshots
 
