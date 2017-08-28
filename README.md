@@ -8,7 +8,9 @@ Feel free to contribute!!
 2. [Features](#features)
 3. [Requirements](#requirements)
 4. [Own the project](#own-the-project)
-5. [Images copyright claims](#copyright-claims)
+5. [Login/Signup Error](#loginsignup-error)
+6. [Contribute](#contribute)
+7. [Images copyright claims](#copyright-claims)
 
 # Screenshots
 
@@ -61,7 +63,7 @@ Below are some screenshots of the app:
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
 
 # Features
-1. Login, Signup, Forgot password (with email).
+1. Login, Signup, Forgot password (with email verification).
 2. Quick Login like in Facebook and Instagram (this means app remembers that you had logged in, so you only have enter password to login again).
 3. Indicates that users exists as you type username when signing up.
 4. About, Developer, Help, 404, No such user, No such group page.
@@ -121,6 +123,16 @@ If you're interested in watching a video on how to use or set it up, click the b
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
 5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `8`.
 6. Enjoy!!
+
+# Login/Signup Error
+
+If you have followed all the steps, especially step no. 3 and using Chrome browser for initial testing and you're unable to login or signup, then try changing the Chrome browser for initial testing and it will work. Because Chrome sometimes doesn't reload the files.
+4-5 issues are regarding this error only!!
+
+# Contribute
+Show your support by 🌟 the project!!
+
+Feel free to contribute!
 
 # Copyright claims
 Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!
