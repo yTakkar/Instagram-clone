@@ -54,6 +54,7 @@
       <a href="https://www.instagram.com/_faiyaz_shaikh/" class="sec_btn">Real Instagram</a>
       <a href="https://twitter.com/shtakkar" class="sec_btn">Twitter</a>
     </div>
+    <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&type=follow&count=false&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
   </div>
 
 </div>
