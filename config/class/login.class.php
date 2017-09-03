@@ -51,10 +51,10 @@
     public function LOGOUT(){
       $id = $_SESSION['id'];
 
-      $query = $this->db->prepare("SELECT MAX(login_id) AS get FROM login WHERE user_id = :id LIMIT 1");
+      $query = $this->db->prepare("SELECT MAX(login_id) AS myGet FROM login WHERE user_id = :id LIMIT 1");
       $query->execute(array(":id" => $id));
       $row = $query->fetch(PDO::FETCH_OBJ);
-      $login_id = $row->get;
+      $login_id = $row->myGet;
 
       $mquery = $this->db->prepare("UPDATE login SET logout = now() WHERE login_id = :id");
       $mquery->execute(array(":id" => $login_id));
