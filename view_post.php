@@ -60,13 +60,13 @@
         <span>Create public or private group of your interest with people you know.</span>
         <a href="#" class="sec_btn c_g">Create group</a>
       </div>
-      <?php include 'needs/create_group.php'; ?>
 
     </div>
 
   </div>
 </div>
 
+<?php include 'needs/create_group.php'; ?>
 <?php include_once 'needs/display.php'; ?>
 <?php include_once 'needs/image_show.php'; ?>
 <?php include_once 'needs/prompt.php'; ?>
