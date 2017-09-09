@@ -443,7 +443,7 @@
       if ($universal->isLoggedIn()) { $session = $_SESSION['id']; }
 
       if ($type == "text") {
-        $tquery = $this->db->prepare("SELECT text FROM text_Post WHERE post_id = :post");
+        $tquery = $this->db->prepare("SELECT text FROM text_post WHERE post_id = :post");
         $tquery->execute(array(":post" => $post_id));
         while ($trow = $tquery->fetch(PDO::FETCH_OBJ)) {
           $text = nl2br(trim($trow->text));
