@@ -30,7 +30,7 @@
 
   <div class="github">
   <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&type=follow&count=false&size=large" frameborder="0" scrolling="0" width="180px" height="30px"></iframe>
-    <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&repo=Instagram-Clone&type=fork&count=false&size=large" frameborder="0" scrolling="0" width="85px" height="30px"></iframe>
+    <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&repo=Instagram-Clone&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="125px" height="30px"></iframe>
     <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&repo=Instagram-Clone&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
   </div>
 
