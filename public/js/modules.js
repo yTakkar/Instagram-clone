@@ -982,6 +982,7 @@ function getFF(data){
             elem.text('Wait..');
           },
           success: function(data){
+            console.log(data);
             if (data.status == "ok") {
               elem.text('Follow').remove();
               parent.html("<a href='#' class='pri_btn unfollow'>Unfollow</a>");
@@ -1499,6 +1500,8 @@ function getFF(data){
     var update = elem.find('.edit_update_a');
     var emoji = $('.emoji');
     var items = emoji.find('li');
+    var vl = elem.find('.resend_vl');
+    var o2 = $('.overlay-2');
 
     function getTags(){
       var ff = $('.tags_all > span');
@@ -1596,9 +1599,10 @@ function getFF(data){
         $('.notify').notify({value: "Surname is empty"});
       } else {
 
-        update.text('Updating..');
-        update.addClass('a_disabled');
-        $('.overlay-2').show();
+        update
+          .text('Updating..')
+          .addClass('a_disabled');
+        o2.show();
         $.ajax({
           url: DIR+"/ajaxify/ajax_requests/edit_requests.php",
           method: "POST",
@@ -1617,27 +1621,13 @@ function getFF(data){
             tags: tags.val()
           },
           success: function(data){
-            update.text('Update profile');
-            update.removeClass('a_disabled');
-            $('.overlay-2').hide();
-            $('.notify').notify({
-              value: "Profile updated"
-            });
-            console.log(data);
-            username.val(data.username);
-            firstname.val(data.firstname);
-            surname.val(data.surname);
-            bio.val(data.bio);
-            instagram.val(data.instagram);
-            youtube.val(data.youtube);
-            facebook.val(data.facebook);
-            twitter.val(data.twitter);
-            website.val(data.website);
-            mobile.val(data.mobile);
-            $('.edit_info > span').text("@"+data.username);
-            $('.profile').text("@"+nameShortener(data.username, 20));
-            $('.sp_span').text(nameShortener(data.username,20));
-            $('.sp').attr('href', DIR+'/profile/'+data.username);
+            update
+              .text('Update profile')
+              .removeClass('a_disabled');
+            o2.hide();
+            $('.notify').notify({ value: data.mssg });
+            if (data.mssg == "Profile updated!!"){ location.reload(); }
+
           }
         });
 
@@ -1647,6 +1637,33 @@ function getFF(data){
 
     update.on('click', function(e){
       updating(e);
+    });
+
+    vl.on('click', function(e){
+      vl
+        .text('Sending verification link..')
+        .addClass('sec_btn_disabled')
+        .blur();
+
+      o2.show();
+
+      e.preventDefault();
+      $.ajax({
+        url: DIR + "/ajaxify/ajax_requests/edit_requests.php",
+        method: "POST",
+        dataType: "JSON",
+        data: { resend_vl: "yes" },
+        success: function(data){
+          console.log(data);
+          $('.notify').notify({ value: data.mssg });
+          vl
+            .text('Send verification link')
+            .removeClass('sec_btn_disabled');
+
+          o2.hide();
+        }
+
+      })
     });
 
   }

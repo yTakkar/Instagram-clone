@@ -3,13 +3,19 @@
 
     protected $db;
     protected $DIR;
+    protected $gmail;
+    protected $gmail_password;
 
     public function __construct(){
       $db = N::_DB();
       $DIR = N::$DIR;
+      $GMAIL = N::$GMAIL;
+      $GMAIL_PASS = N::$GMAIL_PASSWORD;
 
       $this->db = $db;
       $this->DIR = $DIR;
+      $this->gmail = $GMAIL;
+      $this->gmail_password = $GMAIL_PASS;
     }
 
     public function retrieve($input){
@@ -58,19 +64,19 @@
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'YOUR_GMAIL';                 // SMTP username
-        $mail->Password = 'GMAIL_PASSWORD';                           // SMTP password
+        $mail->Username = $this->gmail;                 // SMTP username
+        $mail->Password = $this->gmail_password;                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->setFrom('YOUR_GMAIL', 'Team Instagram');
+        $mail->setFrom($this->gmail, 'Team Instagram');
         $mail->addAddress($email);               // Name is optional
-        $mail->addReplyTo('YOUR_GMAIL', 'Team Instagram');
+        $mail->addReplyTo($this->gmail, 'Team Instagram');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
 
-        $mail->addCC('YOUR_GMAIL');
-        $mail->addBCC('YOUR_GMAIL');
+        $mail->addCC($this->gmail);
+        $mail->addBCC($this->gmail);
 
         $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
         $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
