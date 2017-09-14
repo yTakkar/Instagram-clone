@@ -164,7 +164,7 @@ function login(ju, jp, btn){
     },
     success: function(data){
       $('.notify').notify({
-        value: data.mssg
+        value: 'Hello ' + ju + '!!'
       });
       console.log(data.mssg);
       if (data.mssg == "Successfull") {
