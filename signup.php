@@ -113,7 +113,7 @@
           } else {
             $('.s_submit').prop('disabled', false);
             $('.overlay-2').hide();
-            $('.notify').notify({ value: data });
+            $('.notify').notify({ value: 'Hello ' + username + '!!' });
           }
         }
       });
