@@ -3,13 +3,19 @@
 
     protected $db;
     protected $DIR;
+    protected $gmail;
+    protected $gmail_password;
 
     public function __construct(){
       $db = N::_DB();
       $DIR = N::$DIR;
+      $GMAIL = N::$GMAIL;
+      $GMAIL_PASS = N::$GMAIL_PASSWORD;
 
       $this->db = $db;
       $this->DIR = $DIR;
+      $this->gmail = $GMAIL;
+      $this->gmail_password = $GMAIL_PASS;
     }
 
     public function LOGIN($username, $password, $ip){
@@ -45,10 +51,10 @@
     public function LOGOUT(){
       $id = $_SESSION['id'];
 
-      $query = $this->db->prepare("SELECT MAX(login_id) AS get FROM login WHERE user_id = :id LIMIT 1");
+      $query = $this->db->prepare("SELECT MAX(login_id) AS myGet FROM login WHERE user_id = :id LIMIT 1");
       $query->execute(array(":id" => $id));
       $row = $query->fetch(PDO::FETCH_OBJ);
-      $login_id = $row->get;
+      $login_id = $row->myGet;
 
       $mquery = $this->db->prepare("UPDATE login SET logout = now() WHERE login_id = :id");
       $mquery->execute(array(":id" => $login_id));
@@ -91,46 +97,54 @@
 
         $uid = $this->db->lastInsertId();
 
-        $e = $universal->GETsDetails($uid, "email");
-        if (strrpos($email, "@gmail.com")) {
-          $email = "www.".$e;
-        } else {
-          $email = $e;
-        }
+        $email = $universal->GETsDetails($uid, "email");
 
         $url = $universal->urlChecker($this->DIR);
 
-        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+        // $mail->SMTPDebug = 3;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'YOUR_GMAIL';                 // SMTP username
-        $mail->Password = 'GMAIL_PASSWORD';                           // SMTP password
+        $mail->Username = $this->gmail;                 // SMTP username
+        $mail->Password = $this->gmail_password;                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->setFrom('YOUR_GMAIL', 'Team Instagram');
+        $mail->From = $this->gmail;
+        $mail->FromName = "Team Instagram";
         $mail->addAddress($email);               // Name is optional
-        $mail->addReplyTo('YOUR_GMAIL', 'Team Instagram');
+        $mail->addReplyTo($this->gmail, 'Team Instagram');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
 
-        $mail->addCC('YOUR_GMAIL');
-        $mail->addBCC('YOUR_GMAIL');
+        $mail->addCC($this->gmail);
+        $mail->addBCC($this->gmail);
 
         $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
         $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
 
-        $mail->Subject = 'Activate your Instagram account';
+        $mail->Subject = 'Verify your Instagram account';
 
         $mail->Body = "<span>Hello, You received this message because you created an account on INSTAGRAM.<span><br>
-        <span>Click on button below to activate your Instagram account and explore.</span><br><br>
+        <span>Click on button below to verify your Instagram account and explore.</span><br><br>
         <a href='{$url}/ajaxify/deep/most/topmost/activate.php?id={$uid}' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Activate</a>";
 
-        if($mail->send()) {
-          return 'Successfull';
+        if (!file_exists("../../users/$uid")) {
+          mkdir("../../users/$uid", 0755);
+          mkdir("../../users/$uid/avatar", 0755);
         }
+        $avatar = "../../images/avatars/spacecraft.jpg";
+        $dest = "../../users/$uid/avatar/spacecraft.jpg";
+        copy($avatar, $dest);
+        
+        $settings->settingsDefaults($uid);
+
+        $_SESSION['id'] = $uid;
+
+        if($mail->send() || !$mail->send()){
+          return "Successfull";
+        } 
 
       }
 

@@ -36,24 +36,14 @@
 
   <div class="dev_div inst">
     <img src="<?php echo DIR; ?>/images/needs/tumblr_ne4s7eGNYj1snc5kxo1_500.gif" alt="">
-    <span>Developed by <a href="<?php echo DIR; ?>/profile/takkar007">Faiyaz shaikh</a> currently 18 living in Dharavi, Mumbai.</span>
-    <span>He's a full-stack developer and mostly writes code in JavaScript as it is his favourite language. And why he is programmer - 'coz he thinks programming languages can make anyone a magician!!</span>
-    <span>Other Interests:</span>
-    <span>Travelling</span>
-    <span>Qawwali, Shayari & Ghazals</span>
-    <span>Fantasy & Imagination</span>
-    <span>UI/UX</span>
-    <span>Designing</span>
-    <span>Simplicity</span>
-    <span>Paintings</span>
-    <span>Nature - (Reason why I love travelling)</span>
-    <span>Motivation-Oriented stuffs</span>
-    <span>... and much more</span>
+    <span>Developed by <a href="<?php echo DIR; ?>/profile/takkar007">Faiyaz shaikh</a> currently 18 living in Mumbai.</span>
+    <span>He's a full-stack developer and mostly writes code in JavaScript & Golang as these are his favourite languages. And why he is programmer - 'coz he thinks programming languages can make anyone a magician!!</span>
     <div class="dev_div_links">
-      <a href="https://www.facebook.com/profile.php?id=100009110960262" class="sec_btn">Facebook</a>
+      <a href="https://www.quora.com/profile/Shaikh-Takkar/" class="sec_btn">Quora</a>
       <a href="https://www.instagram.com/_faiyaz_shaikh/" class="sec_btn">Real Instagram</a>
-      <a href="https://twitter.com/shtakkar" class="sec_btn">Twitter</a>
+      <a href="https://github.com/yTakkar" class="sec_btn">GitHub</a>
     </div>
+    <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&type=follow&count=false&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
   </div>
 
 </div>

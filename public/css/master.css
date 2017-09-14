@@ -1561,6 +1561,13 @@ select:focus{
   left: 195px;
 }
 
+.github{
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+}
+
 .index_sign{
   z-index: 1;
   top: 20px;
@@ -4440,6 +4447,10 @@ video::-webkit-media-controls-enclosure{
   margin-bottom: 0px;
 }
 
+.edit_main > div.edit_email_verified span{
+  font-size: 14px;
+}
+
 .edit_main .edit_span{
   display: block;
   position: relative;
@@ -4491,20 +4502,17 @@ video::-webkit-media-controls-enclosure{
   margin-top: -5px;
 }
 
-.edit_update .edit_update_a{
+.edit_update a{
   padding: 5px 15px;
   font-size: 14px;
   font-weight: 600;
-  background: #1b9be9;
-  border: 1px solid #1b9be9;
-  color: #fff;
   border-radius: 3px;
   cursor: pointer;
   outline: none;
 }
 
-.edit_update .edit_update_a:hover{
-  opacity: 0.9;
+.edit_update a.resend_vl {
+  padding: 6px 15px;
 }
 
 .edit_update span{

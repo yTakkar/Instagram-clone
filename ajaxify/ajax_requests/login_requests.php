@@ -11,7 +11,6 @@
 
     $ip_add = $random->getIP();
 
-
     if (isset($_POST['username']) && isset($_POST['password'])) {
 
       $username = trim(preg_replace("#[^a-z0-9_@.\-]#i", '', $_POST['username']));
