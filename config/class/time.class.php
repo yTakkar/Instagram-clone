@@ -5,8 +5,7 @@
     public function timeAgo($time_ago) {
         $time_ago =  strtotime($time_ago) ? strtotime($time_ago) : $time_ago;
         $time  = time() - $time_ago;
-        $time = $time + 4*60*60;
-        $time = $time - 30*60;
+        $time = ($time + 4*60*60)-30*60;
 
         switch($time):
         // seconds

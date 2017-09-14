@@ -8,9 +8,16 @@ Feel free to contribute!!
 2. [Features](#features)
 3. [Requirements](#requirements)
 4. [Own the project](#own-the-project)
-5. [Images copyright claims](#copyright-claims)
+5. [Login/Signup Error](#loginsignup-error)
+6. [Contribute](#contribute)
+7. [Images copyright claims](#copyright-claims)
 
 # Screenshots
+
+Here's a video which will take you on a tour of this project!!
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/pwoXUIjRxfk/0.jpg)](https://www.youtube.com/watch?v=pwoXUIjRxfk)
+
 Below are some screenshots of the app:
 
 ![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.29.09.png)
@@ -56,7 +63,7 @@ Below are some screenshots of the app:
 [More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
 
 # Features
-1. Login, Signup, Forgot password (with email).
+1. Login, Signup, Forgot password (with email verification).
 2. Quick Login like in Facebook and Instagram (this means app remembers that you had logged in, so you only have enter password to login again).
 3. Indicates that users exists as you type username when signing up.
 4. About, Developer, Help, 404, No such user, No such group page.
@@ -103,19 +110,29 @@ eg. F1, F2, F3 and 230 others liked where F = Following.
 
 # Requirements
 1. Latest version of PHP.
-2. Gmail account (for account verification & password retrieval of users).
 
 # Own the project
+
+If you're interested in watching a video on how to use or set it up, click the below image!!
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/jI_z-4XWLLk/0.jpg)](https://www.youtube.com/watch?v=jI_z-4XWLLk)
+
 1. Open PHPMyAdmin, create a Database & import `instagram.sql`. 
-2. Open `config/class/needy_class.php` & fill up your PDO details.
+2. Open `config/class/needy_class.php` & fill up your PDO, Path & Gmail details.
 3. Open `config/declare.php`, `config/class/needy_class.php` & `public/js/modules.js` & replace `DIR` variable containing my root path with your root path. (Note: Do not add forward slash in the end!).
-    1. `declare.php` :=> For almost every PHP file.
-    2. `needy_class.php` :=> For class files.
-    3. `modules.js` :=> For JS use.
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
-5. Open `config/class/login.class.php`, `config/class/forgot.class.php` & replace `YOUR_GMAIL` with your Gmail account & `GMAIL_PASSWORD` with your Gmail password.
-6. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `9`.
-7. Enjoy!!
+5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `8`.
+6. Enjoy!!
+
+# Login/Signup Error
+
+If you have followed all the steps, especially step no. 3 and using Chrome browser for initial testing and you're unable to login or signup, then try changing the Chrome browser for initial testing and it will work. Because Chrome sometimes doesn't reload the files.
+4-5 issues are regarding this error only!!
+
+# Contribute
+Show your support by 🌟 the project!!
+
+Feel free to contribute!
 
 # Copyright claims
 Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!

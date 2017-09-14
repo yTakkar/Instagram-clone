@@ -1,4 +1,4 @@
-<?php echo DIR; ?><?php include '../../config/declare.php'; ?>
+<?php include '../../config/declare.php'; ?>
 
 <!-- a universal file that has all the classes included -->
 <?php include '../../config/classesGetter.php'; ?>
