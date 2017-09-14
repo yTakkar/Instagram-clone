@@ -751,8 +751,20 @@ function successOfPost(el, div, data, when){
                 contentType: false,
                 data: form,
                 success: function(data){
+                  console.log(data);
                   $('#p_aud_file').val('');
-                  successOfPost(el, div, data, "user");
+                  if (data == "Error!!"){
+                    el.text('Done');
+                    $('.overlay').hide();
+                    blur.removeBlur();
+                    div.html('<div class="post_spinner"><div class="spinner"><span></span><span></span><span></span></div></div>');
+                    div.fadeOut('fast');
+                    $('.emoji').fadeOut('fast');
+                    div.find('.font_sizes').fadeOut('fast');
+                    $('.notify').notify({ value: "Error" });
+                  } else {
+                    successOfPost(el, div, data, "user");
+                  }
                 }
               });
             }
