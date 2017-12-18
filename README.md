@@ -15,7 +15,7 @@ Here's a video which will take you on a tour of this project!!
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/pwoXUIjRxfk/0.jpg)](https://www.youtube.com/watch?v=pwoXUIjRxfk)
 
-[Screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
+[Screenshots](https://github.com/yTakkar/Instagram-clone/tree/master/screenshots "More screenshots")
 
 # Features
 1. Login, Signup, Forgot password (with email verification).
