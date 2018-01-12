@@ -1,7 +1,7 @@
 # Instagram-clone
 An Instagram-clone with my own flavors and features!!
 
-Another version of this project with MERN stack coming soon..
+Another version of this project with MERN stack coming soon...
 
 Feel free to contribute!!
 
