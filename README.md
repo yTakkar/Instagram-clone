@@ -3,6 +3,8 @@ An Instagram-clone with my own flavors and features!!
 
 Another version of this project with MERN stack coming soon...
 
+**[React Version](https://github.com/yTakkar/React-Instagram-Clone-2.0)**
+
 Feel free to contribute!!
 
 # Quick links
