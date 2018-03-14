@@ -28,6 +28,12 @@
     <a href="signup" class="pri_btn">Need an account?</a>
   </div>
 
+  <div class="github">
+  <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&type=follow&count=false&size=large" frameborder="0" scrolling="0" width="180px" height="30px"></iframe>
+    <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&repo=Instagram-Clone&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="125px" height="30px"></iframe>
+    <iframe src="https://ghbtns.com/github-btn.html?user=yTakkar&repo=Instagram-Clone&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+  </div>
+
   <div class="banner">
     <img src="<?php echo DIR; ?>/images/needs/dbx_29.png" alt="">
     <!-- <img src="http://chicohq.com/images/bg.svg" alt=""> -->

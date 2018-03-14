@@ -24,7 +24,7 @@
 
     if (isset($_FILES['audio_post'])) {
       $value = preg_replace("#[<>]#i", "", $_POST['value']);
-      $post->audioPost($_FILES['audio_post'], $value, $_POST['tags'], $_POST['font'], $_POST['loc']);
+      echo $post->audioPost($_FILES['audio_post'], $value, $_POST['tags'], $_POST['font'], $_POST['loc']);
     }
 
     if (isset($_FILES['doc_post'])) {

@@ -1,64 +1,25 @@
 # Instagram-clone
-An Instagram-clone with my own flavors and features. Same app which will be single-page app with MERN, Redux and NoSQL coming soon!!
+An Instagram-clone with my own flavors and features!!
+
+Another version of this project with MERN stack coming soon...
+
+**[React Version](https://github.com/yTakkar/React-Instagram-Clone-2.0)**
 
 Feel free to contribute!!
 
 # Quick links
-1. [Screenshots](#screenshots)
-2. [Features](#features)
-3. [Requirements](#requirements)
-4. [Own the project](#own-the-project)
-5. [Images copyright claims](#copyright-claims)
-
-# Screenshots
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Own the project](#own-the-project)
+4. [Login/Signup Error](#loginsignup-error)
+5. [Contribute](#contribute)
+6. [Images copyright claims](#copyright-claims)
 
 Here's a video which will take you on a tour of this project!!
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/pwoXUIjRxfk/0.jpg)](https://www.youtube.com/watch?v=pwoXUIjRxfk)
 
-Below are some screenshots of the app:
-
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.29.09.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.15.48.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.15.08.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.13.55.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.17.01.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.17.47.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.18.01.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.18.35.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.18.44.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.21.18.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.22.51.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.23.04.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.24.19.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.24.49.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.25.16.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.25.36.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.26.56.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.28.22.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.29.05.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.29.15.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.21.36.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.29.37.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.40.15.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.40.51.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.41.04.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.41.19.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.53.13.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.53.25.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2000.53.48.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2001.07.30.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2001.07.43.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2001.08.17.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2001.08.55.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2001.09.30.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-23%20at%2001.23.35.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.04.45.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.18.34.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.19.28.png)
-![alt text](https://github.com/yTakkar/Instagram-clone/blob/master/screenshots/Snap%202017-05-26%20at%2023.27.33.png)
-
-[More screenshots](https://www.dropbox.com/sh/7yysaawc7fn4ls0/AAAebtBOyYk-hiLXBjHxTz-da?dl=0 "More screenshots")
+[Screenshots](https://github.com/yTakkar/Instagram-clone/tree/master/screenshots "More screenshots")
 
 # Features
 1. Login, Signup, Forgot password (with email verification).
@@ -121,6 +82,16 @@ If you're interested in watching a video on how to use or set it up, click the b
 4. Open `.htaccess`, go to line 17 & replace it with your root path.
 5. If `Time ago` feature is not working correctly (forward or behind), then go to `config/class/time.class.php` & play around with line no `8`.
 6. Enjoy!!
+
+# Login/Signup Error
+
+If you have followed all the steps, especially step no. 3 and using Chrome browser for initial testing and you're unable to login or signup, then try changing the Chrome browser for initial testing and it will work. Because Chrome sometimes doesn't reload the files.
+4-5 issues are regarding this error only!!
+
+# Contribute
+Show your support by 🌟 the project!!
+
+Feel free to contribute!
 
 # Copyright claims
 Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!
