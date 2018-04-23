@@ -1,6 +1,8 @@
 # Instagram-clone
 An Instagram-clone with my own flavors and features!!
 
+**No longer maintained.**
+
 # Updated version
 Please note that this project is no longer maintained. Have a look at another version of this project which is a single-page application
 
