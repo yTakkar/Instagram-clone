@@ -1,4 +1,6 @@
 # Instagram-clone
+[![Financial Contributors on Open Collective](https://opencollective.com/instagram-clone-php/all/badge.svg?label=financial+contributors)](https://opencollective.com/instagram-clone-php) 
+
 An Instagram-clone with my own flavors and features!!
 
 **No longer maintained.**
@@ -100,3 +102,33 @@ Feel free to contribute!
 Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!
 
 **Thanks for reading**
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/yTakkar/Instagram-clone/graphs/contributors"><img src="https://opencollective.com/instagram-clone-php/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/instagram-clone-php/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/instagram-clone-php"><img src="https://opencollective.com/instagram-clone-php/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/instagram-clone-php/contribute)]
+
+<a href="https://opencollective.com/instagram-clone-php/organization/0/website"><img src="https://opencollective.com/instagram-clone-php/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/1/website"><img src="https://opencollective.com/instagram-clone-php/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/2/website"><img src="https://opencollective.com/instagram-clone-php/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/3/website"><img src="https://opencollective.com/instagram-clone-php/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/4/website"><img src="https://opencollective.com/instagram-clone-php/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/5/website"><img src="https://opencollective.com/instagram-clone-php/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/6/website"><img src="https://opencollective.com/instagram-clone-php/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/7/website"><img src="https://opencollective.com/instagram-clone-php/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/8/website"><img src="https://opencollective.com/instagram-clone-php/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/instagram-clone-php/organization/9/website"><img src="https://opencollective.com/instagram-clone-php/organization/9/avatar.svg"></a>
