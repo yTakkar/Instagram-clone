@@ -5,10 +5,6 @@ An Instagram-clone with my own flavors and features!!
 
 **No longer maintained.**
 
-Instagram-clone is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial”
-
-<a href="https://tracking.gitads.io/?repo=Instagram-clone"> <img src="https://images.gitads.io/Instagram-clone" alt="GitAds"/> </a>
-
 # Updated version
 Please note that this project is no longer maintained. Have a look at another version of this project which is a single-page application
 
