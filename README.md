@@ -5,7 +5,9 @@ An Instagram-clone with my own flavors and features!!
 
 **No longer maintained.**
 
+---
 ### 🛒 Launch your online store with [OwnStore](https://ownstore.dev).
+---
 
 # Updated version
 Please note that this project is no longer maintained. Have a look at another version of this project which is a single-page application
